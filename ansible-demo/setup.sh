@@ -4,7 +4,8 @@ host=${1}
 
 if [ $# -eq 0 ]
   then
-    echo "No arguments supplied"
+    echo -e "Remote host ip required.\nUsage:./setup.sh 34.244.168.125"
+    exit
 fi
 
 mkdir -p ~/ansible-demo && cd ~/ansible-demo
