@@ -1,4 +1,4 @@
-# ANSIBLE MINI - PLAYGROUND
+# ANSIBLE HANDS-ON
 
 ### You will need:
 
