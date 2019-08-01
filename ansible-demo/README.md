@@ -2,6 +2,7 @@
 
 your_db_host = 'your.host.ip'
 
+Example:
 yuliya_host=34.244.168.125
 
 1. Install Ansible
@@ -12,22 +13,25 @@ yuliya_host=34.244.168.125
 That's it!
 
 2. Initial setup. This will create a demo directory, a config file for Ansible, will populate your inventory with your remote host adress and will place your public ssh key in the Authorized_keys file in your remote host.
+
         $ git clone git@github.ecs-digital.co.uk:ECSD/hsbc_patching_pod.git
         $ ./setup.sh <your_db_host>
 
-3. Let's check out connectivity with the host. Run: 
+3. Let's check out connectivity with the host. Run:
+
         $ ansible all -i ./ansible_inventory -u ubuntu -m ping
 
 
 4. Run the playbook
-ansible-playbook playbook.yml
+
+    ansible-playbook playbook.yml
 
 
 #### Additional notes on setup:
 
-If you prefer to use Python and pip for the install, then read on...
-    
+##### If you prefer to use Python and pip for the install, then read on...
+        
 - [Install XCode](https://developer.apple.com/xcode/)
 
-       sudo easy_install pip
-       sudo pip install ansible --quiet
+        sudo easy_install pip
+        sudo pip install ansible --quiet
