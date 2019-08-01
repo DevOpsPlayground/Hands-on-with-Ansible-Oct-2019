@@ -1,16 +1,20 @@
 # ANSIBLE MINI - PLAYGROUND
 
-your_db_host = 'your.host.ip'
+### You will need:
 
-Example:
-yuliya_host=34.244.168.125
+    1.  Ansible
+    2.  A remote host
+        Example: 34.244.168.125
+    3.  Loads of fun!
+------
+### Let's start
+1. Install Ansible (if you haven't already)
 
-1. Install Ansible
     If you already have Homebrew installed on your mac, then 
 
     ```brew install ansible```
 
-That's it!
+    That's it!
 
 2. Initial setup. This will create a demo directory, a config file for Ansible, will populate your inventory with your remote host adress and will place your public ssh key in the Authorized_keys file in your remote host.
 
@@ -26,7 +30,7 @@ That's it!
 
     ansible-playbook playbook.yml
 
-
+-----------
 #### Additional notes on setup:
 
 ##### If you prefer to use Python and pip for the install, then read on...
