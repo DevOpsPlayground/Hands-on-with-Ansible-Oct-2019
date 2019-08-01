@@ -1,6 +1,7 @@
 # ANSIBLE MINI - PLAYGROUND
 
-db_host = <your host ip>
+db_host = 'your.host.ip'
+yuliya_host=34.244.168.125
 
 1. Install Ansible
     If you already have Homebrew installed on your mac, then 
