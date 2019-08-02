@@ -53,6 +53,13 @@
 
     ansible-playbook  -i ./ansible_inventory update.yml
 
+6. Write the upgrade playbook
+    Copy the `update_kernel.yml` 
+
+7. Run the playbook
+
+    ansible-playbook  -i ./ansible_inventory update_kernel.yml
+
 -----------
 #### Additional notes on setup:
 
