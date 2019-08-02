@@ -36,7 +36,9 @@
 4. Write a playbook.
 
     We will put together a simple playbook to update our remote host. 
-    Create a file `update.yml` and paste the following. Careful with the spaces - YAML is fussy!
+    Create a file `update.yml` and paste the following. Careful with the spaces - YAML is fussy! 
+    
+    HINT: You can copy the file you have cloned from the repo. 
 
         ---
         - hosts: db_hosts
