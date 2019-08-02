@@ -45,7 +45,7 @@
           tasks:
             - name: Update all packages on a Debian/Ubuntu
               apt:
-                  update_cache: yes
+                update_cache: yes
                 upgrade: dist
 
 
