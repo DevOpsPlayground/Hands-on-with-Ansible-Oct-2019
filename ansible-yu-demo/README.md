@@ -14,8 +14,10 @@
 ### Let's start
 1. Install Ansible (if you haven't already)
 
-- [Install XCode](https://developer.apple.com/xcode/)
+        $ ansible --version
 
+- [Install XCode](https://developer.apple.com/xcode/)
+        
         sudo easy_install pip
         sudo pip install ansible --quiet
 
