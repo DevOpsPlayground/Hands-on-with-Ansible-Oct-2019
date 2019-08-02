@@ -9,15 +9,15 @@
     1.  Ansible
     2.  A remote host
         Example: 34.244.168.125
-        (make SSH works)
     3.  Loads of fun!
 ------
 ### Let's start
 1. Install Ansible (if you haven't already)
 
-    If you already have Homebrew installed on your mac, then 
+- [Install XCode](https://developer.apple.com/xcode/)
 
-    ```brew install ansible```
+        sudo easy_install pip
+        sudo pip install ansible --quiet
 
     That's it!
 
@@ -25,7 +25,7 @@
 
         $ git clone git@github.ecs-digital.co.uk:ECSD/hsbc_patching_pod.git
         $ ./setup.sh <your_db_host>
-        $ cd ~/ansible-demo
+
 
 3. Let's check out connectivity with the host. Run:
 
@@ -52,9 +52,9 @@
 -----------
 #### Additional notes on setup:
 
-##### If you prefer to use Python and pip for the install, then read on...
-        
-- [Install XCode](https://developer.apple.com/xcode/)
+##### If you already have Homebrew installed on your mac, then 
 
-        sudo easy_install pip
-        sudo pip install ansible --quiet
+    ```brew install ansible```
+
+
+# Thanks for participating!
