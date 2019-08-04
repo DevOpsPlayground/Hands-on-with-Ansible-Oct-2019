@@ -32,7 +32,8 @@
         $ vi yuliya_ans.pem                   # Paste here the key that was shared with you.
         $ chmod 400 yuliya_ans.pem
 
-        $ ./setup.sh <your_db_host>
+        $ ./ansible-demo/setup.sh <your_db_host>
+
 
 
 3. Let's check out connectivity with the host. Run:
