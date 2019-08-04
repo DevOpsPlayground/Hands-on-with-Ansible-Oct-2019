@@ -9,11 +9,12 @@
     1.  Ansible
     2.  A remote host
         Example: 34.244.168.125
+    3.  a *.pem file to connect to your AWS instance.
     3.  Loads of fun!
 ------
 ### Let's start
 1. Install Ansible (if you haven't already)
-
+    If you are not sure, you can check whether Ansible is installed by running:
         $ ansible --version
 
 - [Install XCode](https://developer.apple.com/xcode/)
@@ -25,7 +26,9 @@
 
 2. Initial setup. This will create a demo directory, a config file for Ansible, will populate your inventory with your remote host adress and will place your public ssh key in the Authorized_keys file in your remote host.
 
-        $ git clone git@github.ecs-digital.co.uk:ECSD/hsbc_patching_pod.git
+        $ git clone git@github.ecs-digital.co.uk:ECSD/hsbc_patching_pod.git && cd hsbc_patching_pod
+        $ vi yuliya_ans.pem # Paste here the key that was shared with you.
+        $ chmod 400 yuliya_ans.pem
         $ ./setup.sh <your_db_host>
 
 
