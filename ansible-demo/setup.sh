@@ -8,7 +8,7 @@ if [ $# -eq 0 ]
     exit
 fi
 
-mkdir -p ~/ansible-demo && cd ~/ansible-demo
+mkdir ansible_hands_on && cd ansible_hands_on
 echo -e "[db_hosts]\n${host}" > ansible_inventory && echo -e "[defaults]\ninventory = ansible_inventory\nansible_path=/usr/local/bin/python3" > ansible.cfg
 cd -
 
