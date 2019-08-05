@@ -8,14 +8,13 @@ if [ $# -eq 0 ]
     exit
 fi
 
-# Settin up a separate folder to run the entire session from.
-mkdir ansible_hands_on
-cd ansible_hands_on
+# Setting up a separate folder to run the entire session from.
+mkdir ansible_hands_on && cd ansible_hands_on
+pwd
 
-mv ../ansible-demo/yuliya_ans2.pem .
-echo -e "[db_hosts]\n${host}" > ansible_inventory && echo -e "[defaults]\ninventory = ansible_inventory\nansible_path=/usr/local/bin/python3" > ansible.cfg
+mv ../yuliya_ans2.pem .
+echo -e "[db_hosts]\n${host}" > ./ansible_inventory && echo -e "[defaults]\ninventory = ansible_inventory\nansible_path=/usr/local/bin/python3" > ./ansible.cfg
 
-# set ssh connection to your host
+# # set ssh connection to your host
 ssh-add "yuliya_ans2.pem"
-echo "got here"
 ssh-copy-id -i ~/.ssh/id_rsa.pub ubuntu@${host}
