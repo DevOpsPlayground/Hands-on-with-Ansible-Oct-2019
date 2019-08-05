@@ -29,12 +29,10 @@
         $ git clone git@github.ecs-digital.co.uk:ECSD/hsbc_patching_pod.git && 
         cd hsbc_patching_pod/ansible-demo
 
-        
         $ vi yuliya_ans.pem                   # Paste here the key that was shared with you.
         $ chmod 400 yuliya_ans.pem
 
-        $ ./ansible-demo/setup.sh <your_db_host>
-
+        $ ./setup.sh <your_db_host>
 
 
 3. Let's check out connectivity with the host. Run:
