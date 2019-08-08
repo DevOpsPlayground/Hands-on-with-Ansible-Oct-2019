@@ -10,17 +10,18 @@
     2.  A remote host
         Example: 34.244.168.125
     3.  a *.pem file to connect to your AWS instance.
-    3.  Loads of fun!
+
 ------
 ### Let's start
 1. Install Ansible (if you haven't already)
     If you are not sure, you can check whether Ansible is installed by running:
+        
         $ ansible --version
 
-- [Install XCode](https://developer.apple.com/xcode/)
+- [Install XCode](https://developer.apple.com/xcode/) (if you haven't already), then run:
         
-        sudo easy_install pip
-        sudo pip install ansible --quiet
+        $ sudo easy_install pip
+        $ sudo pip install ansible --quiet
 
     That's it!
 
@@ -57,14 +58,15 @@
 
 5. Run the playbook
 
-    ansible-playbook  -i ./ansible_inventory update.yml
+        ansible-playbook  -i ./ansible_inventory update.yml
 
-6. Write the upgrade playbook
-    Copy the `update_kernel.yml` 
+6. Write the "upgrade" playbook
+   
+    Hint: you can copy the `update_kernel.yml` you cloned from my repo.
 
 7. Run the playbook
 
-    ansible-playbook  -i ./ansible_inventory update_kernel.yml
+        ansible-playbook  -i ./ansible_inventory update_kernel.yml
 
 -----------
 #### Additional notes on setup:
