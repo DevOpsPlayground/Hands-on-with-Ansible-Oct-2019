@@ -38,15 +38,21 @@
         $ ./setup.sh <your_db_host> -->
 
 2. Inital setup. 
+
     Should each user be provided with a pem file? 
+
     What is the PEM file for?
+
     Shouldn't the PEM file be used for the participants to connect with their 2 boxes?
 
     Should I make them generate an ssh key?
+
     Then set ssh connection to their  remote_host
 
             $ ssh-add "generated_rsa.pub"
             $ ssh-copy-id -i ~/.ssh/id_rsa.pub ubuntu@${host}
+    
+    or use my `main.yml`
 
 3. Let's check out connectivity with the host. Run:
 
