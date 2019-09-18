@@ -1,9 +1,4 @@
 users:
-  - username: ubuntu
-    comment: "I'm the master, respect me"
-    state: present
-    shell: "/bin/sh"
-
   - username: hmills
     comment: "He will break your shell"
     state: present
