@@ -20,11 +20,13 @@
 
 - [Install XCode](https://developer.apple.com/xcode/) (if you haven't already), then run:
         
-        $ sudo easy_install pip
-        $ sudo pip install ansible --quiet
+        $ sudo apt update
+        $ sudo apt install python3-pip
+        $ pip3 --version
+        $ sudo pip3 install ansible --quiet
 
     That's it!
-
+<!-- 
 2. Initial setup. This will create a demo directory, a config file for Ansible, will populate your inventory with your remote host adress and will place your public ssh key in the Authorized_keys file in your remote host.
 
         $ git clone git@github.ecs-digital.co.uk:ECSD/hsbc_patching_pod.git && 
@@ -33,8 +35,18 @@
         $ vi yuliya_ans.pem                   # Paste here the key that was shared with you.
         $ chmod 400 yuliya_ans.pem
 
-        $ ./setup.sh <your_db_host>
+        $ ./setup.sh <your_db_host> -->
 
+2. Inital setup. 
+    Should each user be provided with a pem file? 
+    What is the PEM file for?
+    Shouldn't the PEM file be used for the participants to connect with their 2 boxes?
+
+    Should I make them generate an ssh key?
+    Then set ssh connection to their  remote_host
+
+            $ ssh-add "generated_rsa.pub"
+            $ ssh-copy-id -i ~/.ssh/id_rsa.pub ubuntu@${host}
 
 3. Let's check out connectivity with the host. Run:
 
