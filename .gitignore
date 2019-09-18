@@ -1,2 +1,4 @@
-yuliya_ans*.pem
 .DS_Store
+launch_steps.txt
+will_it_fail.sh
+setup.sh
