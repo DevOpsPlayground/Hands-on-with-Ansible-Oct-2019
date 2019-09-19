@@ -27,22 +27,12 @@ That's it!
 
 #### 2. Configuring SSH Access to the remote Host. 
 
-An AWS PEM file contains a private key.  
-Should each user be provided with a pem file? 
-
-Shouldn't the PEM file be used for the participants to connect with their 2 boxes?
-
-Should I make them generate an ssh key?
-
-Then set ssh connection to their  remote_host
-
-            $ ssh-add ~/.ssh/id_rsa.pub
-            $ ssh-copy-id -i ~/.ssh/id_rsa.pub ubuntu@${host}
+    Lorem ipsum.....    
 
 #### 3. Let's check out connectivity with the host. Run:
 
         $ ansible all -i 'host.ip,' -m ping    
-###### Example:   
+##### Example:   
         $ ansible all -i '52.214.226.94,' -m ping
  Or check memory and disk space of your host:
 
@@ -72,5 +62,16 @@ HINT: You can copy the file you have cloned from the repo.
 
         ansible-playbook  -i ./ansible_inventory update.yml
 
+
+#### 7. Deploy an app
+
+    Lorem ipsum...  
+
+#### 8. Oh no! Someone messed up my configuration!
+
+
+#### 9. Security compliance.....
+
+    Lorem ipsum...  
 
 # Thanks for participating!
