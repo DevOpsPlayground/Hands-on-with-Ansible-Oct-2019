@@ -2,7 +2,7 @@
 - hosts: all
   become: yes
   vars_files: 
-    -/vars/users.yml
+    - /vars/users.yml
     
   tasks:
   - name: Update package list
