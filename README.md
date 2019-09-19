@@ -38,9 +38,6 @@
 
             $ ssh-add "generated_rsa.pub"
             $ ssh-copy-id -i ~/.ssh/id_rsa.pub ubuntu@${host}
-    
-    or use my `main.yml`
-        ansible-playbook all -i '52.214.226.94,' main.yml
 
 #### 3. Let's check out connectivity with the host. Run:
 
