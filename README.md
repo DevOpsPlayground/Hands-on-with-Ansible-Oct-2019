@@ -34,6 +34,8 @@ That's it!
 
 #### 2. Configuring SSH Access to the remote Host. 
 
+Run the following command from your command line. When prompted for password type in the password provided to you along with the hostnames.
+
     ./setup.sh <your remote host IP>   
 
 #### 3. Let's check out connectivity with the host. Run:
@@ -46,9 +48,9 @@ That's it!
 
         $ ansible all -i 'host.ip,' -m shell -a 'free -m && df -h'
 
-#### 4. Hostfile
+#### 4. Hostfile and Configuration file
 
-    Lorem ipsum.....
+        ./inventory_and_config.sh <your remote host IP>
 
 #### 5. Write a simple playbook.
 

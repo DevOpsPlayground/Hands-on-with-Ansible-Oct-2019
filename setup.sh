@@ -10,5 +10,6 @@ fi
 
 # # set ssh connection to your host
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+eval `ssh-agent -s`
 ssh-add "ansiblePG.pem"
 ssh-copy-id -i ~/.ssh/id_rsa.pub playground@${host}
