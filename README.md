@@ -2,7 +2,7 @@
 
 ### Our task:
 
-#### Reboot Ubuntu Linux machine using shell or command module and wait for it to come back.
+#### Still working on deciding which one!
 
 ### You will need:
 
