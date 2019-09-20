@@ -1,5 +1,5 @@
 .DS_Store
 launch_steps.txt
 will_it_fail.sh
-setup.sh
+# setup.sh
 scratch.sh
