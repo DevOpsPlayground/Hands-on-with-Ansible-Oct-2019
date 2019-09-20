@@ -36,7 +36,7 @@ That's it!
 
 Run the following command from your command line. When prompted for password type in the password provided to you along with the hostnames.
 
-    ./setup.sh <your remote host IP>   
+        ./setup.sh <your remote host IP>   
 
 #### 3. Let's check out connectivity with the host. Run:
         $ cd ansible_hands_on
