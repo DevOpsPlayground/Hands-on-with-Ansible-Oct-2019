@@ -39,7 +39,7 @@ Run the following command from your command line. When prompted for password typ
     ./setup.sh <your remote host IP>   
 
 #### 3. Let's check out connectivity with the host. Run:
-
+        $ cd ansible_hands_on
         $ ansible all -i 'host.ip,' -m ping    
 ##### Example:   
         $ ansible all -i '52.214.226.94,' -m ping
