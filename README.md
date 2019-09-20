@@ -7,8 +7,9 @@
 ### You will need:
 
     1.  Ansible
-    2.  A remote host
-        Example: 34.244.168.125
+    2.  Two remote hosts ( check the leaflet you picked up from reception )
+    3.  Loads of fun!
+
 ------
 ### Let's start
 
