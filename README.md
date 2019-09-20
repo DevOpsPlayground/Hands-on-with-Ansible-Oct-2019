@@ -11,7 +11,14 @@
         Example: 34.244.168.125
 ------
 ### Let's start
+
+You will have two remote machines, each one assigned with a name of an animal. 
+Pick one to become your Ansible Control Node (src). The second will become the Ansible Remote host (dst)
+
 #### 1. Install Ansible (if you haven't already)
+
+You should run the following commands from `http://<your_animal>.ldn.devopsplayground.com/wetty/`
+
 Check whether Ansible is installed by running:
         
         $ ansible --version
@@ -27,16 +34,17 @@ That's it!
 
 #### 2. Configuring SSH Access to the remote Host. 
 
-    Lorem ipsum.....    
+    ./setup.sh <your remote host IP>   
 
 #### 3. Let's check out connectivity with the host. Run:
 
         $ ansible all -i 'host.ip,' -m ping    
 ##### Example:   
         $ ansible all -i '52.214.226.94,' -m ping
+
  Or check memory and disk space of your host:
 
-        $ ansible all -i 'host.ip,' -m shell -a 'free -m && df -h '
+        $ ansible all -i 'host.ip,' -m shell -a 'free -m && df -h'
 
 #### 4. Hostfile
 
@@ -50,7 +58,7 @@ Create a file `update.yml` and paste the following. Careful with the spaces - YA
 HINT: You can copy the file you have cloned from the repo. 
 
         ---
-        - hosts: db_hosts
+        - hosts: web
           tasks:
             - name: Update all packages on a Debian/Ubuntu
               apt:
