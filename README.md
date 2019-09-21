@@ -1,24 +1,38 @@
 # ANSIBLE HANDS-ON
 
-### Our task:
+#### Our task:
 
-#### Still working on deciding which one!
+### Still working on deciding which one!
 
-### You will need:
+#### You will need:
 
-    1.  Ansible
-    2.  Two remote hosts ( check the leaflet you picked up from reception )
-    3.  Loads of fun!
+1. Your leaflet your picked up at reception.
+2. Chrome preferably but Firefox can also do.
+3. __*Panda*__ with us and have fun!!!
 
 ------
 ### Let's start
 
-You will have two remote machines, each one assigned with a name of an animal. 
-Pick one to become your Ansible Control Node (src). The second will become the Ansible Remote host (dst)
+You have each been given an animal. Bob is a duck.
+
+Also we have setup two machines for you to access via a command line in the browser:
+
+        http://control_duck.ldn.devopsplayground.com/wetty/
+        http://remote_duck.ldn.devopsplayground.com/wetty/
+
+These will be used as the Ansible Control Node and Ansible Remote Host, respectively.
+
+1. Fire up your browser - one window for each machine.
+
+2. The __web terminal - WeTTy__ can be accessed via web browser by typing \<\<instance-address\>\>/wetty i.e *http://control_\<\<your_animal\>\>.ldn.devopsplayground.com/wetty/*
+
+3. The password for both  is the one on your leaflet. 
+From now on we will be working from the browsers only.
+
+3. 
+
 
 #### 1. Install Ansible (if you haven't already)
-
-You should run the following commands from `http://<your_animal>.ldn.devopsplayground.com/wetty/`
 
 Check whether Ansible is installed by running:
         
@@ -35,9 +49,11 @@ That's it!
 
 #### 2. Configuring SSH Access to the remote Host. 
 
-Run the following command from your command line. When prompted for password type in the password provided to you along with the hostnames.
+Fire up 
 
-        ./setup.sh <your remote host IP>   
+Run the following command from your command line from your . When prompted for password type in the password provided to you along with the hostnames.
+
+        $ ./setup.sh <your remote host IP>   
 
 #### 3. Let's check out connectivity with the host. Run:
         $ cd ansible_hands_on
@@ -51,7 +67,7 @@ Run the following command from your command line. When prompted for password typ
 
 #### 4. Hostfile and Configuration file
 
-        ./inventory_and_config.sh <your remote host IP>
+        $ ./inventory_and_config.sh <your remote host IP>
 
 #### 5. Write a simple playbook.
 
@@ -81,8 +97,17 @@ HINT: You can copy the file you have cloned from the repo.
 #### 8. Oh no! Someone messed up my configuration!
 
 
-#### 9. Security compliance.....
+#### 9. Notes
 
-    Lorem ipsum...  
+    
+Link to the [git repository](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) with the README and the playbooks that will be used in this session.
+
+#### 10. References
+
+Some materials were adopted form this cool book:
+
+[Security Automation with Ansible 2: Leverage Ansible 2 to Automate Complex Security Tasks Like Application Security, Network Security, and Malware Analysis](https://g.co/kgs/xbJUnr)
+
+ 
 
 # Thanks for participating!
