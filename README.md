@@ -39,21 +39,25 @@ From now on we will be working from the browsers only.
 Check whether Ansible is installed by running:
         
         $ ansible --version
+You should see something like:
 
-If it isn't, run these commands:
+        ansible 2.6.5
+
+If not, run these commands:
         
         $ sudo apt update
         $ sudo apt install python3-pip
         $ pip3 --version
         $ sudo pip3 install ansible --quiet
+and
+        
+        $ ansible --version
 
 That's it!
 
 #### 2. Configuring SSH Access to the remote Host. 
 
-Fire up 
-
-Run the following command from your command line from your . When prompted for password type in the password provided to you along with the hostnames.
+Run the following command from your control_duck.
 
         $ ./setup.sh <your remote host IP>   
 
@@ -63,7 +67,7 @@ Run the following command from your command line from your . When prompted for p
 ##### Example:   
         $ ansible all -i '52.214.226.94,' -m ping
 
- Or check memory and disk space of your host:
+ Or check memory and disk space on your remote_duck:
 
         $ ansible all -i 'host.ip,' -m shell -a 'free -m && df -h'
 
