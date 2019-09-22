@@ -102,7 +102,7 @@ HINT: You can copy the file you have cloned from the repo.
 
 #### 7. Build a LAMP stack
 
-We will look at how to write a LAMP stack playbook using the skills we have learned so far. Here is the high-level hierarchy structure of the entire playbook:
+We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook that will trigger the installation of LAMP:
 
         - name: LAMP stack setup on Ubuntu 18.04
           hosts: lamp
