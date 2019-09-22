@@ -1,6 +1,6 @@
 ---
-- hosts: db_hosts
-  remote_user: ubuntu
+- hosts: lamp
+  remote_user: playground
   become: yes
   
   tasks:
@@ -8,3 +8,8 @@
       apt:
         update_cache: yes
         upgrade: dist
+
+  tasks:
+    - name: Check disk space and memory
+      shell: free -m && df -h
+

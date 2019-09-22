@@ -1,5 +1,0 @@
-users:
-  - username: hmills
-    comment: "He will break your shell"
-    state: present
-    shell: "/bin/sh"
