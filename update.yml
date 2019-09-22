@@ -1,5 +1,5 @@
 ---
-- hosts: db_hosts
+- hosts: lamp
   remote_user: ubuntu
   become: yes
   
