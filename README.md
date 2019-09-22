@@ -1,4 +1,5 @@
 # ANSIBLE HANDS-ON
+The final version of this project is in [DevOpsPlayground](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) repo.
 
 #### Our task:
 
@@ -24,15 +25,17 @@ These will be used as the Ansible Control Node and Ansible Remote Host, respecti
 
 1. Fire up your browser - one window for each machine.
 
-2. The __web terminal - WeTTy__ can be accessed via web browser by typing \<\<instance-address\>\>/wetty i.e *<http://control_\<\<your_animal\>\>.ldn.devopsplayground.com/wetty/*>
+2. The __web terminal - WeTTy__ can be accessed via web browser by typing \<\<instance-address\>\>/wetty i.e 
+        
+       http://control_<<your_animal>>.ldn.devopsplayground.com/wetty/
 
 3. The password for both  is the one on your leaflet.
 
+4. Type some shell commands to get at ease with the web terminal.
+
 From now on we will be working from the browsers only.
 
-4. Type some shell commands to get at ease with the web terminal.
-        
-
+-----
 
 #### 1. Install Ansible (if you haven't already)
 
