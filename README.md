@@ -2,7 +2,7 @@
 
 #### Our task:
 
-### Create a real-world LAMP stack for development using Ansible
+### Create a real-world LAMP stack for development using Ansible.
 
 #### You will need:
 
