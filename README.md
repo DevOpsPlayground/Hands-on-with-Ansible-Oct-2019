@@ -2,7 +2,7 @@
 
 #### Our task:
 
-### Still working on deciding which one!
+### Create a real-world LAMP stack for development using Ansible
 
 #### You will need:
 
@@ -89,6 +89,10 @@ HINT: You can copy the file you have cloned from the repo.
               apt:
                 update_cache: yes
                 upgrade: dist
+        
+          tasks:
+            - name: Check disk space and memory
+              shell: free -m && df -h
 
 
 #### 6. Run the playbook
@@ -100,7 +104,15 @@ HINT: You can copy the file you have cloned from the repo.
 
     Lorem ipsum...  
 
+What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
+
+        $ ansible-doc apt
+
+
 #### 8. Oh no! Someone messed up my configuration!
+
+
+
 
 
 #### 9. Notes
