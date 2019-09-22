@@ -8,4 +8,4 @@ if [ $# -eq 0 ]
     exit
 fi
 
-echo -e "[lamp]\nlampstack   ansible_host=${host}" > ./ansible_hands_on/ansible_inventory && echo -e "[defaults]\ninventory = ansible_inventory\nansible_path=/usr/local/bin/python3" > ./ansible_hands_on/ansible.cfg
+echo -e "[lamp]\nlampstack   ansible_host=${host}" > ansible_inventory && echo -e "[defaults]\ninventory = ansible_inventory\nansible_path=/usr/local/bin/python3" > ansible.cfg

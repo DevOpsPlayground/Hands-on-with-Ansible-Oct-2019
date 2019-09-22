@@ -3,3 +3,5 @@ launch_steps.txt
 will_it_fail.sh
 # setup.sh
 scratch.sh
+ansible_inventory
+ansible.cfg
