@@ -2,6 +2,7 @@
 launch_steps.txt
 will_it_fail.sh
 # setup.sh
-scratch.sh
+scratch*
 ansible_inventory
 ansible.cfg
+
