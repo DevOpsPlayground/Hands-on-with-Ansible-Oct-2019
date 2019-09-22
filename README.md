@@ -1,5 +1,4 @@
 # ANSIBLE HANDS-ON
-The final version of this project is in [DevOpsPlayground](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) repo.
 
 #### Our task:
 
