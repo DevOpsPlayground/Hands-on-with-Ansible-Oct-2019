@@ -100,9 +100,22 @@ HINT: You can copy the file you have cloned from the repo.
         ansible-playbook  -i ./ansible_inventory update.yml
 
 
-#### 7. Deploy an app
+#### 7. Build a LAMP stack
 
-    Lorem ipsum...  
+We will look at how to write a LAMP stack playbook using the skills we have learned so far. Here is the high-level hierarchy structure of the entire playbook:
+
+        - name: LAMP stack setup on Ubuntu 18.04
+          hosts: lamp
+          gather_facts: False
+          remote_user: "{{ remote_username }}"
+          become: True
+          roles:
+            - common
+            - web
+            - db
+            - php 
+
+  
 
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
 
