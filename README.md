@@ -99,7 +99,9 @@ HINT: You can copy the file you have cloned from the repo.
 
 #### 6. Run the playbook
 
-        ansible-playbook  -i ./ansible_inventory update.yml
+        ansible-playbook  -i ./ansible_inventory update.yml -v
+
+The `-v` give us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv` . 
 
 
 #### 7. Build a LAMP stack
@@ -133,7 +135,6 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
           with_items:
             - curl
             - git
-
   
 
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
