@@ -3,6 +3,6 @@ launch_steps.txt
 will_it_fail.sh
 # setup.sh
 scratch*
-ansible_inventory
+ansible_inventory.ini
 ansible.cfg
-
+secret
