@@ -137,6 +137,36 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
           with_items:
             - curl
             - git
+
+
+
+##### 7.2 The Web Role
+
+Next step in our LAMP configuration is the installation of the Apache2 server. Under `roles/` create the `web/tasks/main.yml`
+        
+The following code will tell our Ansible to install Apache2, configure it. It'll also add Apache2 to the startup service.
+
+        - name: install apache2 server
+          apt:
+            name: apache2
+            state: present
+
+        - name: update the apache2 server configuration
+          template: 
+            src: web.conf.j2
+            dest: /etc/apache2/sites-available/000-default.conf
+            owner: root
+            group: root
+            mode: 0644
+
+        - name: enable apache2 on startup
+          systemd:
+            name: apache2
+            enabled: yes
+          notify:
+            - start apache2
+
+
   
 
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
