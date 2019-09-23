@@ -9,7 +9,6 @@
         update_cache: yes
         upgrade: dist
 
-  tasks:
     - name: Check disk space and memory
       shell: free -m && df -h
 
