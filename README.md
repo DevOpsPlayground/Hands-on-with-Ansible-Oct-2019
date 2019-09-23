@@ -80,7 +80,7 @@ Run the following command from your control_duck.
 #### 5. Write a simple playbook.
 
 We will put together a simple playbook to update our remote host. 
-Create a file `update.yml` and paste the following. Careful with the spaces - YAML is fussy! 
+Create a file `update.yml` and paste the following. Careful with the spaces - YAML is fussy! Remember to unindent the lines copied from the README. I had to put 1 tab character (sometimes 2) to format the code in here.
     
 HINT: You can copy the file you have cloned from the repo. 
 
@@ -146,7 +146,9 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
 
 Next step in our LAMP configuration is the installation of the Apache2 server. Under `roles/` create the `web/tasks/main.yml`
         
-The following code will tell our Ansible to install Apache2, configure it. It'll also add Apache2 to the startup service.
+The following code will tell our Ansible to install Apache2, configure it. It'll also add Apache2 to the startup service. 
+
+HINT: Don't forget to unindent the code once pasted!
 
         - name: install apache2 server
           apt:
@@ -169,7 +171,8 @@ The following code will tell our Ansible to install Apache2, configure it. It'll
             - start apache2
 
 ##### 7.2.2 Handling apache2 start.
-This is called `handler` and it is what our `notify` parameter will trigger. Under `roles/` create another `main.yml` but this time it will have new location: `web/handlers/main.yaml`.
+This is called `handler` and it is what our `notify` parameter will trigger. 
+Create  `roles/web/handlers/main.yaml` and paste there the following.
 
         - name: start apache2
           systemd:
@@ -186,7 +189,29 @@ This is called `handler` and it is what our `notify` parameter will trigger. Und
             state: restarted
             name: apache2
             daemon_reload: yes
-  
+
+
+##### 7.2.3 Templating
+
+This is how we will use the `template` feature to configure apache2. The Ansible templates use the Jinja2 templating engine. We will create the a template in this location  `roles/web/templates/web.conf.j2`.
+
+        <VirtualHost *:80><VirtualHost *:80>
+            ServerAdmin {{server_admin_email}}
+            DocumentRoot {{server_document_root}}
+
+          ErrorLog ${APACHE_LOG_DIR}/error.log
+          CustomLog ${APACHE_LOG_DIR}/access.log combined
+        </VirtualHost>
+
+This template will be fed by the variables contained in `roles/web/vars/main.yml`:
+
+        server_admin_email: playground@localhost.local
+        server_document_root: /var/www/html
+
+
+
+
+
 
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
 

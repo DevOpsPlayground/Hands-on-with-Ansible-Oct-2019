@@ -1,0 +1,2 @@
+server_admin_email: playground@localhost.local
+server_document_root: /var/www/html
