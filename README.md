@@ -142,6 +142,8 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
 
 ##### 7.2 The Web Role
 
+##### 7.2.1 Install, configure and start apache2
+
 Next step in our LAMP configuration is the installation of the Apache2 server. Under `roles/` create the `web/tasks/main.yml`
         
 The following code will tell our Ansible to install Apache2, configure it. It'll also add Apache2 to the startup service.
@@ -166,7 +168,24 @@ The following code will tell our Ansible to install Apache2, configure it. It'll
           notify:
             - start apache2
 
+##### 7.2.2 Handling apache2 start.
+This is called `handler` and it is what our `notify` parameter will trigger. Under `roles/` create another `main.yml` but this time it will have new location: `web/handlers/main.yaml`.
 
+        - name: start apache2
+          systemd:
+            state: started
+            name: apache2
+
+        - name: stop apache2
+          systemd:
+            state: stopped
+            name: apache2
+
+        - name: restart apache2
+          systemd:
+            state: restarted
+            name: apache2
+            daemon_reload: yes
   
 
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
