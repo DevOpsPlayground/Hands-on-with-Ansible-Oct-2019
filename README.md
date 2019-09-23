@@ -117,6 +117,23 @@ We will look at how to write a LAMP stack playbook using the features offered by
             - db
             - php 
 
+##### 7.1 The Common Role
+
+##### Questions: Do we need to install Python 2 if we already will have installed Python 3? (Currently Python 2 is installed)
+
+Create the folowing folder structure `roles/common/tasks/main.yml` and put in the `main.yml` the following contents: 
+
+        - name: install python 2
+          raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+        - name: install curl and git
+          apt:
+            name: "{{ item }}"
+            state: present
+            update_cache: yes
+          with_items:
+            - curl
+            - git
+
   
 
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
