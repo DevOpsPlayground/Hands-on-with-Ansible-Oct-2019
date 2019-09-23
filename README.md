@@ -85,14 +85,16 @@ Create a file `update.yml` and paste the following. Careful with the spaces - YA
 HINT: You can copy the file you have cloned from the repo. 
 
         ---
-        - hosts: web
+        - hosts: lamp
+          remote_user: playground
+          become: yes
+        
           tasks:
             - name: Update all packages on a Debian/Ubuntu
               apt:
                 update_cache: yes
                 upgrade: dist
-        
-          tasks:
+    
             - name: Check disk space and memory
               shell: free -m && df -h
 
