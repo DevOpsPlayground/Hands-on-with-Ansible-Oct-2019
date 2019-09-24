@@ -33,7 +33,7 @@ From now on we will be working from the browsers only.
 
 -----
 
-#### 1. Install Ansible
+### Step 1. Install Ansible
 
 Check whether Ansible is installed by running:
 
@@ -60,7 +60,7 @@ $ ansible --version
 ```
 That's it!
 
-#### 2. Configuring SSH Access to the remote host
+### Step 2. Configuring SSH Access to the remote host
 
 Run the following command from your control_duck.
 
@@ -71,7 +71,7 @@ e.g.
 $ ./setup.sh 52.214.226.94
 ```
 
-#### 3. Let's check out connectivity with the host 
+### Step 3. Let's check out connectivity with the host 
 Run:
 ```bash
 $ cd ansible_hands_on
@@ -86,11 +86,11 @@ $ ansible all -i '52.214.226.94,' -m ping
 $ ansible all -i 'remote_host_ip,' -m shell -a 'free -m && df -h'
 ```
 
-#### 4. Ansible Hostfile and configuration file
+### Step 4. Ansible Hostfile and configuration file
 ```bash
 $ ./inventory_and_config.sh remote_host_ip
 ```
-#### 5. Write a simple playbook
+### Step 5. Write a simple playbook
 
 We will put together a simple playbook to update our remote host. 
 Create a file `update.yml` and paste the following. Careful with the spaces - YAML is fussy!
@@ -112,13 +112,13 @@ HINT: You can copy the file you have cloned from the repo.
       shell: free -m && df -h
 ```
 
-#### 6. Run the playbook
+### Step 6. Run the playbook
 ```bash
 ansible-playbook  -i ./ansible_inventory update.yml -v
 ```
 The `-v` give us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
-#### 7. Build a LAMP stack
+### Step 7. Build a LAMP stack
 
 We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook that will trigger the installation of LAMP:
 
@@ -134,7 +134,7 @@ We will look at how to write a LAMP stack playbook using the features offered by
     - db
     - php 
 ```
-##### 7.1 The Common Role
+#### 7.1 The Common Role
 
 ##### Questions: Do we need to install Python 2 if we already will have installed Python 3? (Currently Python 2 is installed)
 
@@ -152,9 +152,9 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
     - curl
     - git
 ```
-##### 7.2 The Web Role
+#### 7.2 The Web Role
 
-##### 7.2.1 Install, configure and start apache2
+#### 7.2.1 Install, configure and start apache2
 
 Next step in our LAMP configuration is the installation of the Apache2 server. Under `roles/` create the `web/tasks/main.yml`
 
@@ -183,7 +183,7 @@ HINT: Don't forget to unindent the code once pasted!
   notify:
     - start apache2
 ```
-##### 7.2.2 Handling apache2 start.
+#### 7.2.2 Handling apache2 start.
 This is called `handler` and it is what our `notify` parameter will trigger. 
 Create  `roles/web/handlers/main.yaml` and paste there the following.
 
@@ -204,7 +204,7 @@ Create  `roles/web/handlers/main.yaml` and paste there the following.
     name: apache2
     daemon_reload: yes
 ```
-##### 7.2.3 Templating
+#### 7.2.3 Templating
 
 This is how we will use the `template` feature to configure apache2. The Ansible templates use the Jinja2 templating engine. We will create the a template in this location  `roles/web/templates/web.conf.j2`.
 
@@ -229,18 +229,18 @@ What if we don't have access to the documentation in the web? Ansible ships with
 $ ansible-doc apt
 ```
 
-#### 8. Oh no! Someone messed up my configuration!
+### Step 8. Oh no! Someone messed up my configuration!
+
+Lorem Ipsum. Cum Laude. Carpe Diem (Seize the Panda).
 
 
 
-
-
-#### 9. Notes
+### 9. Notes
 
     
 Link to the [git repository](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) with the README and the playbooks that will be used in this session.
 
-#### 10. References
+### 10. References
 
 Some materials were adopted from this cool book:
 
