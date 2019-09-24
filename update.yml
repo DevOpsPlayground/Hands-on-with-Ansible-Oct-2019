@@ -2,7 +2,7 @@
 - hosts: lamp
   remote_user: playground
   become: yes
-  
+
   tasks:
     - name: Update all packages on a Debian/Ubuntu
       apt:
@@ -11,4 +11,3 @@
 
     - name: Check disk space and memory
       shell: free -m && df -h
-
