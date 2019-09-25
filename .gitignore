@@ -3,4 +3,5 @@ scratch*
 ansible_inventory.ini
 ansible.cfg
 secret
-snippets
+snippets.txt
+
