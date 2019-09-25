@@ -161,6 +161,7 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
     - curl
     - git
 ```
+Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
 
 ### Step 7.2 The Web Role
 
@@ -235,6 +236,8 @@ This template will be fed by the variables contained in `roles/web/vars/main.yml
 server_admin_email: playground@localhost.local
 server_document_root: /var/www/html
 ```
+
+Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
 
 ### Step 7.3 The DB Role
 
@@ -340,6 +343,44 @@ And here is the file `roles/db/vars/main.yml`, containing the password for the `
 ```YAML
 mysql_root_password: P@nd@$$w0rd
 
+```
+
+Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
+
+
+### Step 7.4 The PHP Role
+
+We will install PHP and then restart the Apache2 server to configure it to work with PHP.
+
+```YAML
+- name: install php7
+  apt:
+    name: "{{ item }}"
+    state: present
+
+  with_items:
+    - php7.0-mysql
+    - php7.0-curl
+    - php7.0-json
+    - php7.0-cgi
+    - php7.0
+    - libapache2-mod-php7
+
+- name: restart apache2
+  systemd:
+    state: restarted
+    name: apache2
+    daemon_reload: yes
+```
+
+Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
+
+### And now let's run our playbook
+
+Do you remember the first file - `site.yml`?
+
+```bash
+$ ansible-playbook -i inventory site.yml
 ```
 
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
