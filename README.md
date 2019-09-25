@@ -351,6 +351,7 @@ Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-wi
 ### Step 7.4 The PHP Role
 
 We will install PHP and then restart the Apache2 server to configure it to work with PHP.
+Create `roles/php/tasks/main.yml` file.
 
 ```YAML
 - name: install php7
