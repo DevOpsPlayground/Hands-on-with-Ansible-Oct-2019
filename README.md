@@ -16,16 +16,16 @@ In Ansible terminology, these are referred to as a *control node* and *remote ho
 We have set up a control node and one remote host
 
 You may have noticed from your information-slip that you have been assigned an animal name. These animals have been used to ensure everyone has unique host names.
-So, for example, imagine Bob is a duck :-) We have set up machines control_duck and remote_duck for Bob to practice Ansible commands with.
+So, for example, imagine Bob is a panda :-) We have set up machines control_panda and remote_panda for Bob to practice Ansible commands with.
 
 Further these machines can be accessed via a command line in the browser (a web terminal called WeTTy), under the following links:
 
-- <http://control_duck.ldn.devopsplayground.com/wetty/>
-- <http://remote_duck.ldn.devopsplayground.com/wetty/>
+- <http://control_panda.ldn.devopsplayground.com/wetty/>
+- <http://remote_panda.ldn.devopsplayground.com/wetty/>
 
 representing the Ansible control node and remote host, respectively.
 
-#### Let's start
+### Let's start
 
 1. Open up the above links (for your animal), with a separate window for each machine
 
@@ -37,7 +37,7 @@ From now on we will be working from the browsers only.
 
 -----
 
-### Step 1. Install Ansible
+## Step 1. Install Ansible
 
 Check whether Ansible is installed by running:
 
@@ -63,9 +63,9 @@ $ ansible --version
 
 That's it!
 
-### Step 2. Configuring SSH Access to the remote host
+## Step 2. Configuring SSH Access to the remote host
 
-Run the following command from your control_duck.
+Run the following command from your control_panda.
 
 ```bash
 $ ./setup.sh remote_host_ip
@@ -74,7 +74,7 @@ e.g.
 $ ./setup.sh 52.214.226.94
 ```
 
-### Step 3. Let's check out connectivity with the host
+## Step 3. Let's check out connectivity with the host
 
 Run:
 ```bash
@@ -85,19 +85,19 @@ e.g.
 $ ansible all -i '52.214.226.94,' -m ping
 ```
 
- Or check memory and disk space on your remote_duck:
+ Or check memory and disk space on your remote_panda:
 
 ```bash
 $ ansible all -i 'remote_host_ip,' -m shell -a 'free -m && df -h'
 ```
 
-### Step 4. Ansible Hostfile and configuration file
+## Step 4. Ansible Hostfile and configuration file
 
 ```bash
 $ ./inventory_and_config.sh remote_host_ip
 ```
 
-### Step 5. Write a simple playbook
+## Step 5. Write a simple playbook
 
 We will put together a simple playbook to update our remote host.
 Create a file `update.yml` and paste the following. Careful with the spaces - YAML is fussy!
@@ -120,7 +120,7 @@ HINT: You can copy the file you have cloned from the repo.
       shell: free -m && df -h
 ```
 
-### Step 6. Run the playbook
+## Step 6. Run the playbook
 
 ```bash
 ansible-playbook  -i ./ansible_inventory update.yml -v
@@ -128,7 +128,7 @@ ansible-playbook  -i ./ansible_inventory update.yml -v
 
 The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
-### Step 7. Build a LAMP stack
+## Step 7. Build a LAMP stack
 
 We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook that will trigger the installation of LAMP:
 
@@ -145,7 +145,7 @@ We will look at how to write a LAMP stack playbook using the features offered by
     - php
 ```
 
-#### 7.1 The Common Role
+### Step 7.1 The Common Role
 
 Create the folowing folder structure `roles/common/tasks/main.yml` and put in the `main.yml` the following contents:
 
@@ -162,7 +162,7 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
     - git
 ```
 
-#### 7.2 The Web Role
+### Step 7.2 The Web Role
 
 #### 7.2.1 Install, configure and start apache2
 
@@ -238,21 +238,57 @@ server_admin_email: playground@localhost.local
 server_document_root: /var/www/html
 ```
 
+### Step 7.3 The DB Role
+
+Now that we have provided for the installation of the server lets write similarly a database role.
+
+#### 7.3.1 Install, configure and start `mysql`
+
+Create `roles/db/tasks/main.yml`.
+
+The tasks we specify here will install `mysql` with assigned passwords when prompted.
+
+```YAML
+- name: set mysql root password
+  debconf:
+    name: mysql-server
+    question: mysql-server/root_password
+    value: "{{ mysql_root_password | quote }}"
+    vtype: password
+
+- name: confirm mysql root password
+  debconf:
+    name: mysql-server
+    question: mysql-server/root_password_again
+    value: "{{ mysql_root_password | quote }}"
+    vtype: password
+
+- name: install mysqlserver
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - mysql-server
+    - mysql-client
+  
+- include: harden.yml
+```
+
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
 
 ```bash
 $ ansible-doc apt
 ```
 
-### Step 8. Oh no! Someone messed up my configuration!
+## Step 8. Oh no! Someone messed up my configuration!
 
 Lorem Ipsum. Cum Laude. Carpe Diem (Seize the Panda).
 
-### 9. Notes
+## 9. Notes
 
 Link to the [git repository](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) with the README and the playbooks that will be used in this session.
 
-### 10. References
+## 10. References
 
 Some materials were adopted from this cool book:
 
