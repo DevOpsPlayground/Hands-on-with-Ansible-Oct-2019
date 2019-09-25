@@ -242,11 +242,11 @@ server_document_root: /var/www/html
 
 Now that we have provided for the installation of the server lets write similarly a database role.
 
-#### 7.3.1 Install, configure and start `mysql`
+#### 7.3.1 Install, configure and start `mySQL`
 
 Create `roles/db/tasks/main.yml`.
 
-The tasks we specify here will install `mysql` with assigned passwords when prompted.
+The tasks we specify here will install `mySQL` with assigned passwords when prompted.
 
 ```YAML
 - name: set mysql root password
@@ -273,6 +273,48 @@ The tasks we specify here will install `mysql` with assigned passwords when prom
   
 - include: harden.yml
 ```
+
+Notice the `include` statement. We can include a file with a list of plays or tasks in other files.
+The `include` statement, along with `roles` alow to break large playbooks into smaller ones.
+This will let us use them in parent playbooks or even multiple times in the same playbook.
+
+The `harden.yml` will perform a hardening on mySQL server configuration.
+
+```YAML
+- name: deletes anonymous mysql user
+  mysql_user:
+    user: ""
+    state: absent
+    login_password: "{{ mysql_root_password }}"
+    login_user: root
+- name: secures the mysql root user
+  mysql_user:
+    user: root
+    password: "{{ mysql_root_password }}"
+    host: "{{ item }}"
+    login_password: "{{mysql_root_password}}"
+    login_user: root
+  with_items:
+   - 127.0.0.1
+   - localhost
+   - ::1
+   - "{{ ansible_fqdn }}"
+   - name: removes the mysql test database
+  mysql_db:
+    db: test
+    state: absent
+    login_password: "{{ mysql_root_password }}"
+    login_user: root
+- name: enable mysql on startup
+  systemd:
+    name: mysql
+    enabled: yes
+  notify:
+    - start mysql
+```
+
+
+
 
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
 
