@@ -1,6 +1,6 @@
 # ANSIBLE HANDS-ON
 
-### Our task: Create a real-world LAMP stack for development using Ansible
+## Our task: Create a real-world LAMP stack for development using Ansible
 
 You will need:
 
@@ -8,7 +8,9 @@ You will need:
 2. Chrome (preferably but Firefox can also do).
 
 ------
-### Ansible control node and remote hosts 
+
+### Ansible control node and remote hosts
+
 Ansible works from a control machine to send commands to one or more remote machines.
 In Ansible terminology, these are referred to as a *control node* and *remote host*s.
 We have set up a control node and one remote host
@@ -18,11 +20,13 @@ So, for example, imagine Bob is a duck :-) We have set up machines control_duck 
 
 Further these machines can be accessed via a command line in the browser (a web terminal called WeTTy), under the following links:
 
-- http://control_duck.ldn.devopsplayground.com/wetty/
-- http://remote_duck.ldn.devopsplayground.com/wetty/
+- <http://control_duck.ldn.devopsplayground.com/wetty/>
+- <http://remote_duck.ldn.devopsplayground.com/wetty/>
 
 representing the Ansible control node and remote host, respectively.
+
 #### Let's start
+
 1. Open up the above links (for your animal), with a separate window for each machine
 
 2. You will be prompted for a login password. Use the one on your information-slip.
@@ -37,27 +41,26 @@ From now on we will be working from the browsers only.
 
 Check whether Ansible is installed by running:
 
-```bash        
-$ ansible --version
-```
-You should see something like:
-
 ```bash
+$ ansible --version  # you should see something like:
 ansible 2.6.5
 ```
 
 If not, run these commands:
 
-```bash        
+```bash
 $ sudo apt update
 $ sudo apt install python3-pip
 $ pip3 --version
 $ sudo pip3 install ansible --quiet
 ```
-and
-```bash        
+
+and again
+
+```bash
 $ ansible --version
 ```
+
 That's it!
 
 ### Step 2. Configuring SSH Access to the remote host
@@ -71,7 +74,8 @@ e.g.
 $ ./setup.sh 52.214.226.94
 ```
 
-### Step 3. Let's check out connectivity with the host 
+### Step 3. Let's check out connectivity with the host
+
 Run:
 ```bash
 $ cd ansible_hands_on
@@ -80,6 +84,7 @@ $ ansible all -i 'remote_host_ip,' -m ping
 e.g.
 $ ansible all -i '52.214.226.94,' -m ping
 ```
+
  Or check memory and disk space on your remote_duck:
 
 ```bash
@@ -87,15 +92,18 @@ $ ansible all -i 'remote_host_ip,' -m shell -a 'free -m && df -h'
 ```
 
 ### Step 4. Ansible Hostfile and configuration file
+
 ```bash
 $ ./inventory_and_config.sh remote_host_ip
 ```
+
 ### Step 5. Write a simple playbook
 
-We will put together a simple playbook to update our remote host. 
+We will put together a simple playbook to update our remote host.
 Create a file `update.yml` and paste the following. Careful with the spaces - YAML is fussy!
-    
-HINT: You can copy the file you have cloned from the repo. 
+
+HINT: You can copy the file you have cloned from the repo.
+
 ```YAML
 ---
 - hosts: lamp
@@ -113,10 +121,12 @@ HINT: You can copy the file you have cloned from the repo.
 ```
 
 ### Step 6. Run the playbook
+
 ```bash
 ansible-playbook  -i ./ansible_inventory update.yml -v
 ```
-The `-v` give us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
+
+The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
 ### Step 7. Build a LAMP stack
 
@@ -132,11 +142,10 @@ We will look at how to write a LAMP stack playbook using the features offered by
     - common
     - web
     - db
-    - php 
+    - php
 ```
-#### 7.1 The Common Role
 
-##### Questions: Do we need to install Python 2 if we already will have installed Python 3? (Currently Python 2 is installed)
+#### 7.1 The Common Role
 
 Create the folowing folder structure `roles/common/tasks/main.yml` and put in the `main.yml` the following contents:
 
@@ -152,13 +161,14 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
     - curl
     - git
 ```
+
 #### 7.2 The Web Role
 
 #### 7.2.1 Install, configure and start apache2
 
 Next step in our LAMP configuration is the installation of the Apache2 server. Under `roles/` create the `web/tasks/main.yml`
 
-The following code will tell our Ansible to install Apache2, configure it. It'll also add Apache2 to the startup service. 
+The following code will tell our Ansible to install Apache2, configure it. It'll also add Apache2 to the startup service.
 
 HINT: Don't forget to unindent the code once pasted!
 
@@ -183,8 +193,10 @@ HINT: Don't forget to unindent the code once pasted!
   notify:
     - start apache2
 ```
-#### 7.2.2 Handling apache2 start.
-This is called `handler` and it is what our `notify` parameter will trigger. 
+
+#### 7.2.2 Handling apache2 start
+
+This is called `handler` and it is what our `notify` parameter will trigger.
 Create  `roles/web/handlers/main.yaml` and paste there the following.
 
 ```YAML
@@ -204,6 +216,7 @@ Create  `roles/web/handlers/main.yaml` and paste there the following.
     name: apache2
     daemon_reload: yes
 ```
+
 #### 7.2.3 Templating
 
 This is how we will use the `template` feature to configure apache2. The Ansible templates use the Jinja2 templating engine. We will create the a template in this location  `roles/web/templates/web.conf.j2`.
@@ -217,12 +230,14 @@ This is how we will use the `template` feature to configure apache2. The Ansible
   CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
+
 This template will be fed by the variables contained in `roles/web/vars/main.yml`:
 
 ```YAML
 server_admin_email: playground@localhost.local
 server_document_root: /var/www/html
 ```
+
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
 
 ```bash
@@ -233,11 +248,8 @@ $ ansible-doc apt
 
 Lorem Ipsum. Cum Laude. Carpe Diem (Seize the Panda).
 
-
-
 ### 9. Notes
 
-    
 Link to the [git repository](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) with the README and the playbooks that will be used in this session.
 
 ### 10. References
@@ -246,6 +258,4 @@ Some materials were adopted from this cool book:
 
 [Security Automation with Ansible 2: Leverage Ansible 2 to Automate Complex Security Tasks Like Application Security, Network Security, and Malware Analysis](https://g.co/kgs/xbJUnr)
 
- 
-
-# Thanks for participating!
+## Thanks for participating!
