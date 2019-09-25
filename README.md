@@ -285,6 +285,7 @@ The `harden.yml` will perform a hardening on mySQL server configuration.
     state: absent
     login_password: "{{ mysql_root_password }}"
     login_user: root
+
 - name: secures the mysql root user
   mysql_user:
     user: root
@@ -297,12 +298,14 @@ The `harden.yml` will perform a hardening on mySQL server configuration.
    - localhost
    - ::1
    - "{{ ansible_fqdn }}"
-   - name: removes the mysql test database
+
+- name: removes the mysql test database
   mysql_db:
     db: test
     state: absent
     login_password: "{{ mysql_root_password }}"
     login_user: root
+
 - name: enable mysql on startup
   systemd:
     name: mysql
@@ -311,8 +314,33 @@ The `harden.yml` will perform a hardening on mySQL server configuration.
     - start mysql
 ```
 
+Similarly to how the `web` role was written, the `db server` role also uses a handler and local variables.
+Create a `roles/db/handlers/main.yml` file. Here is the content:
 
+```YAML
+- name: start mysql
+  systemd:
+    state: started
+    name: mysql
 
+- name: stop mysql
+  systemd:
+    state: stopped
+    name: mysql
+
+- name: restart mysql
+  systemd:
+    state: restarted
+    name: mysql
+    daemon_reload: yes
+```
+
+And here is the file `roles/db/vars/main.yml`, containing the password for the `db` role:
+
+```YAML
+mysql_root_password: P@nd@$$w0rd
+
+```
 
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
 
