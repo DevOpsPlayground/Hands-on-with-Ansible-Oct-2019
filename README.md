@@ -78,7 +78,7 @@ $ ./setup.sh 52.214.226.94
 
 Run:
 ```bash
-$ cd ansible_hands_on
+$ cd Hands-on-with-Ansible-Oct-2019
 $ ansible all -i 'remote_host_ip,' -m ping
 
 e.g.
@@ -381,6 +381,7 @@ Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-wi
 Do you remember the first file - `site.yml`?
 
 ```bash
+$ cd playbook
 $ ansible-playbook -i inventory site.yml
 ```
 

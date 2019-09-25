@@ -2,7 +2,7 @@
 
 ```bash
 ├── ansible.cfg             # configuration
-├── ansible_inventory.ini   # inventory file
+├── inventory               # inventory of hosts
 ├── group_vars              #
 │   └── lamp.yml            # variables
 ├── roles                   #

@@ -1,6 +1,6 @@
 .DS_Store
 scratch*
-ansible_inventory.ini
+inventory
 ansible.cfg
 secret
 snippets.txt
