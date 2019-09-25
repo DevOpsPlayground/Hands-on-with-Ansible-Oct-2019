@@ -9,4 +9,4 @@ if [ $# -eq 0 ]
 fi
 
 echo -e "[lamp]\nlampstack    ansible_host=${host}" > playbook/inventory && 
-echo -e "[defaults]\ninventory = ansible_inventory\nansible_path=/usr/local/bin/python3" > playbook/ansible.cfg
+echo -e "[defaults]\ninventory = ansible_inventory\nansible_python_interpreter=/usr/local/bin/python3" > playbook/ansible.cfg
