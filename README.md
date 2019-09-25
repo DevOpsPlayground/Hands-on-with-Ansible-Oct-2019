@@ -168,9 +168,7 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
 
 Next step in our LAMP configuration is the installation of the Apache2 server. Under `roles/` create the `web/tasks/main.yml`
 
-The following code will tell our Ansible to install Apache2, configure it. It'll also add Apache2 to the startup service.
-
-HINT: Don't forget to unindent the code once pasted!
+The following code will tell our Ansible to install Apache2 and configure it. It'll also add Apache2 to the startup service.
 
 ```YAML
 - name: install apache2 server
@@ -179,7 +177,7 @@ HINT: Don't forget to unindent the code once pasted!
     state: present
 
 - name: update the apache2 server configuration
-  template: 
+  template:
     src: web.conf.j2
     dest: /etc/apache2/sites-available/000-default.conf
     owner: root
