@@ -120,6 +120,14 @@ HINT: You can copy the file you have cloned from the repo.
       shell: free -m && df -h
 ```
 
+### Tip!
+
+What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
+
+```bash
+$ ansible-doc apt
+```
+
 ## Step 6. Run the playbook
 
 ```bash
@@ -161,7 +169,8 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
     - curl
     - git
 ```
-Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
+
+#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
 
 ### Step 7.2 The Web Role
 
@@ -237,7 +246,7 @@ server_admin_email: playground@localhost.local
 server_document_root: /var/www/html
 ```
 
-Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
+#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
 
 ### Step 7.3 The DB Role
 
@@ -345,7 +354,7 @@ mysql_root_password: P@nd@$$w0rd
 
 ```
 
-Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
+#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
 
 
 ### Step 7.4 The PHP Role
@@ -374,7 +383,7 @@ Create `roles/php/tasks/main.yml` file.
     daemon_reload: yes
 ```
 
-Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
+#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
 
 ### And now let's run our playbook
 
@@ -385,11 +394,20 @@ $ cd playbook
 $ ansible-playbook -i inventory site.yml
 ```
 
-What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
+#### Error!
+
+Ansible will diligently report the errors that occuri during running your playbooks. Read carefully through the message. To solve this one we need to provide the `sudo password` to carry out the task. Open your `inventory file` and type in the password which is on your information-slip.
 
 ```bash
-$ ansible-doc apt
+$ vi inventory
+
+# in inventory
+[lamp]
+lampstack    ansible_host=52.214.226.94  ansible_become_pass=London
+
 ```
+
+And now rerun the playbook!
 
 ## Step 8. Oh no! Someone messed up my configuration!
 

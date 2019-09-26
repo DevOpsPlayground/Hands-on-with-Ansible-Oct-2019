@@ -8,5 +8,5 @@ if [ $# -eq 0 ]
     exit
 fi
 
-echo -e "[lamp]\nlampstack    ansible_host=${host}" > playbook/inventory && 
+echo -e "[lamp]\nlampstack    ansible_host=${host}  ansible_become_pass=my_pass" > playbook/inventory && 
 echo -e "[defaults]\ninventory = ansible_inventory\nansible_python_interpreter=/usr/local/bin/python3" > playbook/ansible.cfg
