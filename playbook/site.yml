@@ -1,8 +1,8 @@
 - name: LAMP stack setup on Ununtu 18.04
   hosts: lamp
-  gather_facts: False
   remote_user: "{{ remote_username }}"
   become: True
+  
   roles:
    - common
    - web
