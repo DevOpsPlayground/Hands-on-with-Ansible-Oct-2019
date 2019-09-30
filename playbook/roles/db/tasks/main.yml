@@ -24,14 +24,5 @@
   with_items:
     - mysql-server
     - mysql-client
-
-# temporary solution
-- name: enable mysql on startup
-  systemd:
-    name: mysql
-    enabled: yes
-    
-  notify:
-    - start mysql
   
-# - include: harden.yml
+- include: harden.yml
