@@ -12,8 +12,8 @@ You will need:
 ### Ansible control node and remote hosts
 
 Ansible works from a control machine to send commands to one or more remote machines.
-In Ansible terminology, these are referred to as a *control node* and *remote host*s.
-We have set up a control node and one remote host
+In Ansible terminology, these are referred to as a *control node* and *remote hosts*.
+We have set up a control node and one remote host for each one of you to use.
 
 You may have noticed from your information-slip that you have been assigned an animal name. These animals have been used to ensure everyone has unique host names.
 So, for example, imagine Bob is a panda :-) We have set up machines control_panda and remote_panda for Bob to practice Ansible commands with.
