@@ -1,7 +1,14 @@
+- name: Ensure nginx isn't present
+  apt:
+    name: nginx
+    state: absent
+  tags: ["web"]
+
 - name: install apache2 server
   apt:
     name: apache2
     state: present
+  tags: ["web"]
 
 - name: update the apache2 server configuration
   template: 
@@ -10,6 +17,7 @@
     owner: root
     group: root
     mode: 0644
+  tags: ["web"]
 
 - name: enable apache2 on startup
   systemd:
@@ -17,3 +25,4 @@
     enabled: yes
   notify:
     - start apache2
+  tags: ["web"]
