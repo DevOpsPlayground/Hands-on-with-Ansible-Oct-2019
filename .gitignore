@@ -4,3 +4,4 @@ inventory
 ansible.cfg
 secret
 snippets.txt
+*.retry
