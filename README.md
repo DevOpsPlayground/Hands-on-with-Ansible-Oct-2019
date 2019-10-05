@@ -42,23 +42,23 @@ From now on we will be working from the browsers only.
 Check whether Ansible is installed by running:
 
 ```bash
-$ ansible --version  # you should see something like:
+ansible --version  # you should see something like:
 ansible 2.6.5
 ```
 
 If not, run these commands:
 
 ```bash
-$ sudo apt update
-$ sudo apt install python3-pip
-$ pip3 --version
-$ sudo pip3 install ansible --quiet
+sudo apt update
+sudo apt install python3-pip
+pip3 --version
+sudo pip3 install ansible --quiet
 ```
 
 and again
 
 ```bash
-$ ansible --version
+ansible --version
 ```
 
 That's it!
@@ -68,33 +68,33 @@ That's it!
 Run the following command from your control_panda.
 
 ```bash
-$ ./setup.sh remote_host_ip
+./setup.sh remote_host_ip
 
 e.g.
-$ ./setup.sh 52.214.226.94
+./setup.sh 52.214.226.94
 ```
 
 ## Step 3. Let's check out connectivity with the host
 
 Run:
 ```bash
-$ cd Hands-on-with-Ansible-Oct-2019
-$ ansible all -i 'remote_host_ip,' -m ping
+cd Hands-on-with-Ansible-Oct-2019
+ansible all -i 'remote_host_ip,' -m ping
 
 e.g.
-$ ansible all -i '52.214.226.94,' -m ping
+ansible all -i '52.214.226.94,' -m ping
 ```
 
  Or check memory and disk space on your remote_panda:
 
 ```bash
-$ ansible all -i 'remote_host_ip,' -m shell -a 'free -m && df -h'
+ansible all -i 'remote_host_ip,' -m shell -a 'free -m && df -h'
 ```
 
 ## Step 4. Ansible Hostfile and configuration file
 
 ```bash
-$ ./inventory_and_config.sh remote_host_ip
+./inventory_and_config.sh remote_host_ip
 ```
 
 ## Step 5. Write a simple playbook
@@ -125,7 +125,7 @@ HINT: You can copy the file you have cloned from the repo.
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
 
 ```bash
-$ ansible-doc apt
+ansible-doc apt
 ```
 
 ## Step 6. Run the playbook
@@ -390,8 +390,8 @@ Create `roles/php/tasks/main.yml` file.
 Do you remember the first file - `site.yml`?
 
 ```bash
-$ cd playbook
-$ ansible-playbook -i inventory site.yml
+cd playbook
+ansible-playbook -i inventory site.yml
 ```
 
 #### Error!
@@ -399,7 +399,7 @@ $ ansible-playbook -i inventory site.yml
 Ansible will diligently report the errors that occuri during running your playbooks. Read carefully through the message. To solve this one we need to provide the `sudo password` to carry out the task. Open your `inventory file` and type in the password which is on your information-slip.
 
 ```bash
-$ vi inventory
+vi inventory
 
 # in inventory
 [lamp]
