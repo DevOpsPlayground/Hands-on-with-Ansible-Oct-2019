@@ -42,8 +42,9 @@ From now on we will be working from the browsers only.
 Check whether Ansible is installed by running:
 
 ```bash
-ansible --version  # you should see something like:
-ansible 2.6.5
+# ansible --version  # you should see something like:
+# ansible 2.6.5
+[![asciicast](https://asciinema.org/a/WvpVyqmSghsEFcd9eNYkneZ6Y.svg)](https://asciinema.org/a/WvpVyqmSghsEFcd9eNYkneZ6Y)
 ```
 
 If not, run these commands:
