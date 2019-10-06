@@ -1,4 +1,4 @@
-# Hierarchy structure
+# Hierarchy structure of playbook/
 
 ```bash
 ├── ansible.cfg             # configuration
