@@ -79,7 +79,6 @@ e.g.
 
 Run:
 ```bash
-cd Hands-on-with-Ansible-Oct-2019
 ansible all -i 'remote_host_ip,' -m ping
 
 e.g.
