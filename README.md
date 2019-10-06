@@ -94,6 +94,7 @@ ansible all -i 'remote_host_ip,' -m shell -a 'free -m && df -h'
 ## Step 4. Ansible Hostfile and configuration file
 
 ```bash
+mkdir playbook
 ./inventory_and_config.sh remote_host_ip
 ```
 
@@ -131,7 +132,7 @@ ansible-doc apt
 ## Step 6. Run the playbook
 
 ```bash
-ansible-playbook  -i ./ansible_inventory update.yml -v
+ansible-playbook  -i ./playbook/inventory update.yml -v
 ```
 
 The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
