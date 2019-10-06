@@ -145,8 +145,7 @@ The `-v` gives us a more detailed output from Ansible, once the playbook is run.
 Ansible will diligently report the errors that occure when you run your playbooks. Read carefully through the message. To solve this one we need to provide the `sudo password` to carry out the task. Open your `inventory file` and type in the password which is on your information-slip.
 
 ```bash
-cd playbook
-vi inventory
+vi playbook/inventory
 
 # in inventory
 [lamp]
