@@ -93,6 +93,8 @@ ansible all -i 'remote_host_ip,' -m shell -a 'free -m && df -h'
 
 ## Step 4. Ansible Hostfile and configuration file
 
+Let's create a directory where we will organize all our files for the playbook. Then run the `inventory_and_config.sh` file to create the inventory of hosts and Ansible configuration file.
+
 ```bash
 mkdir playbook
 ./inventory_and_config.sh remote_host_ip
