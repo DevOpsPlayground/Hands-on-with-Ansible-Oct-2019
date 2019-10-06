@@ -42,9 +42,8 @@ From now on we will be working from the browsers only.
 Check whether Ansible is installed by running:
 
 ```bash
-# ansible --version  # you should see something like:
-# ansible 2.6.5
-![asciicast](https://asciinema.org/a/WvpVyqmSghsEFcd9eNYkneZ6Y.svg)
+ansible --version  # you should see something like:
+ansible 2.8.5
 ```
 
 If not, run these commands:
@@ -69,6 +68,7 @@ That's it!
 Run the following command from your control_panda.
 
 ```bash
+cd Hands-on-with-Ansible-Oct-2019
 ./setup.sh remote_host_ip
 
 e.g.
