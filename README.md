@@ -173,6 +173,10 @@ We will look at how to write a LAMP stack playbook using the features offered by
 
 ### Step 7.1 The Common Role
 
+```bash
+cd playbook
+```
+
 Create the folowing folder structure `roles/common/tasks/main.yml` and put in the `main.yml` the following contents:
 
 ```YAML
