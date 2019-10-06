@@ -145,12 +145,12 @@ The `-v` gives us a more detailed output from Ansible, once the playbook is run.
 Ansible will diligently report the errors that occure when you run your playbooks. Read carefully through the message. To solve this one we need to provide the `sudo password` to carry out the task. Open your `inventory file` and type in the password which is on your information-slip.
 
 ```bash
+cd playbook
 vi inventory
 
 # in inventory
 [lamp]
 lampstack    ansible_host=52.214.226.94  ansible_become_pass=London
-
 ```
 
 And now rerun the playbook! Success!
