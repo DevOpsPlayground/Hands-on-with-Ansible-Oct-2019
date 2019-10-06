@@ -1,6 +1,6 @@
 # ANSIBLE HANDS-ON
 
-## Our task: Create a real-world LAMP stack for development using Ansible
+## Our task: Create a real-world LNMP stack for development using Ansible
 
 You will need:
 
