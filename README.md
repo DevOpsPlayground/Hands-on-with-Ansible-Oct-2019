@@ -139,6 +139,22 @@ ansible-playbook  -i ./playbook/inventory update.yml -v
 
 The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
+
+#### Error!
+
+Ansible will diligently report the errors that occure when you run your playbooks. Read carefully through the message. To solve this one we need to provide the `sudo password` to carry out the task. Open your `inventory file` and type in the password which is on your information-slip.
+
+```bash
+vi inventory
+
+# in inventory
+[lamp]
+lampstack    ansible_host=52.214.226.94  ansible_become_pass=London
+
+```
+
+And now rerun the playbook! Success!
+
 ## Step 7. Build a LAMP stack
 
 We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook that will trigger the installation of LAMP:
@@ -396,21 +412,6 @@ Do you remember the first file - `site.yml`?
 cd playbook
 ansible-playbook -i inventory site.yml
 ```
-
-#### Error!
-
-Ansible will diligently report the errors that occuri during running your playbooks. Read carefully through the message. To solve this one we need to provide the `sudo password` to carry out the task. Open your `inventory file` and type in the password which is on your information-slip.
-
-```bash
-vi inventory
-
-# in inventory
-[lamp]
-lampstack    ansible_host=52.214.226.94  ansible_become_pass=London
-
-```
-
-And now rerun the playbook!
 
 ## Step 8. Oh no! Someone messed up my configuration!
 
