@@ -1,13 +1,17 @@
-- name: Ensure nginx isn't present
-  apt:
-    name: nginx
-    state: absent
-  tags: ["web"]
-
 - name: install apache2 server
   apt:
     name: apache2
     state: present
+  tags: ["web"]
+
+
+- name: set the apache2 port to 8080
+  template: 
+    src: web.conf.j2
+    dest: /etc/apache2/ports.conf
+    owner: root
+    group: root
+    mode: 0644
   tags: ["web"]
 
 - name: update the apache2 server configuration
