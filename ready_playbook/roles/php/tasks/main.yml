@@ -10,9 +10,7 @@
     - php7.2-cgi
     - php7.2
     - libapache2-mod-php7.2
-
-- name: restart apache2
-  systemd:
-    state: restarted
-    name: apache2
-    daemon_reload: yes
+  notify:
+    - restart apache2
+  tags: ["web"]
+  
