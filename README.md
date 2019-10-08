@@ -406,7 +406,7 @@ mysql_root_password: P@nd@$$w0rd
 
 ### Step 7.4 The PHP Role
 
-We will install PHP and then restart the Apache2 server to configure it to work with PHP.
+We will install PHP and then restart the Apache2 server to configure it to work with PHP. Again note the `notify` handler at the end of the file.
 Create `roles/php/tasks/main.yml` file.
 
 ```YAML
@@ -416,18 +416,15 @@ Create `roles/php/tasks/main.yml` file.
     state: present
 
   with_items:
-    - php7.0-mysql
-    - php7.0-curl
-    - php7.0-json
-    - php7.0-cgi
-    - php7.0
-    - libapache2-mod-php7
-
-- name: restart apache2
-  systemd:
-    state: restarted
-    name: apache2
-    daemon_reload: yes
+    - php7.2-mysql
+    - php7.2-curl
+    - php7.2-json
+    - php7.2-cgi
+    - php7.2
+    - libapache2-mod-php7.2
+  notify:
+    - restart apache2
+  tags: ["web"]
 ```
 
 #### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
