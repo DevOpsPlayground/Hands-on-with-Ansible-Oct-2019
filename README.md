@@ -249,19 +249,44 @@ Create  `roles/web/handlers/main.yaml` and paste there the following.
 
 #### 7.2.3 Templating
 
-This is how we will use the `template` feature to configure apache2. The Ansible templates use the Jinja2 templating engine. We will create the a template in this location  `roles/web/templates/web.conf.j2`.
+We need to configure our Apache server. For this purpose we will use the `template` feature. Ansible templates leverage the powerful and widely adopted Jinja2 templating engine. Let's go ahead and create two templates in this location -> `roles/web/templates`.
+
+
 
 ```XML
-<VirtualHost *:80><VirtualHost *:80>
+# in playbook/roles/web/templates/web.port.j2
+
+
+# If you just change the port or add more ports here, you will likely also
+# have to change the VirtualHost statement in
+# /etc/apache2/sites-enabled/000-default.conf
+
+Listen 8080
+
+<IfModule ssl_module>
+        Listen 443
+</IfModule>
+
+<IfModule mod_gnutls.c>
+        Listen 443
+</IfModule>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+````
+
+```XML
+# in playbook/roles/web/templates/web.conf.j2
+
+
+<VirtualHost *:8080>
     ServerAdmin {{server_admin_email}}
     DocumentRoot {{server_document_root}}
-
-  ErrorLog ${APACHE_LOG_DIR}/error.log
-  CustomLog ${APACHE_LOG_DIR}/access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
 
-This template will be fed by the variables contained in `roles/web/vars/main.yml`:
+The second template will be fed by the variables contained in `roles/web/vars/main.yml`:
 
 ```YAML
 server_admin_email: playground@localhost.local
