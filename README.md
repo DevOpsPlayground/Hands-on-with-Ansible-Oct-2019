@@ -325,15 +325,23 @@ The tasks we specify here will install `mySQL` with assigned passwords when prom
   debconf:
     name: mysql-server
     question: mysql-server/root_password
-    value: "{{ mysql_root_password | quote }}"
+    value: "{{ mysql_root_password }}"
     vtype: password
+  tags: ['mysql']
 
 - name: confirm mysql root password
   debconf:
     name: mysql-server
     question: mysql-server/root_password_again
-    value: "{{ mysql_root_password | quote }}"
+    value: "{{ mysql_root_password }}"
     vtype: password
+  tags: ['mysql']
+
+- name: install mysql-python
+  apt:
+    name: python-mysqldb
+    state: present
+  tags: ['mysql']
 
 - name: install mysqlserver
   apt:
@@ -342,6 +350,7 @@ The tasks we specify here will install `mySQL` with assigned passwords when prom
   with_items:
     - mysql-server
     - mysql-client
+  tags: ['mysql']
   
 - include: harden.yml
 ```
