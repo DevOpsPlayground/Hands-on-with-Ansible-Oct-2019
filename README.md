@@ -224,9 +224,11 @@ The following code will tell our Ansible to install Apache2 and configure it. It
     - start apache2
 ```
 
+Did you spot the `notify` parameter at the end of the file? In Ansible we call this a `handler` a very cool feature that will trigger the process (start apache2) only if anything changes after the playbook has run. Time and resources saving!  
+Ok, let's create the handler now.
+
 #### 7.2.2 Handling apache2 start
 
-This is called `handler` and it is what our `notify` parameter will trigger.
 Create  `roles/web/handlers/main.yaml` and paste there the following.
 
 ```YAML
