@@ -207,6 +207,16 @@ The following code will tell our Ansible to install Apache2 and configure it. It
   apt:
     name: apache2
     state: present
+  tags: ["web"]
+
+- name: set the apache2 port to 8080
+  template:
+    src: web.conf.j2
+    dest: /etc/apache2/ports.conf
+    owner: root
+    group: root
+    mode: 0644
+  tags: ["web"]
 
 - name: update the apache2 server configuration
   template:
@@ -215,6 +225,7 @@ The following code will tell our Ansible to install Apache2 and configure it. It
     owner: root
     group: root
     mode: 0644
+  tags: ["web"]
 
 - name: enable apache2 on startup
   systemd:
@@ -222,6 +233,8 @@ The following code will tell our Ansible to install Apache2 and configure it. It
     enabled: yes
   notify:
     - start apache2
+  tags: ["web"]
+
 ```
 
 Did you spot the `notify` parameter at the end of the file? In Ansible we call this a `handler` a very cool feature that will trigger the process (start apache2) only if anything changes after the playbook has run. Time and resources saving!  

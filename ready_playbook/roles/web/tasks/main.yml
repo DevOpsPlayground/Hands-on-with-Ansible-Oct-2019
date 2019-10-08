@@ -4,7 +4,6 @@
     state: present
   tags: ["web"]
 
-
 - name: set the apache2 port to 8080
   template: 
     src: web.conf.j2
