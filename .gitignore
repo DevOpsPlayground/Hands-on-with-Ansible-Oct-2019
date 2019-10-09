@@ -5,3 +5,4 @@ ansible.cfg
 secret
 snippets.txt
 *.retry
+*atom*
