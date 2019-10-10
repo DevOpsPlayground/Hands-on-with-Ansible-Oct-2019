@@ -32,8 +32,14 @@ representing the Ansible control node and remote host, respectively.
 2. You will be prompted for a login password. Use the one on your information-slip.
 
 3. Type some shell commands to get familiar with the web terminal.
+   From now on we will be working from the browsers only.
 
-From now on we will be working from the browsers only.
+4. Let't export the following:
+
+```bash
+export REMOTE_HOST="remote_host_ip"
+export PASSWORD="remote_host_password"
+```
 
 -----
 
@@ -72,7 +78,7 @@ Run the following command from your control_panda.
 
 ```bash
 cd Hands-on-with-Ansible-Oct-2019
-./setup.sh remote_host_ip
+./setup.sh $REMOTE_HOST
 
 e.g.
 ./setup.sh 52.214.226.94
@@ -82,16 +88,13 @@ e.g.
 
 Run:
 ```bash
-ansible all -i 'remote_host_ip,' -m ping
-
-e.g.
-ansible all -i '52.214.226.94,' -m ping
+ansible all -i '$REMOTE_HOST,' -m ping
 ```
 
  Or check memory and disk space on your remote_panda:
 
 ```bash
-ansible all -i 'remote_host_ip,' -m shell -a 'free -m && df -h'
+ansible all -i '$REMOTE_HOST,' -m shell -a 'free -m && df -h'
 ```
 
 ## Step 4. Ansible Hostfile and configuration file
@@ -100,7 +103,7 @@ Let's create a directory where we will organize all our files for the playbook. 
 
 ```bash
 mkdir playbook
-./inventory_and_config.sh remote_host_ip
+./inventory_and_config.sh $REMOTE_HOST
 ```
 
 ## Step 5. Write a simple playbook
@@ -143,10 +146,6 @@ ansible-playbook  -i ./playbook/inventory update.yml -v
 The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
 
-#### Error!
-
-Ansible will diligently report the errors that occure when you run your playbooks. Read carefully through the message. To solve this one we need to provide the `sudo password` to carry out the task. Open your `inventory file` and type in the password which is on your information-slip.
-
 ```bash
 vi playbook/inventory
 
@@ -184,7 +183,8 @@ Create the folowing folder structure `roles/common/tasks/main.yml` and put in th
 
 ```bash
 mkdir -p roles/common/tasks
-vi main.yml
+cd roles
+vi common/tasks/main.yml
 ```
 
 ```YAML
@@ -207,6 +207,10 @@ vi main.yml
 #### 7.2.1 Install, configure and start apache2
 
 Next step in our LAMP configuration is the installation of the Apache2 server. Under `roles/` create the `web/tasks/main.yml`
+
+```bash
+
+```
 
 The following code will tell our Ansible to install Apache2 and configure it. It'll also add Apache2 to the startup service.
 
@@ -470,9 +474,9 @@ cd playbook
 ansible-playbook -i inventory site.yml
 ```
 
-## Step 8. Oh no! Someone messed up my configuration!
+#### Error!
 
-Lorem Ipsum. Cum Laude. Carpe Diem (Seize the Panda).
+Ansible will diligently report the errors that occure when you run your playbooks. Read carefully through the message. To solve this one we need to LOREM IPSUM
 
 ## 9. Notes
 

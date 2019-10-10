@@ -1,10 +1,8 @@
 #!/bin/bash
 
-host=${1}
-
-if [ $# -eq 0 ]
+if [ -z "$REMOTE_HOST" ]
   then
-    echo -e "Remote host ip required.\nUsage:./setup.sh 34.244.168.125"
+    echo -e "Make sure you've set the environment variable REMOTE_HOST"
     exit
 fi
 
@@ -12,4 +10,4 @@ fi
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 eval `ssh-agent -s`
 ssh-add $SSH_KEY_NAME
-ssh-copy-id -i ~/.ssh/id_rsa.pub playground@${host}
+ssh-copy-id -i ~/.ssh/id_rsa.pub playground@${REMOTE_HOST}
