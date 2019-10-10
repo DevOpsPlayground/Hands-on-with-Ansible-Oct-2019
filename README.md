@@ -43,15 +43,15 @@ Check whether Ansible is installed by running:
 
 ```bash
 ansible --version  
-= > ansible 2.8.5       # output...
-
+ansible 2.8.5       # you should see something like this
+...
 ```
 
 If not, run these commands:
 
 ```bash
 sudo apt update
-= > [sudo] password for playground:   # type in your password
+=> [sudo] password for playground:   # type in your password
 
 sudo apt install python3-pip
 pip3 --version
