@@ -34,11 +34,11 @@ representing the Ansible control node and remote host, respectively.
 3. Type some shell commands to get familiar with the web terminal.
    From now on we will be working from the browsers only.
 
-4. Let't export the following:
+4. As a convenience let's set some ENVIRONMENT variables that we will use later
 
 ```bash
-export REMOTE_HOST="remote_host_ip"
-export PASSWORD="remote_host_password"
+export REMOTE_HOST=remote_host_ip       # e.g. export REMOTE_HOST=52.214.226.94
+export PASSWORD=remote_host_password    # e.g. export PASSWORD=London
 ```
 
 -----
@@ -79,22 +79,20 @@ Run the following command from your control_panda.
 ```bash
 cd Hands-on-with-Ansible-Oct-2019
 ./setup.sh $REMOTE_HOST
-
-e.g.
-./setup.sh 52.214.226.94
 ```
 
 ## Step 3. Let's check out the connectivity with the host
 
 Run:
+
 ```bash
-ansible all -i '$REMOTE_HOST,' -m ping
+ansible all -i "$REMOTE_HOST," -m ping
 ```
 
  Or check memory and disk space on your remote_panda:
 
 ```bash
-ansible all -i '$REMOTE_HOST,' -m shell -a 'free -m && df -h'
+ansible all -i "$REMOTE_HOST," -m shell -a 'free -m && df -h'
 ```
 
 ## Step 4. Ansible Hostfile and configuration file
@@ -145,16 +143,6 @@ ansible-playbook  -i ./playbook/inventory update.yml -v
 
 The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
-
-```bash
-vi playbook/inventory
-
-# in inventory
-[lamp]
-lampstack    ansible_host=52.214.226.94  ansible_become_pass=London
-```
-
-And now rerun the playbook! Success!
 
 ## Step 7. Build a LAMP stack
 
@@ -208,7 +196,10 @@ vi common/tasks/main.yml
 
 Next step in our LAMP configuration is the installation of the Apache2 server. Under `roles/` create the `web/tasks/main.yml`
 
+
 ```bash
+mkdir -p web/tasks
+vi web/tasks/main.yml
 
 ```
 
@@ -477,6 +468,10 @@ ansible-playbook -i inventory site.yml
 #### Error!
 
 Ansible will diligently report the errors that occure when you run your playbooks. Read carefully through the message. To solve this one we need to LOREM IPSUM
+
+
+And now rerun the playbook! Success!
+
 
 ## 9. Notes
 
