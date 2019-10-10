@@ -15,13 +15,13 @@ Ansible works from a control machine to send commands to one or more remote mach
 In Ansible terminology, these are referred to as a *control node* and *remote hosts*.
 We have set up a control node and one remote host for each one of you to use.
 
-You may have noticed from your information-slip that you have been assigned an animal name. These animals have been used to ensure everyone has unique host names.
-So, for example, imagine Bob is a panda :-) We have set up machines control_panda and remote_panda for Bob to practice Ansible commands with.
+You may have noticed from your information-slip that you have been assigned  two animal names. These animals have been used to ensure everyone has unique host names.
+So, for example, imagine Bob has a panda and a tiger :-) We have set up machines control_panda and remote_tiger for Bob to practice Ansible commands with.
 
 Further these machines can be accessed via a command line in the browser (a web terminal called WeTTy), under the following links:
 
 - <http://control_panda.ldn.devopsplayground.com/wetty/>
-- <http://remote_panda.ldn.devopsplayground.com/wetty/>
+- <http://remote_tiger.ldn.devopsplayground.com/wetty/>
 
 representing the Ansible control node and remote host, respectively.
 
@@ -42,14 +42,17 @@ From now on we will be working from the browsers only.
 Check whether Ansible is installed by running:
 
 ```bash
-ansible --version  # you should see something like:
-ansible 2.8.5
+ansible --version  
+= > ansible 2.8.5       # output...
+
 ```
 
 If not, run these commands:
 
 ```bash
 sudo apt update
+= > [sudo] password for playground:   # type in your password
+
 sudo apt install python3-pip
 pip3 --version
 sudo pip3 install ansible
@@ -75,7 +78,7 @@ e.g.
 ./setup.sh 52.214.226.94
 ```
 
-## Step 3. Let's check out connectivity with the host
+## Step 3. Let's check out the connectivity with the host
 
 Run:
 ```bash
