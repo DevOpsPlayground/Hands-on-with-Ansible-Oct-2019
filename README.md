@@ -83,7 +83,7 @@ cd Hands-on-with-Ansible-Oct-2019
 
 ## Step 3. Let's check out the connectivity with the host
 
-Run:
+Run the following. And, yes! That comma is right in its place! It tells ansible that there is only that one host in your inline inventory. 
 
 ```bash
 ansible all -i "$REMOTE_HOST," -m ping
@@ -245,7 +245,15 @@ Ok, let's create the handler now.
 
 #### 7.2.2 Handling apache2 start
 
-Create  `roles/web/handlers/main.yaml` and paste there the following.
+Under `roles/` create `web/handlers/main.yaml` 
+
+```bash
+mkdir -p web/handlers
+vi web/handlers/main.yaml
+
+```
+
+and paste there the following:
 
 ```YAML
 - name: start apache2
@@ -269,11 +277,15 @@ Create  `roles/web/handlers/main.yaml` and paste there the following.
 
 We need to configure our Apache server. For this purpose we will use the `template` feature. Ansible templates leverage the powerful and widely adopted Jinja2 templating engine. Let's go ahead and create two templates in this location -> `roles/web/templates`.
 
+```bash
+mkdir -p web/templates
+vi web/templates/web.port.j2
 
+```
+
+Paste
 
 ```XML
-# in playbook/roles/web/templates/web.port.j2
-
 
 # If you just change the port or add more ports here, you will likely also
 # have to change the VirtualHost statement in
@@ -292,9 +304,14 @@ Listen 8080
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 ````
 
-```XML
-# in playbook/roles/web/templates/web.conf.j2
+```bash
+vi web/templates/web.conf.j2
 
+```
+
+Paste: 
+
+```XML
 
 <VirtualHost *:8080>
     ServerAdmin {{server_admin_email}}
@@ -305,6 +322,14 @@ Listen 8080
 ```
 
 The second template will be fed by the variables contained in `roles/web/vars/main.yml`:
+
+```bash
+mkdir -p web/vars
+vi web/vars/main.yml
+
+```
+
+Paste:
 
 ```YAML
 server_admin_email: playground@localhost.local
