@@ -27,7 +27,7 @@ representing the Ansible control node and remote host, respectively.
 
 ### Let's start
 
-1. Open up the above links (for your animal), with a separate window for each machine
+1. Open up the <http://control_panda.ldn.devopsplayground.com/wetty/> (use animal name on you info-slip)
 
 2. You will be prompted for a login password. Use the one on your information-slip.
 
@@ -181,6 +181,11 @@ cd playbook
 ```
 
 Create the folowing folder structure `roles/common/tasks/main.yml` and put in the `main.yml` the following contents:
+
+```bash
+mkdir -p roles/common/tasks
+vi main.yml
+```
 
 ```YAML
 - name: install python 2
