@@ -489,7 +489,13 @@ mysql_root_password: P@nd@$$w0rd
 ### Step 7.4 The PHP Role
 
 We will install PHP and then restart the Apache2 server to configure it to work with PHP. Again note the `notify` handler at the end of the file.
-Create `roles/php/tasks/main.yml` file.
+
+This is a quick one - under `roles/` create `php/tasks/main.yml` file.
+
+```bash
+mkdir -p php/tasks
+vi php/tasks/main.yml
+```
 
 ```YAML
 - name: install php7
@@ -511,14 +517,46 @@ Create `roles/php/tasks/main.yml` file.
 
 #### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
 
-### And now let's run our playbook
+### And now let's create and run our playbook
 
 Do you remember the first file - `site.yml`?
 
 ```bash
-cd playbook
+cd .. && vi site.yml          # We are now back in playbook/
 ansible-playbook -i inventory site.yml
 ```
+
+Paste:
+
+```YAML
+- name: LAMP stack setup on Ubuntu 18.04
+  hosts: lamp
+  gather_facts: False
+  remote_user: "{{ remote_username }}"
+  become: True
+  roles:
+    - common
+    - web
+    - db
+    - php
+```
+
+Let' configure our remote user globally:
+
+```bash
+mkdir group_vars/
+echo remote_username: "playground" > group_vars/lamp.yml
+```
+#### You may want to check last time the  [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md)
+
+And now run the playbook!
+
+```bash
+ansible-playbook -i inventory site.yml
+```
+
+Success!
+
 
 #### Error!
 
