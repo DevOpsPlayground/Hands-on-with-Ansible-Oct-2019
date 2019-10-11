@@ -2,6 +2,7 @@
   apt:
     name: apache2
     state: present
+    force_apt_get: yes
   tags: ["web"]
 
 - name: set the apache2 port to 8080

@@ -206,6 +206,7 @@ The following code will tell our Ansible to install Apache2 and configure it. It
   apt:
     name: apache2
     state: present
+    force_apt_get: yes
   tags: ["web"]
 
 - name: set the apache2 port to 8080
@@ -374,12 +375,14 @@ Paste:
   apt:
     name: python-mysqldb
     state: present
+    force_apt_get: yes
   tags: ['mysql']
 
 - name: install mysqlserver
   apt:
     name: "{{ item }}"
     state: present
+    force_apt_get: yes
   with_items:
     - mysql-server
     - mysql-client
@@ -497,7 +500,7 @@ vi php/tasks/main.yml
   apt:
     name: "{{ item }}"
     state: present
-
+    force_apt_get: yes
   with_items:
     - php7.2-mysql
     - php7.2-curl

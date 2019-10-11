@@ -18,16 +18,15 @@
   apt: 
     name: python-mysqldb
     state: present
+    force_apt_get: yes
   tags: ['mysql']
 
 - name: install mysqlserver
   apt:
     name: 
       ['mysql-server', 'mysql-client']
-    state: present 
-  with_items:
-    - mysql-server
-    - mysql-client
+    state: present
+    force_apt_get: yes 
   tags: ['mysql']
   
 - include: harden.yml
