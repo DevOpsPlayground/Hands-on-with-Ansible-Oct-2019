@@ -202,7 +202,6 @@ Next step in our LAMP configuration is the installation of the Apache2 server. U
 ```bash
 mkdir -p web/tasks
 vi web/tasks/main.yml
-
 ```
 
 The following code will tell our Ansible to install Apache2 and configure it. It'll also add Apache2 to the startup service.
@@ -254,7 +253,6 @@ Under `roles/` create `web/handlers/main.yaml`
 ```bash
 mkdir -p web/handlers
 vi web/handlers/main.yaml
-
 ```
 
 and paste there the following:
@@ -286,7 +284,6 @@ We need to configure our Apache server. For this purpose we will use the `templa
 ```bash
 mkdir -p web/templates
 vi web/templates/web.port.j2
-
 ```
 
 Paste
@@ -312,7 +309,6 @@ Listen 8080
 
 ```bash
 vi web/templates/web.conf.j2
-
 ```
 
 Paste: 
@@ -332,7 +328,6 @@ The second template will be fed by the variables contained in `roles/web/vars/ma
 ```bash
 mkdir -p web/vars
 vi web/vars/main.yml
-
 ```
 
 Paste:
@@ -350,9 +345,18 @@ Now that we have provided for the installation of the server lets write similarl
 
 #### 7.3.1 Install, configure and start `mySQL`
 
-Create `roles/db/tasks/main.yml`.
-
 The tasks we specify here will install `mySQL` with assigned passwords when prompted.
+
+#### No doubts! We are still in `roles/`
+
+Create the following file: `db/tasks/main.yml`.
+
+```bash
+mkdir -p db/tasks
+vi db/tasks/main.yml
+```
+
+Paste:
 
 ```YAML
 - name: set mysql root password
@@ -395,6 +399,12 @@ This will let us use them in parent playbooks or even multiple times in the same
 
 The `harden.yml` will perform a hardening on mySQL server configuration.
 
+```bash
+vi db/tasks/harden.yml
+```
+
+Paste inside:
+
 ```YAML
 - name: deletes anonymous mysql user
   mysql_user:
@@ -432,7 +442,16 @@ The `harden.yml` will perform a hardening on mySQL server configuration.
 ```
 
 Similarly to how the `web` role was written, the `db server` role also uses a handler and local variables.
-Create a `roles/db/handlers/main.yml` file. Here is the content:
+Create a `db/handlers/main.yml` file.
+
+#### You know the drill - we are still in roles/ !
+
+```bash
+mkdir -p db/handlers
+vi db/handlers/main.yml
+```
+
+Here is the content:
 
 ```YAML
 - name: start mysql
@@ -453,6 +472,11 @@ Create a `roles/db/handlers/main.yml` file. Here is the content:
 ```
 
 And here is the file `roles/db/vars/main.yml`, containing the password for the `db` role:
+
+```bash
+mkdir -p db/vars
+vi db/vars/main.yml
+```
 
 ```YAML
 mysql_root_password: P@nd@$$w0rd
