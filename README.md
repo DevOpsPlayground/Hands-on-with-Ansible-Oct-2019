@@ -498,16 +498,10 @@ vi php/tasks/main.yml
 ```YAML
 - name: install php7
   apt:
-    name: "{{ item }}"
+    name:
+      ['php7.2-mysql', 'php7.2-curl', 'php7.2-json', 'php7.2-cgi', 'php7.2', 'libapache2-mod-php7.2']
     state: present
     force_apt_get: yes
-  with_items:
-    - php7.2-mysql
-    - php7.2-curl
-    - php7.2-json
-    - php7.2-cgi
-    - php7.2
-    - libapache2-mod-php7.2
   notify:
     - restart apache2
   tags: ["web"]
