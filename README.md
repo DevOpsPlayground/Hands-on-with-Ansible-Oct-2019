@@ -152,7 +152,6 @@ We will look at how to write a LAMP stack playbook using the features offered by
 ```YAML
 - name: LAMP stack setup on Ubuntu 18.04
   hosts: lamp
-  gather_facts: False
   remote_user: "{{ remote_username }}"
   become: True
   roles:
@@ -526,7 +525,6 @@ Paste:
 ```YAML
 - name: LAMP stack setup on Ubuntu 18.04
   hosts: lamp
-  gather_facts: False
   remote_user: "{{ remote_username }}"
   become: True
   roles:
