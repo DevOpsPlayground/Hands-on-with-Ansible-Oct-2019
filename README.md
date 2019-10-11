@@ -197,6 +197,7 @@ vi common/tasks/main.yml
 
 Next step in our LAMP configuration is the installation of the Apache2 server. Under `roles/` create the `web/tasks/main.yml`
 
+#### Hint - we are in roles/
 
 ```bash
 mkdir -p web/tasks
@@ -246,7 +247,9 @@ Ok, let's create the handler now.
 
 #### 7.2.2 Handling apache2 start
 
-Under `roles/` create `web/handlers/main.yaml` 
+Under `roles/` create `web/handlers/main.yaml`
+
+#### Hint - we are in roles/
 
 ```bash
 mkdir -p web/handlers
@@ -277,6 +280,8 @@ and paste there the following:
 #### 7.2.3 Templating
 
 We need to configure our Apache server. For this purpose we will use the `template` feature. Ansible templates leverage the powerful and widely adopted Jinja2 templating engine. Let's go ahead and create two templates in this location -> `roles/web/templates`.
+
+#### We are still in /roles ;-)
 
 ```bash
 mkdir -p web/templates
