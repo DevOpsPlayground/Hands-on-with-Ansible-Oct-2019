@@ -122,6 +122,7 @@ HINT: You can copy the file you have cloned from the repo.
       apt:
         update_cache: yes
         upgrade: dist
+        force_apt_get: yes
 
     - name: Check disk space and memory
       shell: free -m && df -h
