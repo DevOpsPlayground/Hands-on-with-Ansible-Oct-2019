@@ -27,6 +27,7 @@
 │       │   └── main.yml    # install apache
 │       ├── templates       #
 │       │   └── web.conf.j2 # apache2 custom configuration
+│       |   └── web.port.j2 # apache2 custom port
 │       └── vars            #
 │           └── main.yml    # variables for web role
 └── site.yml                # master playbook (contains list of roles)
