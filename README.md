@@ -177,16 +177,12 @@ vi common/tasks/main.yml
 ```
 
 ```YAML
-- name: install python 2
-  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
-- name: install curl and git
+- name: install curl
   apt:
-    name: "{{ item }}"
+    name: curl
     state: present
     update_cache: yes
-  with_items:
-    - curl
-    - git
+    force_apt_get: yes
 ```
 
 #### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
