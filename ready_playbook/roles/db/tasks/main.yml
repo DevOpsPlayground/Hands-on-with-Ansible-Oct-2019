@@ -22,7 +22,8 @@
 
 - name: install mysqlserver
   apt:
-    name: "{{ item }}"
+    name: 
+      ['mysql-server', 'mysql-client']
     state: present 
   with_items:
     - mysql-server
