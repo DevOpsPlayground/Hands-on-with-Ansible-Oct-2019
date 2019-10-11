@@ -522,8 +522,7 @@ vi php/tasks/main.yml
 Do you remember the first file - `site.yml`?
 
 ```bash
-cd .. && vi site.yml          # We are now back in playbook/
-ansible-playbook -i inventory site.yml
+cd .. && vi site.yml    # We are now back in playbook/
 ```
 
 Paste:
@@ -547,6 +546,7 @@ Let' configure our remote user globally:
 mkdir group_vars/
 echo remote_username: "playground" > group_vars/lamp.yml
 ```
+
 #### You may want to check last time the  [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md)
 
 And now run the playbook!
