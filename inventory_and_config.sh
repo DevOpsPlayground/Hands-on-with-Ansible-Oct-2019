@@ -1,12 +1,16 @@
 #!/bin/bash
 
-host=${1}
-
-if [ $# -eq 0 ]
+if [ -z "$REMOTE_HOST" ]
   then
-    echo -e "Remote host ip required.\nUsage:./inventory_and_config.sh 34.244.168.125"
+    echo -e "Make sure you've set the environment variable REMOTE_HOST"
     exit
 fi
 
-echo -e "[lamp]\nlampstack    ansible_host=${host}  ansible_become_pass=my_pass"  | tee -a ready_playbook/inventory playbook/inventory && 
-echo -e "[defaults]\ninventory = inventory\nansible_python_interpreter=/usr/local/bin/python3" | tee -a ready_playbook/ansible.cfg playbook/ansible.cfg
+if [ -z "$PASSWORD" ]
+  then
+    echo -e "Make sure you've set the environment variable PASSWORD"
+    exit
+fi
+
+echo -e "[lamp]\nlampstack    ansible_host=${REMOTE_HOST}  ansible_become_pass=${PASSWORD}}"  | tee -a ready_playbook/inventory playbook/inventory && 
+echo -e "[defaults]\ninventory = inventory\nansible_python_interpreter=/usr/local/bin/python3" | tee -a ansible.cfg ready_playbook/ansible.cfg playbook/ansible.cfg
