@@ -18,3 +18,6 @@ ansible_cfg_content="[defaults]\ninventory = inventory\nansible_python_interpret
 
 echo -e  $inventory_content | tee ready_playbook/inventory playbook/inventory 1>/dev/null
 echo -e  $ansible_cfg_content | tee ansible.cfg ready_playbook/ansible.cfg playbook/ansible.cfg 1>/dev/null
+
+echo "Creating inventory and ansible.cfg......"
+echo "Done"
