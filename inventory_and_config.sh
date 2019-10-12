@@ -12,5 +12,9 @@ if [ -z "$PASSWORD" ]
     exit
 fi
 
-echo -e "[lamp]\nlampstack    ansible_host=${REMOTE_HOST}  ansible_become_pass=${PASSWORD}"  | tee ready_playbook/inventory playbook/inventory && 1>/dev/null
-echo -e "[defaults]\ninventory = inventory\nansible_python_interpreter=/usr/local/bin/python3" | tee ansible.cfg ready_playbook/ansible.cfg playbook/ansible.cfg 1>/dev/null
+inventory_content="[lamp]\nlampstack    ansible_host=${REMOTE_HOST}  ansible_become_pass=${PASSWORD}"
+ansible_cfg_content="[defaults]\ninventory = inventory\nansible_python_interpreter=/usr/local/bin/python3"
+
+
+echo -e  $inventory_content | tee ready_playbook/inventory playbook/inventory 1>/dev/null
+echo -e  $ansible_cfg_content | tee ansible.cfg ready_playbook/ansible.cfg playbook/ansible.cfg 1>/dev/null
