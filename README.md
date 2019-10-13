@@ -158,16 +158,40 @@ We will look at how to write a LAMP stack playbook using the features offered by
     - php
 ```
 
+Before we start, take a look at the directory structure of a fully fledged playbook.
+
+[Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook)
+
+This is what we are aiming for.
+
 ### Step 7.1 The Common Role
 
 ```bash
 cd playbook
+../create_structure.sh
+tree .    # You sould see the following:
+├── ansible.cfg
+├── group_vars
+├── inventory
+└── roles
+    ├── common
+    │   └── tasks
+    ├── db
+    │   ├── handlers
+    │   ├── tasks
+    │   └── vars
+    ├── php
+    │   └── tasks
+    └── web
+        ├── handler
+        ├── tasks
+        ├── templates
+        └── vars
 ```
 
 Create the folowing folder structure `roles/common/tasks/main.yml` and put in the `main.yml` the following contents:
 
 ```bash
-mkdir -p roles/common/tasks
 cd roles
 vi common/tasks/main.yml
 ```
@@ -187,7 +211,7 @@ vi common/tasks/main.yml
     force_apt_get: yes
 ```
 
-#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
+#### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
 ### Step 7.2 The Web Role
 
@@ -198,7 +222,6 @@ Next step in our LAMP configuration is the installation of the Apache2 server. U
 #### Hint - we are in roles/
 
 ```bash
-mkdir -p web/tasks
 vi web/tasks/main.yml
 ```
 
@@ -250,7 +273,6 @@ Under `roles/` create `web/handlers/main.yaml`
 #### Hint - we are in roles/
 
 ```bash
-mkdir -p web/handlers
 vi web/handlers/main.yaml
 ```
 
@@ -281,7 +303,6 @@ We need to configure our Apache server. For this purpose we will use the `templa
 #### We are still in /roles ;-)
 
 ```bash
-mkdir -p web/templates
 vi web/templates/web.port.j2
 ```
 
@@ -325,7 +346,6 @@ Paste:
 The second template will be fed by the variables contained in `roles/web/vars/main.yml`:
 
 ```bash
-mkdir -p web/vars
 vi web/vars/main.yml
 ```
 
@@ -336,7 +356,7 @@ server_admin_email: playground@localhost.local
 server_document_root: /var/www/html
 ```
 
-#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
+#### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
 ### Step 7.3 The DB Role
 
@@ -351,7 +371,6 @@ The tasks we specify here will install `mySQL` with assigned passwords when prom
 Create the following file: `db/tasks/main.yml`.
 
 ```bash
-mkdir -p db/tasks
 vi db/tasks/main.yml
 ```
 
@@ -450,7 +469,6 @@ Create a `db/handlers/main.yml` file.
 #### You know the drill - we are still in roles/ !
 
 ```bash
-mkdir -p db/handlers
 vi db/handlers/main.yml
 ```
 
@@ -477,7 +495,6 @@ Here is the content:
 And here is the file `roles/db/vars/main.yml`, containing the password for the `db` role:
 
 ```bash
-mkdir -p db/vars
 vi db/vars/main.yml
 ```
 
@@ -486,8 +503,7 @@ mysql_root_password: P@nd@$$w0rd
 
 ```
 
-#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
-
+#### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
 ### Step 7.4 The PHP Role
 
@@ -496,7 +512,6 @@ We will install PHP and then restart the Apache2 server to configure it to work 
 This is a quick one - under `roles/` create `php/tasks/main.yml` file.
 
 ```bash
-mkdir -p php/tasks
 vi php/tasks/main.yml
 ```
 
@@ -512,7 +527,7 @@ vi php/tasks/main.yml
   tags: ["web"]
 ```
 
-#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
+#### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
 ### And now let's create and run our playbook
 
@@ -539,11 +554,10 @@ Paste:
 Let' set our remote user globally:
 
 ```bash
-mkdir group_vars
 echo remote_username: "playground" > group_vars/lamp.yml
 ```
 
-#### You may want to check last time the  [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook#hierarchy-structure-of-playbook)
+#### You may want to check last time the  [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook#hierarchy-structure-of-playbook)
 
 And now run the playbook!
 
