@@ -335,7 +335,6 @@ Listen 8080
 ````
 
 Then
-
 ```bash
 vi web/templates/web.conf.j2
 ```
@@ -585,17 +584,9 @@ Success!
 
 ## 9. Notes
 
-### Error!
-
-Ansible will diligently report the errors that occure when you run your playbooks. Read carefully through the message. To solve this one we need to LOREM IPSUM
-
-And now rerun the playbook! Success!
-
-## 10. Notes
-
 Link to the [git repository](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) with the README and the playbooks that will be used in this session.
 
-## 11. References
+## 10. References
 
 Some materials were adopted from this cool book:
 
