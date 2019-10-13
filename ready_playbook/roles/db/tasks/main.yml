@@ -16,7 +16,11 @@
 
 - name: install mysql-python
   apt: 
-    name: python-mysqldb
+    name: ['python-mysqldb',
+    'python-pymysql',
+    'python3-pymysql',
+    'python-apt',
+    'python3-apt']
     state: present
     force_apt_get: yes
   tags: ['mysql']

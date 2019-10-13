@@ -56,9 +56,7 @@ ansible 2.8.5       # you should see something like this
 If not, run these commands:
 
 ```bash
-sudo apt update
-=> [sudo] password for playground:   # type in your password
-
+sudo apt update     # [sudo] password for playground:   (type in your password)
 sudo apt install python3-pip
 pip3 --version
 sudo pip3 install ansible
@@ -378,7 +376,11 @@ Paste:
 
 - name: install mysql-python
   apt:
-    name: python-mysqldb
+    name: ['python-mysqldb',
+    'python-pymysql',
+    'python3-pymysql',
+    'python-apt',
+    'python3-apt']
     state: present
     force_apt_get: yes
   tags: ['mysql']
@@ -537,7 +539,7 @@ Paste:
 Let' set our remote user globally:
 
 ```bash
-mkdir group_vars/
+mkdir group_vars
 echo remote_username: "playground" > group_vars/lamp.yml
 ```
 
