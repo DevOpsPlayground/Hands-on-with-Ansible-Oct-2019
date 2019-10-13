@@ -17,9 +17,9 @@
 │   │   |   └── main.yml    # install mysql and include harden.yml
 │   │   └── vars            #
 │   │       └── main.yml    # variables for db role
-│   ├── php                 #
-│   │   └── tasks           # installing php and restart apache2
-│   │       └── main.yml
+│   ├── php                 # php role
+│   │   └── tasks           #
+│   │       └── main.yml    # installing php and restart apache2
 │   └── web                 # apache2 role
 │       ├── handlers        #
 │       │   └── main.yml    # start apache2
