@@ -10,5 +10,5 @@ mkdir -p roles/db/handlers
 mkdir -p roles/db/vars
 mkdir -p roles/php/tasks
 mkdir group_vars
-echo Creating directory structure for your playbook
-echo Done!
+echo "Creating directory structure for your playbook..."
+echo "Done!"
