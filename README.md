@@ -144,7 +144,6 @@ ansible-playbook  -i ./playbook/inventory update.yml -v
 
 The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
-
 ## Step 7. Build a LAMP stack
 
 We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook that will trigger the installation of LAMP:
@@ -184,7 +183,7 @@ vi common/tasks/main.yml
     force_apt_get: yes
 ```
 
-#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
+#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
 ### Step 7.2 The Web Role
 
@@ -333,11 +332,11 @@ server_admin_email: playground@localhost.local
 server_document_root: /var/www/html
 ```
 
-#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
+#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
 ### Step 7.3 The DB Role
 
-Now that we have provided for the installation of the server lets write similarly a database role.
+Now that we have provided for the installation of the server, letss write similarly a database role.
 
 #### 7.3.1 Install, configure and start `mySQL`
 
@@ -481,7 +480,7 @@ mysql_root_password: P@nd@$$w0rd
 
 ```
 
-#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
+#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
 
 ### Step 7.4 The PHP Role
@@ -507,11 +506,11 @@ vi php/tasks/main.yml
   tags: ["web"]
 ```
 
-#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md) is correct!
+#### Tip! Check your [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
 ### And now let's create and run our playbook
 
-Do you remember the first file - `site.yml`?
+Do you remember the code that was showing high-level structure of a playbook? Let's create it.
 
 ```bash
 cd .. && vi site.yml    # We are now back in playbook/
@@ -538,7 +537,7 @@ mkdir group_vars/
 echo remote_username: "playground" > group_vars/lamp.yml
 ```
 
-#### You may want to check last time the  [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md)
+#### You may want to check last time the  [hierarchy structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook#hierarchy-structure-of-playbook)
 
 And now run the playbook!
 
