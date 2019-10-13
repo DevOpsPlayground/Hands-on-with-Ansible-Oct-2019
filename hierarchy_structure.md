@@ -13,8 +13,8 @@
 |   │   ├── handlers        #
 │   │   │   └── main.yml    # start db and restart apache2
 │   │   └── tasks           #
-│   │   |   ├── harden.yml  # install mysql and include harden.yml
-│   │   |   └── main.yml    # security hardening for mysql
+│   │   |   ├── harden.yml  # security hardening for mysql
+│   │   |   └── main.yml    # install mysql and include harden.yml
 │   │   └── vars            #
 │   │       └── main.yml    # variables for db role
 │   ├── php                 #
