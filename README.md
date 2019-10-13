@@ -158,18 +158,16 @@ We will look at how to write a LAMP stack playbook using the features offered by
     - php
 ```
 
-Before we start, take a look at the directory structure of a fully fledged playbook.
+Before we start, take a look at the directory structure of a fully fledged playbook. Click here:
+[Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook). This is what we are aiming for ;-)
 
-[Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook)
-
-This is what we are aiming for.
-
-### Step 7.1 The Common Role
+Run the following:
 
 ```bash
 cd playbook
 ../create_structure.sh
 tree .    # You sould see the following:
+.
 ├── ansible.cfg
 ├── group_vars
 ├── inventory
@@ -189,12 +187,21 @@ tree .    # You sould see the following:
         └── vars
 ```
 
-Create the folowing folder structure `roles/common/tasks/main.yml` and put in the `main.yml` the following contents:
+### Step 7.1 The Common Role
+
+We will populate now these folders with the neccessary content.
 
 ```bash
 cd roles
+```
+
+Create `main.yml`
+
+```bash
 vi common/tasks/main.yml
 ```
+
+and paste in the following:
 
 ```YAML
 - name: Update all packages on a Debian/Ubuntu
@@ -217,7 +224,7 @@ vi common/tasks/main.yml
 
 #### 7.2.1 Install, configure and start apache2
 
-Next step in our LAMP configuration is the installation of the Apache2 server. Under `roles/` create the `web/tasks/main.yml`
+Next step in our LAMP configuration is the installation of the Apache2 server. In `web/tasks/` create the `main.yml`
 
 #### Hint - we are in roles/
 
@@ -268,7 +275,7 @@ Ok, let's create the handler now.
 
 #### 7.2.2 Handling apache2 start
 
-Under `roles/` create `web/handlers/main.yaml`
+In `web/handlers/` create `main.yaml`
 
 #### Hint - we are in roles/
 
@@ -298,7 +305,7 @@ and paste there the following:
 
 #### 7.2.3 Templating
 
-We need to configure our Apache server. For this purpose we will use the `template` feature. Ansible templates leverage the powerful and widely adopted Jinja2 templating engine. Let's go ahead and create two templates in this location -> `roles/web/templates`.
+We need to configure our Apache server. For this purpose we will use the `template` feature. Ansible templates leverage the powerful and widely adopted Jinja2 templating engine. Let's go ahead and create two templates in this location -> `web/templates`.
 
 #### We are still in /roles ;-)
 
@@ -327,6 +334,8 @@ Listen 8080
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 ````
 
+Then
+
 ```bash
 vi web/templates/web.conf.j2
 ```
@@ -343,7 +352,7 @@ Paste:
 </VirtualHost>
 ```
 
-The second template will be fed by the variables contained in `roles/web/vars/main.yml`:
+The second template will be fed by the variables contained in `web/vars/main.yml`:
 
 ```bash
 vi web/vars/main.yml
@@ -360,7 +369,7 @@ server_document_root: /var/www/html
 
 ### Step 7.3 The DB Role
 
-Now that we have provided for the installation of the server, letss write similarly a database role.
+Now that we have provided for the installation of the server, let's write similarly a database role.
 
 #### 7.3.1 Install, configure and start `mySQL`
 
@@ -492,7 +501,7 @@ Here is the content:
     daemon_reload: yes
 ```
 
-And here is the file `roles/db/vars/main.yml`, containing the password for the `db` role:
+And here is the file `db/vars/main.yml`, containing the password for the `db` role:
 
 ```bash
 vi db/vars/main.yml
@@ -509,7 +518,7 @@ mysql_root_password: P@nd@$$w0rd
 
 We will install PHP and then restart the Apache2 server to configure it to work with PHP. Again note the `notify` handler at the end of the file.
 
-This is a quick one - under `roles/` create `php/tasks/main.yml` file.
+This is a quick one - again under `roles/` create `php/tasks/main.yml` file.
 
 ```bash
 vi php/tasks/main.yml
@@ -519,19 +528,26 @@ vi php/tasks/main.yml
 - name: install php7
   apt:
     name:
-      ['php7.2-mysql', 'php7.2-curl', 'php7.2-json', 'php7.2-cgi', 'php7.2', 'libapache2-mod-php7.2']
+      ['php7.2-mysql',
+      'php7.2-curl',
+      'php7.2-json',
+      'php7.2-cgi',
+      'php7.2',
+      'libapache2-mod-php7.2'
+      ]
     state: present
     force_apt_get: yes
   notify:
     - restart apache2
   tags: ["web"]
+  
 ```
 
 #### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
 ### And now let's create and run our playbook
 
-Do you remember the code that was showing high-level structure of a playbook? Let's create it.
+Do you remember the YAML that was showing high-level structure of a playbook? Let's create it.
 
 ```bash
 cd .. && vi site.yml    # We are now back in playbook/
@@ -567,20 +583,19 @@ ansible-playbook -i inventory site.yml
 
 Success!
 
+## 9. Notes
 
-#### Error!
+### Error!
 
 Ansible will diligently report the errors that occure when you run your playbooks. Read carefully through the message. To solve this one we need to LOREM IPSUM
 
-
 And now rerun the playbook! Success!
 
-
-## 9. Notes
+## 10. Notes
 
 Link to the [git repository](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) with the README and the playbooks that will be used in this session.
 
-## 10. References
+## 11. References
 
 Some materials were adopted from this cool book:
 
