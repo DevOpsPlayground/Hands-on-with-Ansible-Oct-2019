@@ -2,9 +2,9 @@
 
 ```bash
 ├── ansible.cfg             # configuration
-├── inventory               # inventory of hosts
 ├── group_vars              #
 │   └── lamp.yml            # variables
+├── inventory               # inventory of hosts
 ├── roles                   #
 │   ├── common              # common role
 │   │   └── tasks           #
