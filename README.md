@@ -216,7 +216,7 @@ The following code will tell our Ansible to install Apache2 and configure it. It
 
 - name: set the apache2 port to 8080
   template:
-    src: web.conf.j2
+    src: web.port.j2
     dest: /etc/apache2/ports.conf
     owner: root
     group: root
