@@ -175,6 +175,12 @@ vi common/tasks/main.yml
 ```
 
 ```YAML
+- name: Update all packages on a Debian/Ubuntu
+  apt:
+    update_cache: yes
+    upgrade: dist
+    force_apt_get: yes
+  
 - name: install curl
   apt:
     name: curl
@@ -379,12 +385,10 @@ Paste:
 
 - name: install mysqlserver
   apt:
-    name: "{{ item }}"
+    name:
+      ['mysql-server', 'mysql-client']
     state: present
     force_apt_get: yes
-  with_items:
-    - mysql-server
-    - mysql-client
   tags: ['mysql']
   
 - include: harden.yml
@@ -530,7 +534,7 @@ Paste:
     - php
 ```
 
-Let' configure our remote user globally:
+Let' set our remote user globally:
 
 ```bash
 mkdir group_vars/

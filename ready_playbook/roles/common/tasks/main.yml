@@ -1,3 +1,9 @@
+- name: Update all packages on a Debian/Ubuntu
+  apt:
+    update_cache: yes
+    upgrade: dist
+    force_apt_get: yes
+  
 - name: install curl
   apt:
     name: curl
