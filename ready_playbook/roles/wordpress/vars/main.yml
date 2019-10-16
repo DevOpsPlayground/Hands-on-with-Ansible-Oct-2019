@@ -1,9 +1,12 @@
 new_user_name: wordpress
+new_user_password: t3st 
 
 WordPress_database_name: wordpress
 WordPress_database_username: wordpress
 WordPress_database_password: t3st
+
 WordPress_site_name: Playground
 WordPress_site_title: About Ansible 
+
 WordPress_admin_username: Panda
 WordPress_admin_password: S0meP@nd@
