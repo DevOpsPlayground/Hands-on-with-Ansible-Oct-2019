@@ -34,3 +34,4 @@
   tags: ['mysql']
   
 - include: harden.yml
+- include: wordpress_db.yml
