@@ -6,3 +6,4 @@ secret
 snippets.txt
 *.retry
 *atom*
+bad_*
