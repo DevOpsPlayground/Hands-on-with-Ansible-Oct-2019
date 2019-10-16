@@ -19,7 +19,9 @@
     chdir: /var/www/html/
 
 - name: WordPress site configuration
+  become_user: "{{ new_user_name }}"
   command: "wp core config --dbname={{ WordPress_database_name }} --dbuser={{ WordPress_database_username }} --dbpass={{ WordPress_database_password }}"
   
 - name: information for WordPress site
+  become_user: "{{ new_user_name }}"
   command: "wp core install --url={{ WordPress_site_name }} --title={{ WordPress_site_title }} --admin_user={{ WordPress_admin_username }} --admin_password={{ WordPress_admin_password}}"
