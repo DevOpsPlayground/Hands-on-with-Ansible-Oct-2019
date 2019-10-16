@@ -30,7 +30,7 @@
     recurse: yes
     owner: root
     group: webadmin
-    mode: 2775
+    mode: 02775
 
 - name: enable apache2 on startup
   systemd:
