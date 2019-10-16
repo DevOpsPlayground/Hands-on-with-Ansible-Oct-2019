@@ -1,0 +1,11 @@
+- name: LAMP stack setup on Ununtu 18.04
+  hosts: lamp
+  remote_user: "{{ remote_username }}"
+  become: True
+  
+  roles:
+   - common
+   - web
+   - db
+   - php
+   - wordpress
