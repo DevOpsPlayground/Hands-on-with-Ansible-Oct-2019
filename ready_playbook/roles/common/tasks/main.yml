@@ -11,30 +11,7 @@
     update_cache: yes
     force_apt_get: yes
 
-- name: create new WP user
-  user:
-    name: "{{ new_user_name }}"
-    password: "{{ new_user_password }}"         
-    shell: /bin/bash
-    groups: sudo
-    append: yes
-
 - name: Create a webadmin group
   group:
     name: webadmin
     state: present
-
-- name: Add your users to the group
-  user:
-    name: "{{ new_user_name }}"
-    group: webadmin
-
-- name: Recursively change ownership and permissions of the sites directory 
-  file:
-    path: /var/www/html/
-    state: directory
-    recurse: yes
-    owner: root
-    group: webadmin
-    mode: 2775
-

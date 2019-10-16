@@ -23,6 +23,15 @@
     mode: 0644
   tags: ["web"]
 
+- name: Recursively change ownership and permissions of the sites directory 
+  file:
+    path: /var/www/html/
+    state: directory
+    recurse: yes
+    owner: root
+    group: webadmin
+    mode: 2775
+
 - name: enable apache2 on startup
   systemd:
     name: apache2

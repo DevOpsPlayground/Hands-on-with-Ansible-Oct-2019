@@ -1,6 +1,10 @@
-- name: Print out info
-  debug:
-    msg: ensure you have installed lamp (or) lemp stack
+- name: create new WP user
+  user:
+    name: "{{ new_user_name }}"
+    password: "{{ new_user_password }}"         
+    shell: /bin/bash
+    groups: sudo,webadmin
+    append: yes
 
 - name: downloading WordPress cli aka wp-cli
   get_url:
