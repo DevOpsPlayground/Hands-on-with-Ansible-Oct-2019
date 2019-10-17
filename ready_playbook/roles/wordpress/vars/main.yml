@@ -1,5 +1,5 @@
 new_user_name: wordpress
-new_user_password: my*8*8t3st 
+new_user_password: password
 
 wp_version: 4.0
 wp_install_dir: /var/sites/wordpress
