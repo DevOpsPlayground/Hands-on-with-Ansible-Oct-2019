@@ -35,14 +35,22 @@
     path: "/tmp/wordpress-{{wp_version}}.tar.gz" 
     state: absent
 
-
-- name: Configure WordPress to use MySQL and PHP
+- name: Wordpresss | Configure WordPress to use MySQL and PHP
   template:
     src: wp.conf.j2
     dest: /etc/wordpress/config-localhost.php
     owner: root
     group: root
     mode: 0644
+
+- name: Wordpress | Link the WordPress files to the desired location on your web server
+  file:
+    src: '{{wp_install_dir}}'
+    dest: /var/www/html/wordpress
+    owner: root
+    group: root
+    state: link
+    shell: mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 
 # - name: In a working directory, create a text file wordpress.sql to configure the WordPress database.
 # touch wordpress.sql
@@ -56,39 +64,8 @@
 # cat wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf
 # After the command completes, delete the file wordpress.sql
 
+
 # - name: Move the WordPress installation to the web server document root.
 # sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 # sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# - name: downloading WordPress cli aka wp-cli
-#   get_url:
-#     url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-#     dest: /usr/local/bin/wp
-#     mode: 0755
-
-# - name: download latest WordPress locally
-#   command: wp core download
-#   become_user: "{{ new_user_name }}"
-#   args:
-#     chdir: /var/www/html/
-
-# - name: WordPress site configuration
-#   become_user: "{{ new_user_name }}"
-#   command: "wp core config --dbname={{ wp_database_name }} --dbuser={{ wp_database_username }} --dbpass={{ wp_database_password }}"
-  
-# - name: information for WordPress site
-#   become_user: "{{ new_user_name }}"
-#   command: "wp core install --url={{ wp_site_name }} --title={{ wp_site_title }} --admin_user={{ wp_admin_username }} --admin_password={{ wp_admin_password}}"
