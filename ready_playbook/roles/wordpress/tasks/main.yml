@@ -35,7 +35,7 @@
     state: absent
 
 
-- name: Configure WordPress to use MySQL and PHP
+# - name: Configure WordPress to use MySQL and PHP
 # touch /etc/wordpress/config-localhost.php
 # Copy the following lines to the file substituting yourPassword 
 #   with your MySQL database password and leaving the other values unchanged
@@ -47,7 +47,7 @@
 # define('WP_CONTENT_DIR', '/usr/share/wordpress/wp-content');
 # ?>
 
-- name: In a working directory, create a text file wordpress.sql to configure the WordPress database.
+# - name: In a working directory, create a text file wordpress.sql to configure the WordPress database.
 # touch wordpress.sql
 # CREATE DATABASE wordpress;
 # GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.*
@@ -55,11 +55,11 @@
 # IDENTIFIED BY 'yourPassword';
 # FLUSH PRIVILEGES;
 
-- name: Create WP database
+# - name: Create WP database
 # cat wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf
 # After the command completes, delete the file wordpress.sql
 
-- name: Move the WordPress installation to the web server document root.
+# - name: Move the WordPress installation to the web server document root.
 # sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 # sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 

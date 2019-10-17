@@ -1,5 +1,5 @@
 new_user_name: wordpress
-new_user_password: t3st 
+new_user_password: my*8*8t3st 
 
 wp_version: 4.0
 wp_install_dir: /var/sites/wordpress
@@ -7,7 +7,7 @@ wp_install_dir: /var/sites/wordpress
 
 wp_database_name: wordpress
 wp_database_username: wordpress
-wp_database_password: t3st
+wp_database_password: y*8*8t3st
 
 wp_site_name: Playground
 wp_site_title: About Ansible 
