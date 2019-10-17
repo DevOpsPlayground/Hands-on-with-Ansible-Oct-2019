@@ -36,17 +36,13 @@
     state: absent
 
 
-# - name: Configure WordPress to use MySQL and PHP
-# touch /etc/wordpress/config-localhost.php
-# Copy the following lines to the file substituting yourPassword 
-#   with your MySQL database password and leaving the other values unchanged
-# <?php
-# define('DB_NAME', 'wordpress');
-# define('DB_USER', 'wordpress');
-# define('DB_PASSWORD', 'yourPassword');
-# define('DB_HOST', 'localhost');
-# define('WP_CONTENT_DIR', '/usr/share/wordpress/wp-content');
-# ?>
+- name: Configure WordPress to use MySQL and PHP
+  template:
+    src: wp.conf.j2
+    dest: /etc/wordpress/config-localhost.php
+    owner: root
+    group: root
+    mode: 0644
 
 # - name: In a working directory, create a text file wordpress.sql to configure the WordPress database.
 # touch wordpress.sql
