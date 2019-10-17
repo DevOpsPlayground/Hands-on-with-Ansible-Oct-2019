@@ -10,8 +10,3 @@
     state: present
     update_cache: yes
     force_apt_get: yes
-
-- name: Create a webadmin group
-  group:
-    name: webadmin
-    state: present

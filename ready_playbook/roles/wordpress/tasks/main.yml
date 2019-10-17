@@ -1,68 +1,30 @@
-- name: Wordpresss | Create new user
-  user:
-    name: "{{ new_user_name }}"
-    password: "{{ 'new_user_password' | password_hash('sha512') }}"  
-    shell: /bin/bash
-    update_password: on_create
-    groups: sudo,webadmin
-    append: yes
+- name: Install Wordpress
+  apt:
+    name: wordpress
+    state: present
+    force_apt_get: yes
 
-
-- name: Wordpresss | Ensure that installation directory exists
-  file: 
-    path: "{{wp_install_dir|dirname}}" 
-    state: directory
-
-- name: Wordpresss | Download {{wp_version}} to /tmp
-  get_url: 
-    url: "http://wordpress.org/wordpress-{{wp_version}}.tar.gz" 
-    force: no 
-    dest: /tmp/wordpress-{{wp_version}}.tar.gz
-
-- name: Wordpresss | Extract archive
-  unarchive: 
-    src: "/tmp/wordpress-{{wp_version}}.tar.gz" 
-    dest: /tmp 
-    copy: no
-
-- name: Wordpresss | Move extracted directory to {{wp_install_dir}}
-  command: /bin/mv /tmp/wordpress "{{wp_install_dir}}"
-  args:
-    creates: "{{wp_install_dir}}"
-
-- name: Wordpresss | Remove wordpress-{{wp_version}}.tar.gz
-  file: 
-    path: "/tmp/wordpress-{{wp_version}}.tar.gz" 
-    state: absent
-
-- name: Wordpresss | Configure WordPress to use MySQL and PHP
+- name: Wordpress | Configure WordPress to use MySQL and PHP
   template:
     src: wp.conf.j2
-    dest: "{{wp_install_dir}}/config-localhost.php"
-    owner: root
-    group: root
-    mode: 0644
-
-- name: Wordpress | Link the WordPress files to the desired location on your web server
-  file:
-    src: '{{wp_install_dir}}'
-    dest: /var/www/html/wordpress
-    owner: root
-    group: root
-    state: link
-
-- name: Rename WordPress configuration file
-  command: mv "{{wp_install_dir}}/config-localhost.php" "{{wp_install_dir}}/config-default.php"
+    dest: /etc/wordpress/config-localhost.php
 
 - name: Configure the WordPress database
   template:
     src: create_wp_db.j2
-    dest: ./wordpress.sql
-    owner: root
-    group: root
-    mode: 0644
+    dest: wordpress.sql
 
 - name: Create WP database
   shell: cat wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf
+
+- name: Wordpress | Link the WordPress files to the desired location on your web server
+  file:
+    src: /usr/share/wordpress
+    dest: /var/www/html/wordpress
+    state: link
+
+- name: Rename WordPress configuration file
+  command: mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
+
 
 # After the command completes, delete the file wordpress.sql
