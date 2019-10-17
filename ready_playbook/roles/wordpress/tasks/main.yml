@@ -1,7 +1,7 @@
 - name: Wordpresss | Create new user
   user:
     name: "{{ new_user_name }}"
-    password: "{{ new_user_password | password_hash('sha512') }}  "     
+    password: "{{ 'new_user_password' | password_hash('sha512') }}"  
     shell: /bin/bash
     update_password: on_create
     groups: sudo,webadmin
