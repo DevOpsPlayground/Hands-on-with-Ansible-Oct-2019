@@ -1,4 +1,4 @@
-- name: create new WP user
+- name: Wordpresss | Create new user
   user:
     name: "{{ new_user_name }}"
     password: "{{ new_user_password }}"         
@@ -6,22 +6,91 @@
     groups: sudo,webadmin
     append: yes
 
-- name: downloading WordPress cli aka wp-cli
-  get_url:
-    url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-    dest: /usr/local/bin/wp
-    mode: 0755
 
-- name: download latest WordPress locally
-  command: wp core download
-  become_user: "{{ new_user_name }}"
-  args:
-    chdir: /var/www/html/
+- name: Wordpresss | Ensure that installation directory exists
+  file: 
+    path: "{{wp_install_dir|dirname}}" 
+    state: directory
 
-- name: WordPress site configuration
-  become_user: "{{ new_user_name }}"
-  command: "wp core config --dbname={{ WordPress_database_name }} --dbuser={{ WordPress_database_username }} --dbpass={{ WordPress_database_password }}"
+- name: Wordpresss | Download {{wp_version}} to /tmp
+  get_url: 
+    url: "http://wordpress.org/wordpress-{{wp_version}}.tar.gz" 
+    force: no 
+    dest: /tmp/wordpress-{{wp_version}}.tar.gz
+
+- name: Wordpresss | Extract archive
+  unarchive: 
+    src: "/tmp/wordpress-{{wp_version}}.tar.gz" 
+    dest: /tmp 
+    copy: no
+
+- name: Wordpresss | Move extracted directory to {{wp_install_dir}}
+  command: /bin/mv /tmp/wordpress "{{wp_install_dir}}" 
+  creates: "{{wp_install_dir}}"
+
+- name: Wordpresss | Remove wordpress-{{wp_version}}.tar.gz
+  file: 
+    path: "/tmp/wordpress-{{wp_version}}.tar.gz" 
+    state: absent
+
+
+- name: Configure WordPress to use MySQL and PHP
+# touch /etc/wordpress/config-localhost.php
+# Copy the following lines to the file substituting yourPassword 
+#   with your MySQL database password and leaving the other values unchanged
+# <?php
+# define('DB_NAME', 'wordpress');
+# define('DB_USER', 'wordpress');
+# define('DB_PASSWORD', 'yourPassword');
+# define('DB_HOST', 'localhost');
+# define('WP_CONTENT_DIR', '/usr/share/wordpress/wp-content');
+# ?>
+
+- name: In a working directory, create a text file wordpress.sql to configure the WordPress database.
+# touch wordpress.sql
+# CREATE DATABASE wordpress;
+# GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.*
+# TO wordpress@localhost
+# IDENTIFIED BY 'yourPassword';
+# FLUSH PRIVILEGES;
+
+- name: Create WP database
+# cat wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf
+# After the command completes, delete the file wordpress.sql
+
+- name: Move the WordPress installation to the web server document root.
+# sudo ln -s /usr/share/wordpress /var/www/html/wordpress
+# sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# - name: downloading WordPress cli aka wp-cli
+#   get_url:
+#     url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+#     dest: /usr/local/bin/wp
+#     mode: 0755
+
+# - name: download latest WordPress locally
+#   command: wp core download
+#   become_user: "{{ new_user_name }}"
+#   args:
+#     chdir: /var/www/html/
+
+# - name: WordPress site configuration
+#   become_user: "{{ new_user_name }}"
+#   command: "wp core config --dbname={{ wp_database_name }} --dbuser={{ wp_database_username }} --dbpass={{ wp_database_password }}"
   
-- name: information for WordPress site
-  become_user: "{{ new_user_name }}"
-  command: "wp core install --url={{ WordPress_site_name }} --title={{ WordPress_site_title }} --admin_user={{ WordPress_admin_username }} --admin_password={{ WordPress_admin_password}}"
+# - name: information for WordPress site
+#   become_user: "{{ new_user_name }}"
+#   command: "wp core install --url={{ wp_site_name }} --title={{ wp_site_title }} --admin_user={{ wp_admin_username }} --admin_password={{ wp_admin_password}}"
