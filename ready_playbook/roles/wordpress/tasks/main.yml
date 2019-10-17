@@ -38,7 +38,7 @@
 - name: Wordpresss | Configure WordPress to use MySQL and PHP
   template:
     src: wp.conf.j2
-    dest: /etc/wordpress/config-localhost.php
+    dest: "{{wp_install_dir}}/config-localhost.php"
     owner: root
     group: root
     mode: 0644
@@ -50,7 +50,7 @@
     owner: root
     group: root
     state: link
-    shell: mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
+    shell: mv "{{wp_install_dir}}/config-localhost.php" "{{wp_install_dir}}/config-default.php"
 
 # - name: In a working directory, create a text file wordpress.sql to configure the WordPress database.
 # touch wordpress.sql
