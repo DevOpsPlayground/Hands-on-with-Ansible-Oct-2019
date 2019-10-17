@@ -50,7 +50,9 @@
     owner: root
     group: root
     state: link
-    shell: mv "{{wp_install_dir}}/config-localhost.php" "{{wp_install_dir}}/config-default.php"
+
+- name: Rename WordPress configuration file
+  command: mv "{{wp_install_dir}}/config-localhost.php" "{{wp_install_dir}}/config-default.php"
 
 # - name: In a working directory, create a text file wordpress.sql to configure the WordPress database.
 # touch wordpress.sql
