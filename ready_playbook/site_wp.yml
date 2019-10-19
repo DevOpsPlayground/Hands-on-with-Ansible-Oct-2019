@@ -6,6 +6,9 @@
   roles:
    - common
    - web
+     tags [web]
    - db
+     tags [db]
    - php
    - wordpress
+     tags [wp, db]
