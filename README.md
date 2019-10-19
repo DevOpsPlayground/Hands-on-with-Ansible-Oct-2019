@@ -148,7 +148,7 @@ ansible-playbook  -i ./playbook/inventory update.yml
 We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook:
 
 ```YAML
-- name: LAMP stack setup on Ununtu 18.04
+- name: LAMP stack setup Wordpress installation on Ununtu 18.04
   hosts: lamp
   remote_user: "{{ remote_username }}"
   become: yes
@@ -327,7 +327,7 @@ cd .. && vi site.yml    # We are now back in playbook/
 Paste:
 
 ```YAML
-- name: LAMP stack setup on Ununtu 18.04
+- name: LAMP stack setup Wordpress installation on Ununtu 18.04
   hosts: lamp
   remote_user: "{{ remote_username }}"
   become: yes
@@ -385,7 +385,13 @@ ansible-playbook site.yml
 ansible-lint site.yml
 ```
 
-### 8.3 Tags
+### 8.3 Dry-run
+
+```bash
+ansible-playbook site.yml --check
+```
+
+### 8.4 Tags
 
 How can we save time and run only what we are interested in? [Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html)
 
@@ -418,7 +424,7 @@ Now run your playbook in the following mode:
 ansible-playbook site.yml --tags=web
 ```
 
-### 8.4 Enable Debug and Increase Verbosity
+### 8.5 Enable Debug and Increase Verbosity
 
 [Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/modules/debug_module.htm)
 
