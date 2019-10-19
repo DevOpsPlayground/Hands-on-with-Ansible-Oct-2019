@@ -2,145 +2,15 @@
 
 ## Our task: Create a real-world LAMP stack for development using Ansible
 
-You will need:
+Prerequisites:
 
-1. The information-slip you picked up at reception.
-2. Chrome (preferably but Firefox can also do).
+1. Control node - it can be your laptop or any Unix, MacOs, Linux machine with Ansible installed.
+2. Remote host with Python 3 (2.7 is still ok) already installed .
+3. SSH access to the remote host is configured
+4. Inventory and ansible.cfg files have been created.
+Refer to the README.md if you need help.
 
 ------
-
-### Ansible control node and remote hosts
-
-Ansible works from a control machine to send commands to one or more remote machines.
-In Ansible terminology, these are referred to as a *control node* and *remote hosts*.
-We have set up a control node and one remote host for each one of you to use.
-
-You may have noticed from your information-slip that you have been assigned  two animal names. These animals have been used to ensure everyone has unique host names.
-So, for example, imagine Bob has a panda and a tiger :-) We have set up machines control_panda and remote_tiger for Bob to practice Ansible commands with.
-
-Further these machines can be accessed via a command line in the browser (a web terminal called WeTTy), under the following links:
-
-- <http://control_panda.ldn.devopsplayground.com/wetty/>
-- <http://remote_tiger.ldn.devopsplayground.com/wetty/>
-
-representing the Ansible control node and remote host, respectively.
-
-### Let's start
-
-1. Open up the <http://control_panda.ldn.devopsplayground.com/wetty/> (use animal name on you info-slip)
-
-2. You will be prompted for a login password. Use the one on your information-slip.
-
-3. Type some shell commands to get familiar with the web terminal.
-   From now on we will be working from the browsers only.
-
-4. As a convenience let's set some ENVIRONMENT variables that we will use later
-
-```bash
-export REMOTE_HOST=remote_host_ip       # e.g. export REMOTE_HOST=52.214.226.94
-export PASSWORD=remote_host_password    # e.g. export PASSWORD=London
-```
-
------
-
-## Step 1. Install Ansible
-
-Check whether Ansible is installed by running:
-
-```bash
-ansible --version  
-ansible 2.8.5       # you should see something like this
-...
-```
-
-If not, run these commands:
-
-```bash
-sudo apt update     # [sudo] password for playground:   (type in your password)
-sudo apt install python3-pip
-pip3 --version
-sudo pip3 install ansible
-```
-
-and again
-
-```bash
-ansible --version
-```
-
-That's it!
-
-## Step 2. Configuring SSH Access to the remote host
-
-Run the following command from your control_panda.
-
-```bash
-cd Hands-on-with-Ansible-Oct-2019
-./setup.sh $REMOTE_HOST
-```
-
-## Step 3. Let's check out the connectivity with the host
-
-Run the following. And, yes! That comma is right in its place! It tells ansible that there is only that one host in your inline inventory. 
-
-```bash
-ansible all -i "$REMOTE_HOST," -m ping
-```
-
- Or check memory and disk space on your remote_panda:
-
-```bash
-ansible all -i "$REMOTE_HOST," -m shell -a 'free -m && df -h'
-```
-
-## Step 4. Ansible Hostfile and configuration file
-
-Let's create a directory where we will organize all our files for the playbook. Then run the `inventory_and_config.sh` file to create the inventory of hosts and Ansible configuration file.
-
-```bash
-mkdir playbook
-./inventory_and_config.sh $REMOTE_HOST
-```
-
-## Step 5. Write a simple playbook
-
-We will put together a simple playbook to update our remote host.
-Create a file `update.yml` and paste the following. Careful with the spaces - YAML is fussy!
-
-HINT: You can copy the file you have cloned from the repo.
-
-```YAML
----
-- hosts: lamp
-  remote_user: playground
-  become: yes
-
-  tasks:
-    - name: Update all packages on a Debian/Ubuntu
-      apt:
-        update_cache: yes
-        upgrade: dist
-        force_apt_get: yes
-
-    - name: Check disk space and memory
-      shell: free -m && df -h
-```
-
-### Tip!
-
-What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
-
-```bash
-ansible-doc apt
-```
-
-## Step 6. Run the playbook
-
-```bash
-ansible-playbook  -i ./playbook/inventory update.yml -v
-```
-
-The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
 ## Step 7. Build a LAMP stack
 
@@ -582,19 +452,11 @@ ansible-playbook -i inventory site.yml
 
 Success!
 
-#### Go to http://remote-eft.ldn.devopsplayground.com/apache/wordpress/wp-admin/install.php
+#### Go to http://your_remote_server.com
 
-You should see:
+You should see the default Apache for Ubuntu page.
 
-![Wordpress welcome page](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-19%20at%2013.23.54.png)
-
-## 9. Notes
-
-Here you will find the Step-by-step guide on how to create all the roles for a LAMP stack playbook.
-
-Link to the [git repository](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) with the README and the playbooks that will be used in this session.
-
-## 10. References
+## 9. References
 
 Some materials were adopted from this cool book:
 
