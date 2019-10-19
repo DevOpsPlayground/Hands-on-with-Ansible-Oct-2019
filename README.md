@@ -6,7 +6,7 @@ You will need:
 
 1. The information-slip you picked up at reception.
 2. Chrome (preferably but Firefox can also do).
-
+:neckbeard:
 ------
 
 ### Ansible control node and remote hosts
@@ -163,15 +163,19 @@ We will look at how to write a LAMP stack playbook using the features offered by
 Before we start, take a look at the directory structure of a fully fledged playbook. Click here:
 [Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook). This is what we are aiming for ;-)
 
+To save time, I have alredy created some roles for you. Take a look at the `/playbook` directory to get familiar with the concents. Anything missing? 
+
 ### Step 7.1 The Webserver Role
+
+We will now write a Role to install and configure the Apache2 server.
 
 #### 7.1.1 Install, configure and start apache2
 
-Next step in our LAMP configuration is the installation of the Apache2 server. In `web/tasks/` create the `main.yml`
-
-#### Hint - we are in roles/
+First thing first - install Apache2. We will do this by running several tasks. Run th following:
 
 ```bash
+cd /playbook/roles
+mkdir -p web/tasks
 vi web/tasks/main.yml
 ```
 
@@ -183,7 +187,6 @@ The following code will tell our Ansible to install Apache2 and configure it. It
     name: apache2
     state: present
     force_apt_get: yes
-  tags: ["web"]
 
 - name: set the apache2 port to 8080
   template:
@@ -192,7 +195,6 @@ The following code will tell our Ansible to install Apache2 and configure it. It
     owner: root
     group: root
     mode: 0644
-  tags: ["web"]
 
 - name: update the apache2 server configuration
   template:
@@ -201,7 +203,6 @@ The following code will tell our Ansible to install Apache2 and configure it. It
     owner: root
     group: root
     mode: 0644
-  tags: ["web"]
 
 - name: enable apache2 on startup
   systemd:
@@ -209,8 +210,6 @@ The following code will tell our Ansible to install Apache2 and configure it. It
     enabled: yes
   notify:
     - start apache2
-  tags: ["web"]
-
 ```
 
 Did you spot the `notify` parameter at the end of the file? In Ansible we call this a `handler` a very cool feature that will trigger the process (start apache2) only if anything changes after the playbook has run. Time and resources saving!  
@@ -348,7 +347,7 @@ And now run the playbook!
 ansible-playbook -i inventory site.yml
 ```
 
-Success!
+Success! :+1: :+1: :+1:
 
 #### Go to http://remote-eft.ldn.devopsplayground.com/apache/wordpress/wp-admin/install.php
 
