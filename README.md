@@ -156,7 +156,7 @@ We will look at how to write a LAMP stack playbook using the features offered by
   
   roles:
     - role: common
-    - role: web
+    - role: webserver
     - role: db
     - role: php
     - role: wordpress
@@ -177,8 +177,7 @@ First thing first - install Apache2. We will do this by running several tasks. R
 
 ```bash
 cd /playbook/roles
-mkdir -p web/tasks
-vi web/tasks/main.yml
+mkdir -p webserver/tasks && vi webserver/tasks/main.yml
 ```
 
 The following code will tell our Ansible to install Apache2 and configure it. It'll also add Apache2 to the startup service.
@@ -214,20 +213,19 @@ The following code will tell our Ansible to install Apache2 and configure it. It
     - start apache2
 ```
 
-Did you spot the `notify` parameter at the end of the file? 
+Did you spot the `notify` parameter at the end of the file? [Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
 
-[Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
 In Ansible we call this a `handler` a very cool feature that will trigger the process (start apache2) only if anything changes after the playbook has run. Time and resources saving!  
 Ok, let's create the handler now.
 
 #### 7.1.2 Handling apache2 start
 
-In `web/handlers/` create `main.yaml`
+In `webserver/handlers/` create `main.yaml`
 
 #### Hint - we are in roles/
 
 ```bash
-vi web/handlers/main.yaml
+mkdir -p webserver/handlers && vi webserver/handlers/main.yaml
 ```
 
 and paste there the following:
@@ -252,12 +250,15 @@ and paste there the following:
 
 #### 7.1.3 Templating
 
-We need to configure our Apache server. For this purpose we will use the `template` feature. Ansible templates leverage the powerful and widely adopted Jinja2 templating engine. Let's go ahead and create two templates in this location -> `web/templates`.
+We need to configure our Apache server. For this purpose we will use the `template` feature.
+[Let's explore :nerd_face:](https://docs.ansible.com/ansible/2.5/modules/template_module.html#template-templates-a-file-out-to-a-remote-server)
+
+Ansible templates leverage the powerful and widely adopted Jinja2 templating language. Let's go ahead and create two templates in this location -> `webserver/templates`.
 
 #### We are still in /roles ;-)
 
 ```bash
-vi web/templates/web.port.j2
+mkdir -p webserver/templates/ && vi webserver/templates/web.port.j2
 ```
 
 Paste
@@ -282,11 +283,12 @@ Listen 8080
 ````
 
 Then
+
 ```bash
-vi web/templates/web.conf.j2
+vi webserver/templates/web.conf.j2
 ```
 
-Paste: 
+Paste:
 
 ```XML
 
@@ -298,10 +300,12 @@ Paste:
 </VirtualHost>
 ```
 
-The second template will be fed by the variables contained in `web/vars/main.yml`:
+Where do we put all these variables? [Let's explore :nerd_face:]()
+
+These belong to the role only. This is why they will live in the `role variables` directory. in `webserver/vars/main.yml`:
 
 ```bash
-vi web/vars/main.yml
+mkdir -p webserver/vars && vi webserver/vars/main.yml
 ```
 
 Paste:
