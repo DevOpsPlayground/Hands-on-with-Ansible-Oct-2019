@@ -582,7 +582,7 @@ ansible-playbook -i inventory site.yml
 
 Success!
 
-## Go to http://remote-eft.ldn.devopsplayground.com/apache/wordpress/wp-admin/install.php
+#### Go to http://remote-eft.ldn.devopsplayground.com/apache/wordpress/wp-admin/install.php
 
 You should see:
 
