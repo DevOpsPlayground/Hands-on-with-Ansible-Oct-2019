@@ -1,13 +1,11 @@
 # ANSIBLE HANDS-ON
 
-## Our task: Create a real-world LAMP stack for development using Ansible
+## Our task: Create a real-world LAMP stack for development and deploy Wordpress app using Ansible
 
 You will need:
 
 1. The information-slip you picked up at reception.
 2. Chrome (preferably but Firefox can also do).
-
-:neckbeard:
 
 ------
 
@@ -148,7 +146,7 @@ ansible-playbook  -i ./playbook/inventory update.yml
 We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook:
 
 ```YAML
-- name: LAMP stack setup Wordpress installation on Ununtu 18.04
+- name: LAMP stack setup and Wordpress installation on Ubuntu 18.04
   hosts: lamp
   remote_user: "{{ remote_username }}"
   become: yes
@@ -327,7 +325,7 @@ cd .. && vi site.yml    # We are now back in playbook/
 Paste:
 
 ```YAML
-- name: LAMP stack setup Wordpress installation on Ununtu 18.04
+- name: LAMP stack setup and Wordpress installation on Ubuntu 18.04
   hosts: lamp
   remote_user: "{{ remote_username }}"
   become: yes
@@ -402,7 +400,7 @@ vi site.yml
 Delete all the contents in the file and paste the following.
 
 ```YAML
-- name: LAMP stack setup on Ununtu 18.04
+- name: LAMP stack setup and Wordpress installation on Ubuntu 18.04
   hosts: lamp
   remote_user: "{{ remote_username }}"
   become: yes
