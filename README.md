@@ -165,7 +165,7 @@ We will look at how to write a LAMP stack playbook using the features offered by
 Before we start, take a look at the directory structure of a fully fledged playbook. Click here:
 [Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook). This is what we are aiming for ;-)
 
-To save time, I have alredy created some roles for you. Take a look at the `/playbook` directory to get familiar with the concents. Anything missing? 
+To save time, I have alredy created some roles for you. Take a look at the `/playbook` directory to get familiar with the concents. Anything missing?
 
 ### Step 7.1 The Webserver Role
 
@@ -300,9 +300,9 @@ Paste:
 </VirtualHost>
 ```
 
-Where do we put all these variables? [Let's explore :nerd_face:]()
+Where do we put all these variables? [Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#defining-variables-in-included-files-and-roles)
 
-These belong to the role only. This is why they will live in the `role variables` directory. in `webserver/vars/main.yml`:
+These variables belong to the Webservers role. They have their place in a designed for the purpose location `webserver/vars/main.yml`:
 
 ```bash
 mkdir -p webserver/vars && vi webserver/vars/main.yml
@@ -316,7 +316,6 @@ server_document_root: /var/www/html
 ```
 
 #### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
-
 
 ### And now let's create and run our playbook
 
