@@ -4,11 +4,15 @@
   become: yes
   
   roles:
-   - common
-   - web
-     tags [web]
-   - db
-     tags [db]
-   - php
-   - wordpress
-     tags [wp, db]
+    - role: common
+
+    - role: web
+      tags: [web]
+
+    - role: db
+      tags: [db]
+
+    - role: php
+    
+    - role: wordpress
+      tags: [wp, db]
