@@ -62,6 +62,7 @@ sudo apt update     # [sudo] password for playground:   (type in your password)
 sudo apt install python3-pip
 pip3 --version
 sudo pip3 install ansible
+sudo apt install ansible-lint && sudo pip3 install ansible-lint
 ```
 
 and again
@@ -363,18 +364,68 @@ You should see:
 
 ![Wordpress welcome page](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-19%20at%2013.23.54.png)
 
+
+## 8. Playbook basics
+
+### 8.1 How can we abbreviate the command we ran above?
+
+Let's tell Ansible where we want it to look up the inventory.
+
+```bash
+echo -e "inventory = inventory" >> ansible.cfg
+```
+
 Now run the playbook like this:
 
 ```bash
 ansible-playbook site.yml
 ```
 
-## 8. Notes
+### 8.2 Linting
+
+```bash
+ansible-lint site.yml
+```
+
+### 8.3 Tags
+
+How can we save time and run only what we are interested in? [Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html)
+
+```bash
+vi site.yml
+```
+
+Delete all the contents in the file and paste the following.
+
+```YAML
+- name: LAMP stack setup on Ununtu 18.04
+  hosts: lamp
+  remote_user: "{{ remote_username }}"
+  become: yes
+  
+  roles:
+    - role: common
+    - role: webserver
+      tags: [web]
+    - role: db
+      tags: [db]
+    - role: php
+    - role: wordpress
+      tags: [wp, db]
+```
+
+Now run your playbook in the following mode: 
+
+```bash
+ansible-playbook site.yml --tags=web
+```
+
+## 9. Notes
 
 If you want to create the LAMP stack playbook from scratch, [here](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/final/step_by_step/LAMP_stack_step_by_step.md#ansible-hands-on).
 
 
-## 9. References
+## 10. References
 
 Some materials were adopted from this cool book:
 
