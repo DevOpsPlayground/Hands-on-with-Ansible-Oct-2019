@@ -590,9 +590,8 @@ You should see:
 
 ## 9. Notes
 
-Here you will find the Step-by-step guide on how to create all the roles for a LAMP stack playbook.
+If you want to create the LAMP stack playbook from scratch, [here](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/final/step_by_step/LAMP_stack_step_by_step.md#ansible-hands-on).
 
-Link to the [git repository](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) with the README and the playbooks that will be used in this session.
 
 ## 10. References
 
