@@ -6,7 +6,7 @@
   roles:
     - role: common
 
-    - role: web
+    - role: webserver
       tags: [web]
 
     - role: db
