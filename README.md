@@ -140,10 +140,8 @@ ansible-doc apt
 ## Step 6. Run the playbook
 
 ```bash
-ansible-playbook  -i ./playbook/inventory update.yml -v
+ansible-playbook  -i ./playbook/inventory update.yml
 ```
-
-The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
 ## Step 7. Build a LAMP stack and deploy Wordpress
 
@@ -414,11 +412,21 @@ Delete all the contents in the file and paste the following.
       tags: [wp, db]
 ```
 
-Now run your playbook in the following mode: 
+Now run your playbook in the following mode:
 
 ```bash
 ansible-playbook site.yml --tags=web
 ```
+
+### 8.4 Enable Debug and Increase Verbosity
+
+```bash
+ANSIBLE_DEBUG=true ANSIBLE_VERBOSITY=1 ansible-playbook site.yml --tags=web
+# or
+ANSIBLE_DEBUG=true -vvvv ansible-playbook ansible-playbook site.yml --tags=web
+```
+
+The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
 ## 9. Notes
 
