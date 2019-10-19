@@ -142,87 +142,30 @@ ansible-playbook  -i ./playbook/inventory update.yml -v
 
 The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
 
-## Step 7. Build a LAMP stack
+## Step 7. Build a LAMP stack and deploy Wordpress
 
-We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook that will trigger the installation of LAMP:
+We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook:
 
 ```YAML
-- name: LAMP stack setup on Ubuntu 18.04
+- name: LAMP stack setup on Ununtu 18.04
   hosts: lamp
   remote_user: "{{ remote_username }}"
-  become: True
+  become: yes
+  
   roles:
-    - common
-    - web
-    - db
-    - php
+    - role: common
+    - role: web
+    - role: db
+    - role: php
+    - role: wordpress
 ```
 
 Before we start, take a look at the directory structure of a fully fledged playbook. Click here:
 [Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook). This is what we are aiming for ;-)
 
-Run the following:
+### Step 7.1 The Webserver Role
 
-```bash
-cd playbook
-../create_structure.sh
-tree .    # You sould see the following:
-.
-├── ansible.cfg
-├── group_vars
-├── inventory
-└── roles
-    ├── common
-    │   └── tasks
-    ├── db
-    │   ├── handlers
-    │   ├── tasks
-    │   └── vars
-    ├── php
-    │   └── tasks
-    └── web
-        ├── handler
-        ├── tasks
-        ├── templates
-        └── vars
-```
-
-### Step 7.1 The Common Role
-
-We will populate now these folders with the neccessary content.
-
-```bash
-cd roles
-```
-
-Create `main.yml`
-
-```bash
-vi common/tasks/main.yml
-```
-
-and paste in the following:
-
-```YAML
-- name: Update all packages on a Debian/Ubuntu
-  apt:
-    update_cache: yes
-    upgrade: dist
-    force_apt_get: yes
-  
-- name: install curl
-  apt:
-    name: curl
-    state: present
-    update_cache: yes
-    force_apt_get: yes
-```
-
-#### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
-
-### Step 7.2 The Web Role
-
-#### 7.2.1 Install, configure and start apache2
+#### 7.1.1 Install, configure and start apache2
 
 Next step in our LAMP configuration is the installation of the Apache2 server. In `web/tasks/` create the `main.yml`
 
@@ -273,7 +216,7 @@ The following code will tell our Ansible to install Apache2 and configure it. It
 Did you spot the `notify` parameter at the end of the file? In Ansible we call this a `handler` a very cool feature that will trigger the process (start apache2) only if anything changes after the playbook has run. Time and resources saving!  
 Ok, let's create the handler now.
 
-#### 7.2.2 Handling apache2 start
+#### 7.1.2 Handling apache2 start
 
 In `web/handlers/` create `main.yaml`
 
@@ -303,7 +246,7 @@ and paste there the following:
     daemon_reload: yes
 ```
 
-#### 7.2.3 Templating
+#### 7.1.3 Templating
 
 We need to configure our Apache server. For this purpose we will use the `template` feature. Ansible templates leverage the powerful and widely adopted Jinja2 templating engine. Let's go ahead and create two templates in this location -> `web/templates`.
 
@@ -366,183 +309,6 @@ server_document_root: /var/www/html
 
 #### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
-### Step 7.3 The DB Role
-
-Now that we have provided for the installation of the server, let's write similarly a database role.
-
-#### 7.3.1 Install, configure and start `mySQL`
-
-The tasks we specify here will install `mySQL` with assigned passwords when prompted.
-
-#### No doubts! We are still in `roles/`
-
-Create the following file: `db/tasks/main.yml`.
-
-```bash
-vi db/tasks/main.yml
-```
-
-Paste:
-
-```YAML
-- name: set mysql root password
-  debconf:
-    name: mysql-server
-    question: mysql-server/root_password
-    value: "{{ mysql_root_password }}"
-    vtype: password
-  tags: ['mysql']
-
-- name: confirm mysql root password
-  debconf:
-    name: mysql-server
-    question: mysql-server/root_password_again
-    value: "{{ mysql_root_password }}"
-    vtype: password
-  tags: ['mysql']
-
-- name: install mysql-python
-  apt:
-    name: ['python-mysqldb',
-    'python-pymysql',
-    'python3-pymysql',
-    'python-apt',
-    'python3-apt']
-    state: present
-    force_apt_get: yes
-  tags: ['mysql']
-
-- name: install mysqlserver
-  apt:
-    name:
-      ['mysql-server', 'mysql-client']
-    state: present
-    force_apt_get: yes
-  tags: ['mysql']
-  
-- include: harden.yml
-```
-
-Notice the `include` statement. We can include a file with a list of plays or tasks in other files.
-The `include` statement, along with `roles` alow to break large playbooks into smaller ones.
-This will let us use them in parent playbooks or even multiple times in the same playbook.
-
-The `harden.yml` will perform a hardening on mySQL server configuration.
-
-```bash
-vi db/tasks/harden.yml
-```
-
-Paste inside:
-
-```YAML
-- name: deletes anonymous mysql user
-  mysql_user:
-    user: ""
-    state: absent
-    login_password: "{{ mysql_root_password }}"
-    login_user: root
-
-- name: secures the mysql root user
-  mysql_user:
-    user: root
-    password: "{{ mysql_root_password }}"
-    host: "{{ item }}"
-    login_password: "{{mysql_root_password}}"
-    login_user: root
-  with_items:
-   - 127.0.0.1
-   - localhost
-   - ::1
-   - "{{ ansible_fqdn }}"
-
-- name: removes the mysql test database
-  mysql_db:
-    db: test
-    state: absent
-    login_password: "{{ mysql_root_password }}"
-    login_user: root
-
-- name: enable mysql on startup
-  systemd:
-    name: mysql
-    enabled: yes
-  notify:
-    - start mysql
-```
-
-Similarly to how the `web` role was written, the `db server` role also uses a handler and local variables.
-Create a `db/handlers/main.yml` file.
-
-#### You know the drill - we are still in roles/ !
-
-```bash
-vi db/handlers/main.yml
-```
-
-Here is the content:
-
-```YAML
-- name: start mysql
-  systemd:
-    state: started
-    name: mysql
-
-- name: stop mysql
-  systemd:
-    state: stopped
-    name: mysql
-
-- name: restart mysql
-  systemd:
-    state: restarted
-    name: mysql
-    daemon_reload: yes
-```
-
-And here is the file `db/vars/main.yml`, containing the password for the `db` role:
-
-```bash
-vi db/vars/main.yml
-```
-
-```YAML
-mysql_root_password: P@nd@$$w0rd
-
-```
-
-#### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
-
-### Step 7.4 The PHP Role
-
-We will install PHP and then restart the Apache2 server to configure it to work with PHP. Again note the `notify` handler at the end of the file.
-
-This is a quick one - again under `roles/` create `php/tasks/main.yml` file.
-
-```bash
-vi php/tasks/main.yml
-```
-
-```YAML
-- name: install php7
-  apt:
-    name:
-      ['php7.2-mysql',
-      'php7.2-curl',
-      'php7.2-json',
-      'php7.2-cgi',
-      'php7.2',
-      'libapache2-mod-php7.2'
-      ]
-    state: present
-    force_apt_get: yes
-  notify:
-    - restart apache2
-  tags: ["web"]
-  
-```
-
-#### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
 ### And now let's create and run our playbook
 
@@ -555,15 +321,17 @@ cd .. && vi site.yml    # We are now back in playbook/
 Paste:
 
 ```YAML
-- name: LAMP stack setup on Ubuntu 18.04
+- name: LAMP stack setup on Ununtu 18.04
   hosts: lamp
   remote_user: "{{ remote_username }}"
-  become: True
+  become: yes
+  
   roles:
-    - common
-    - web
-    - db
-    - php
+    - role: common
+    - role: web
+    - role: db
+    - role: php
+    - role: wordpress
 ```
 
 Let' set our remote user globally:
@@ -588,12 +356,18 @@ You should see:
 
 ![Wordpress welcome page](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-19%20at%2013.23.54.png)
 
-## 9. Notes
+Now run the playbook like this:
+
+```bash
+ansible-playbook site.yml
+```
+
+## 8. Notes
 
 If you want to create the LAMP stack playbook from scratch, [here](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/final/step_by_step/LAMP_stack_step_by_step.md#ansible-hands-on).
 
 
-## 10. References
+## 9. References
 
 Some materials were adopted from this cool book:
 
