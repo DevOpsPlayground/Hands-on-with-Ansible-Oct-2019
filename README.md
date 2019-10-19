@@ -582,6 +582,11 @@ ansible-playbook -i inventory site.yml
 
 Success!
 
+## Go to http://remote-eft.ldn.devopsplayground.com/apache/wordpress/wp-admin/install.php
+
+You should see:
+
+
 ## 9. Notes
 
 Link to the [git repository](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019) with the README and the playbooks that will be used in this session.

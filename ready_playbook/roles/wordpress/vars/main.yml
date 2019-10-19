@@ -1,0 +1,16 @@
+new_user_name: wordpress
+new_user_password: password
+
+wp_version: 4.0
+wp_install_dir: /var/sites/wordpress
+
+
+wp_database_name: wordpress
+wp_database_username: wordpress
+wp_database_password: my*8*8t3st
+
+wp_site_name: Playground
+wp_site_title: About Ansible 
+
+wp_admin_username: Panda
+wp_admin_password: S0meP@nd@
