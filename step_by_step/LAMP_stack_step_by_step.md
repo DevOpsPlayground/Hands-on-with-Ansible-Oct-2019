@@ -90,7 +90,7 @@ and paste in the following:
 
 #### Tip! Check your [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook) is correct!
 
-### Step 7.2 The Web Role
+### Step 7.2 The WebserverRole
 
 #### 7.2.1 Install, configure and start apache2
 
