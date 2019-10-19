@@ -420,6 +420,8 @@ ansible-playbook site.yml --tags=web
 
 ### 8.4 Enable Debug and Increase Verbosity
 
+[Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/modules/debug_module.htm)
+
 ```bash
 ANSIBLE_DEBUG=true ANSIBLE_VERBOSITY=1 ansible-playbook site.yml --tags=web
 # or
@@ -431,7 +433,6 @@ The `-v` gives us a more detailed output from Ansible, once the playbook is run.
 ## 9. Notes
 
 If you want to create the LAMP stack playbook from scratch, [here](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/final/step_by_step/LAMP_stack_step_by_step.md#ansible-hands-on).
-
 
 ## 10. References
 
