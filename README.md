@@ -586,6 +586,7 @@ Success!
 
 You should see:
 
+[Wordpress welcome page](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-19%20at%2013.23.54.png)
 
 ## 9. Notes
 
