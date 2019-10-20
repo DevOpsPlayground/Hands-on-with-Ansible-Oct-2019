@@ -428,9 +428,15 @@ ansible-playbook site.yml
 
 ### 8.2 Linting
 
+We can use the linter that comes with Ansible to catch bugs and stylistic errors. Especially helpful for those that start with Ansible but handy for experts as well.
+
+Run
+
 ```bash
 ansible-lint site.yml
 ```
+
+And watch the linter complain!
 
 ### 8.3 Dry-run
 
