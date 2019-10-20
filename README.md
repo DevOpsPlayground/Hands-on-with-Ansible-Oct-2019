@@ -162,7 +162,7 @@ We will look at how to write a LAMP stack playbook using the features offered by
 Before we start, take a look at the directory structure of a fully fledged playbook. Click here:
 [Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook). This is what we are aiming for ;-)
 
-To save time, I have alredy created some roles for you. Take a look at the `/playbook` directory to get familiar with the concents. Anything missing?
+To save time, I have alredy created some roles for you. Take a look at the `/playbook` directory to get familiar with the contents. Anything missing?
 
 ### Step 7.1 The Webserver Role
 
