@@ -16,7 +16,7 @@ inventory_content="[lamp]\nlampstack    ansible_host=${REMOTE_HOST}  ansible_bec
 ansible_cfg_content="ansible_python_interpreter=/usr/local/bin/python3"
 
 
-echo -e  $inventory_content | tee playbook/inventory /etc/ansible/inventory 1>/dev/null
+echo -e  $inventory_content | tee playbook/inventory 1>/dev/null
 echo -e  $ansible_cfg_content | tee ansible.cfg playbook/ansible.cfg 1>/dev/null
 
 echo "Creating inventory of hosts and ansible.cfg......"
