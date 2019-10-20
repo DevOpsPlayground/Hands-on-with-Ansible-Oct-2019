@@ -13,9 +13,9 @@ You will need:
 
 Ansible works from a control machine to send commands to one or more remote machines.
 In Ansible terminology, these are referred to as a *control node* and *remote hosts*.
-We have set up a control node and one remote host for each one of you to use.
+We have set up a `control node` and one `remote host` for each one of you to use.
 
-You may have noticed from your information-slip that you have been assigned  two animal names. These animals have been used to ensure everyone has unique host names.
+You may have noticed from your information-slip that you have been assigned two animal names. These animals have been used to ensure everyone has unique host names.
 So, for example, imagine Bob has a `panda` and a `tiger` :smiley: . We have set up machines control_panda and remote_tiger for Bob to practice Ansible commands with.
 
 Further these machines can be accessed via a command line in the browser (a web terminal called WeTTy), under the following links:
@@ -23,11 +23,11 @@ Further these machines can be accessed via a command line in the browser (a web 
 - <http://control_panda.ldn.devopsplayground.com/wetty/>
 - <http://remote_tiger.ldn.devopsplayground.com/wetty/>
 
-representing the Ansible control node and remote host, respectively.
+representing the Ansible `control node` and `remote host`, respectively.
 
 ### Let's start
 
-1. Open up the <http://control_panda.ldn.devopsplayground.com/wetty/> (use the `animal name` on you info-slip)
+1. Open up the <http://control_panda.ldn.devopsplayground.com/wetty/> (use the `animal name` on your info-slip)
 
 2. You will be prompted for a login password. Use the one on your information-slip.
 
@@ -37,7 +37,8 @@ representing the Ansible control node and remote host, respectively.
 4. As a convenience let's set some ENVIRONMENT variables that we will use later. Again you will find the necessary details on your information-slip.
 
 ```bash
-export REMOTE_HOST=remote_host_ip       # type the IP address of your remote_animal machine. E.g. export REMOTE_HOST=52.214.226.94
+export REMOTE_HOST=remote_host_ip       # type the IP address of your "remote_animal" machine.
+                                        # e.g. export REMOTE_HOST=52.214.226.94
 export PASSWORD=remote_host_password    # e.g. export PASSWORD=London
 ```
 
@@ -73,7 +74,7 @@ That's it!
 
 ## Step 2. Configuring SSH Access to the remote host
 
-Run the following command from your control_panda.
+Run the following command from your `control_panda`.
 
 ```bash
 cd Hands-on-with-Ansible-Oct-2019
@@ -82,17 +83,21 @@ cd Hands-on-with-Ansible-Oct-2019
 
 ## Step 3. Let's check out the connectivity with the host
 
-Run the following. And, yes! That comma is right in its place! It tells ansible that there is only that one host in your inline inventory. 
+Run the following to ping the remote host.
+
+And, yes! That `comma` is right in its place! It tells ansible that there is only that one host in your inline inventory.
 
 ```bash
 ansible all -i "$REMOTE_HOST," -m ping
 ```
 
- Or check memory and disk space on your remote_panda:
+ Or check its memory and disk space:
 
 ```bash
 ansible all -i "$REMOTE_HOST," -m shell -a 'free -m && df -h'
 ```
+
+What we did now was to run ansible `ad-hoc commands` on our remote host.
 
 ## Step 4. Ansible Hostfile and configuration file
 
