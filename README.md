@@ -5,7 +5,7 @@
 You will need:
 
 1. The information-slip you picked up at reception.
-2. Chrome (preferably but Firefox can also do).
+2. Chrome (preferably, but Firefox can also do).
 
 ------
 
@@ -16,7 +16,7 @@ In Ansible terminology, these are referred to as a *control node* and *remote ho
 We have set up a control node and one remote host for each one of you to use.
 
 You may have noticed from your information-slip that you have been assigned  two animal names. These animals have been used to ensure everyone has unique host names.
-So, for example, imagine Bob has a panda and a tiger :-) We have set up machines control_panda and remote_tiger for Bob to practice Ansible commands with.
+So, for example, imagine Bob has a `panda` and a `tiger` :smiley: . We have set up machines control_panda and remote_tiger for Bob to practice Ansible commands with.
 
 Further these machines can be accessed via a command line in the browser (a web terminal called WeTTy), under the following links:
 
@@ -27,17 +27,17 @@ representing the Ansible control node and remote host, respectively.
 
 ### Let's start
 
-1. Open up the <http://control_panda.ldn.devopsplayground.com/wetty/> (use animal name on you info-slip)
+1. Open up the <http://control_panda.ldn.devopsplayground.com/wetty/> (use the `animal name` on you info-slip)
 
 2. You will be prompted for a login password. Use the one on your information-slip.
 
 3. Type some shell commands to get familiar with the web terminal.
    From now on we will be working from the browsers only.
 
-4. As a convenience let's set some ENVIRONMENT variables that we will use later
+4. As a convenience let's set some ENVIRONMENT variables that we will use later. Again you will find the necessary details on your information-slip.
 
 ```bash
-export REMOTE_HOST=remote_host_ip       # e.g. export REMOTE_HOST=52.214.226.94
+export REMOTE_HOST=remote_host_ip       # type the IP address of your remote_animal machine. E.g. export REMOTE_HOST=52.214.226.94
 export PASSWORD=remote_host_password    # e.g. export PASSWORD=London
 ```
 
