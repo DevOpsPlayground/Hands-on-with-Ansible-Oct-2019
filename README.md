@@ -97,7 +97,7 @@ ansible all -i "$REMOTE_HOST," -m ping
 ansible all -i "$REMOTE_HOST," -m shell -a 'free -m && df -h'
 ```
 
-What we did now was to run ansible `ad-hoc commands` on our remote host. [Let's explore ad-hoc :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html)
+What we did just now was to run ansible `ad-hoc commands` on our remote host. [Let's explore ad-hoc commands :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html)
 
 ## Step 4. Ansible Hostfile and configuration file
 
