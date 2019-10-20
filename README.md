@@ -402,12 +402,11 @@ ansible-playbook -i inventory site.yml
 
 Success! :+1: :+1: :+1:
 
-#### Go to http://remote-eft.ldn.devopsplayground.com/apache/wordpress/wp-admin/install.php
+#### Go to http://remote-tiger.ldn.devopsplayground.com/apache/wordpress
 
 You should see:
 
 ![Wordpress welcome page](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-19%20at%2013.23.54.png)
-
 
 ## 8. Playbook basics
 
@@ -416,6 +415,8 @@ You should see:
 Let's tell Ansible where we want it to look up the inventory.
 
 ```bash
+# in ~/Hands-on-with-Ansible-Oct-2019/playbook
+
 echo -e "inventory = inventory" >> ansible.cfg
 ```
 
