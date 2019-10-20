@@ -380,7 +380,7 @@ Paste:
   
   roles:
     - role: common
-    - role: web
+    - role: webserver
     - role: db
     - role: php
     - role: wordpress
