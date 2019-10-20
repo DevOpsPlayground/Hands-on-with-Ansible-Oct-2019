@@ -253,8 +253,6 @@ The following code will tell our Ansible to install Apache2 and configure it. It
 Let's discuss what this task file is doing.
 Hint: Use the `ansible-doc` command to help you. Example: `ansible-doc systemd`.
 
-### What is  [Idempotence](https://en.wikipedia.org/wiki/Idempotence)?
-
 Did you spot the `notify` parameter at the end of the file? [Let's explore handlers :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
 
 In Ansible we call this a `handler` a very cool feature that will trigger the process (start apache2) only if anything changes after the playbook has run. Time and resources saving!  
@@ -289,6 +287,7 @@ and paste there the following:
     name: apache2
     daemon_reload: yes
 ```
+### What is  [Idempotence](https://en.wikipedia.org/wiki/Idempotence)? :nerd_face:
 
 #### 7.1.3 Templating
 
