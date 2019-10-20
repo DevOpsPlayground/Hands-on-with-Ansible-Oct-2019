@@ -116,7 +116,7 @@ less playbook/inventory
 lampstack ansible_host=52.214.226.94 ansible_become_pass=my_pass
 ```
 
-Ansible has a defaul inventory and configuration file. Let's exlore them as examples :nerd_face:
+Ansible has a `defaul inventory` and a `default configuration file`. Let's exlore them as examples :nerd_face:
 
 ```bash
 less /etc/ansible/hosts
