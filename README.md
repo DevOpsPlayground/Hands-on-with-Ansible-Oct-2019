@@ -97,7 +97,7 @@ ansible all -i "$REMOTE_HOST," -m ping
 ansible all -i "$REMOTE_HOST," -m shell -a 'free -m && df -h'
 ```
 
-What we did now was to run ansible `ad-hoc commands` on our remote host. [Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html)
+What we did now was to run ansible `ad-hoc commands` on our remote host. [Let's explore ad-hoc :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html)
 
 ## Step 4. Ansible Hostfile and configuration file
 
@@ -215,7 +215,7 @@ The following code will tell our Ansible to install Apache2 and configure it. It
     - start apache2
 ```
 
-Did you spot the `notify` parameter at the end of the file? [Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
+Did you spot the `notify` parameter at the end of the file? [Let's explore handlers :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
 
 In Ansible we call this a `handler` a very cool feature that will trigger the process (start apache2) only if anything changes after the playbook has run. Time and resources saving!  
 Ok, let's create the handler now.
@@ -253,7 +253,7 @@ and paste there the following:
 #### 7.1.3 Templating
 
 We need to configure our Apache server. For this purpose we will use the `template` feature.
-[Let's explore :nerd_face:](https://docs.ansible.com/ansible/2.5/modules/template_module.html#template-templates-a-file-out-to-a-remote-server)
+[Let's explore templates :nerd_face:](https://docs.ansible.com/ansible/2.5/modules/template_module.html#template-templates-a-file-out-to-a-remote-server)
 
 Ansible templates leverage the powerful and widely adopted Jinja2 templating language. Let's go ahead and create two templates in this location -> `webserver/templates`.
 
@@ -302,7 +302,7 @@ Paste:
 </VirtualHost>
 ```
 
-Where do we put all these variables? [Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#defining-variables-in-included-files-and-roles)
+Where do we put all these variables? [Let's explore defining variables :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#defining-variables-in-included-files-and-roles)
 
 These variables belong to the Webservers role. They have their place in a designed for the purpose location `webserver/vars/main.yml`:
 
@@ -396,7 +396,7 @@ ansible-playbook site.yml --check
 
 ### 8.4 Tags
 
-How can we save time and run only what we are interested in? [Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html)
+How can we save time and run only what we are interested in? [Let's explore tags :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html)
 
 ```bash
 vi site.yml
@@ -429,7 +429,7 @@ ansible-playbook site.yml --tags=web
 
 ### 8.5 Enable Debug and Increase Verbosity
 
-[Let's explore :nerd_face:](https://docs.ansible.com/ansible/latest/modules/debug_module.htm)
+[Let's explore ways to debug :nerd_face:](https://docs.ansible.com/ansible/latest/modules/debug_module.htm)
 
 ```bash
 ANSIBLE_DEBUG=true ANSIBLE_VERBOSITY=1 ansible-playbook site.yml --tags=web
