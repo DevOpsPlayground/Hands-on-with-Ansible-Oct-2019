@@ -122,7 +122,7 @@ Ansible has a `defaul inventory` and a `default configuration file`. Let's exlor
 less /etc/ansible/hosts
 ```
 
-and  now 
+and
 
 ```bash
 less /etc/ansible/ansible.cfg
@@ -130,7 +130,7 @@ less /etc/ansible/ansible.cfg
 
 ## Step 5. Write a simple playbook
 
-We will put together a simple playbook to update our remote host.
+We will put together a simple playbook to update our remote host, and check its memory and disk space. We did did using ad-hoc commands but this time we will transform them into a playbook file. We can now store this in version control, we can let other systems to check it out and run it as many times as we want.
 Create a file `update.yml`
 
 ```bash
