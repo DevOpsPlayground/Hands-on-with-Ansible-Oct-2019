@@ -107,6 +107,21 @@ Let's  create the inventory of hosts and Ansible configuration file. Run:
 ./inventory_and_config.sh $REMOTE_HOST
 ```
 
+Let's take a look what those two files look like for us:
+
+```bash
+less playbook/inventory
+# you should see something like:
+[lamp]
+lampstack ansible_host=34.244.43.21 ansible_become_pass=my_pass
+```
+
+Now have a look at the default Ansible inventory:
+
+```bash
+less /etc/ansible/hosts
+```
+
 ## Step 5. Write a simple playbook
 
 We will put together a simple playbook to update our remote host.
