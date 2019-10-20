@@ -172,16 +172,16 @@ ansible-doc apt
 ansible-playbook -i playbook/inventory update.yml
 ```
 
-Success!!
+### Success!!
 
 You should see something similar:
 ![Result](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/final/images/Screenshot%202019-10-20%20at%2018.49.34.png)
 
 ## Step 7. Build a LAMP stack and deploy Wordpress
 
-We will look at how to write a LAMP stack playbook using the features offered by Ansible.
+We will now look at how to write a LAMP stack playbook using the features offered by Ansible.
 
-The directory, where all our playbook files will live, has already been created for you. Unsurprisingly it is called `playbook'. But you can call it according to what its purpose is. It will become a good mnemonic for you.
+The directory, where all our playbook files will live, has already been created for you. Unsurprisingly it is called `playbook`. But you can name it according to what its purpose is. It will become a good mnemonic for you.
 
 Here is the high-level hierarchy structure of the playbook:
 
@@ -202,7 +202,7 @@ Here is the high-level hierarchy structure of the playbook:
 Before we start, take a look at the directory structure of a fully fledged playbook. Click here:
 [Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook). This is what we are aiming for ;-)
 
-To save time, I have alredy created some roles for you. Take a look at the `/playbook` directory to get familiar with the contents. Anything missing?
+To save time, I have alredy created some roles for you. Go back to the Web Terminal of your `control node` and take a look at the `/playbook` directory. Get familiar with the contents. Anything missing?
 
 ### Step 7.1 The Webserver Role
 
@@ -210,7 +210,7 @@ We will now write a Role to install and configure the Apache2 server.
 
 #### 7.1.1 Install, configure and start apache2
 
-First thing first - install Apache2. We will do this by running several tasks. Run th following:
+First thing first - we'll install Apache2. Create the folder structure for the tasks:
 
 ```bash
 cd playbook/roles
@@ -250,6 +250,9 @@ The following code will tell our Ansible to install Apache2 and configure it. It
     - start apache2
 ```
 
+Let's discuss what this task file is doing. 
+Hint: Use the `ansible-doc` command to help you. Example: `ansible-doc systemd`.
+
 Did you spot the `notify` parameter at the end of the file? [Let's explore handlers :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
 
 In Ansible we call this a `handler` a very cool feature that will trigger the process (start apache2) only if anything changes after the playbook has run. Time and resources saving!  
@@ -259,9 +262,9 @@ Ok, let's create the handler now.
 
 In `webserver/handlers/` create `main.yaml`
 
-#### Hint - we are in roles/
-
 ```bash
+# ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
+
 mkdir -p webserver/handlers && vi webserver/handlers/main.yaml
 ```
 
