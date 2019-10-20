@@ -134,6 +134,8 @@ We will put together a simple playbook to update our remote host.
 Create a file `update.yml`
 
 ```bash
+# in ~/Hands-on-with-Ansible-Oct-2019
+
 vi update.yml
 ```
 
@@ -167,7 +169,7 @@ ansible-doc apt
 ## Step 6. Run the playbook
 
 ```bash
-ansible-playbook  -i ./playbook/inventory update.yml
+ansible-playbook  -i playbook/inventory update.yml
 ```
 
 ## Step 7. Build a LAMP stack and deploy Wordpress
