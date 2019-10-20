@@ -125,15 +125,19 @@ less /etc/ansible/hosts
 and  now 
 
 ```bash
-less /etc/ansible/ansible.cfg 
+less /etc/ansible/ansible.cfg
 ```
 
 ## Step 5. Write a simple playbook
 
 We will put together a simple playbook to update our remote host.
-Create a file `update.yml` and paste the following. Careful with the spaces - YAML is fussy!
+Create a file `update.yml`
 
-HINT: You can copy the file you have cloned from the repo.
+```bash
+vi update.yml
+```
+
+and paste the following. Careful with the spaces - YAML is fussy!
 
 ```YAML
 ---
