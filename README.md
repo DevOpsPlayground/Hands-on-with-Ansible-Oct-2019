@@ -101,7 +101,7 @@ What we did just now was to run ansible `ad-hoc commands` on our remote host. [L
 
 ## Step 4. Ansible Hostfile and configuration file
 
-Let's  create the inventory of hosts and Ansible configuration file. Run:
+Let's  create the inventory of hosts and Ansible configuration file at the root of our project. Run:
 
 ```bash
 ./inventory_and_config.sh $REMOTE_HOST
@@ -116,7 +116,13 @@ less playbook/inventory
 lampstack ansible_host=52.214.226.94 ansible_become_pass=my_pass
 ```
 
-Now have a look at the default Ansible inventory:
+Ansible has a defaul inventory and configuration file. Let's exlore them as examples :nerd_face:
+
+```bash
+less /etc/ansible/hosts
+```
+
+and  now 
 
 ```bash
 less /etc/ansible/hosts
