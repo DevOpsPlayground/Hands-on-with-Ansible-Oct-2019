@@ -173,7 +173,7 @@ We will now write a Role to install and configure the Apache2 server.
 First thing first - install Apache2. We will do this by running several tasks. Run th following:
 
 ```bash
-cd /playbook/roles
+cd playbook/roles
 mkdir -p webserver/tasks && vi webserver/tasks/main.yml
 ```
 
