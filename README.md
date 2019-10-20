@@ -255,6 +255,8 @@ Hint: Use the `ansible-doc` command to help you. Example: `ansible-doc systemd`.
 
 Did you spot the `notify` parameter at the end of the file? [Let's explore handlers :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
 
+[Idempotence](https://en.wikipedia.org/wiki/Idempotence)
+
 In Ansible we call this a `handler` a very cool feature that will trigger the process (start apache2) only if anything changes after the playbook has run. Time and resources saving!  
 Ok, let's create the handler now.
 
@@ -290,14 +292,14 @@ and paste there the following:
 
 #### 7.1.3 Templating
 
-We need to configure our Apache server. For this purpose we will use the `template` feature.
+We need to configure our Apache server. For this purpose we will use the `template` module.
 [Let's explore templates :nerd_face:](https://docs.ansible.com/ansible/2.5/modules/template_module.html#template-templates-a-file-out-to-a-remote-server)
 
 Ansible templates leverage the powerful and widely adopted Jinja2 templating language. Let's go ahead and create two templates in this location -> `webserver/templates`.
 
-#### We are still in /roles ;-)
-
 ```bash
+# ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
+
 mkdir -p webserver/templates/ && vi webserver/templates/web.port.j2
 ```
 
