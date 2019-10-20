@@ -440,13 +440,15 @@ And watch the linter complain!
 
 ### 8.3 Dry-run
 
+When ansible-playbook is executed with --check it will not make any changes on remote systems. Instead it will report what changes it would have made rather than making them.
+
 ```bash
 ansible-playbook site.yml --check
 ```
 
 ### 8.4 Tags
 
-How can we save time and run only what we are interested in? [Let's explore tags :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html)
+Playbooks can easily become large and can run for long time. We don't want to watch them rerun in their entirety every time we make a change to a task. How can we save time and run only what we are interested in? [Let's explore tags :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html)
 
 ```bash
 vi site.yml
@@ -477,6 +479,10 @@ Now run your playbook in the following mode:
 ansible-playbook site.yml --tags=web
 ```
 
+#### Hint! We placed `tags` on roles, but we can be more granular and tag any task in the playbook. 
+
+:nerd_face: Only if you have time, modify a task file to bear a tag with your name. Then rerun the playbook with your tag to see only that task being played.
+
 ### 8.5 Enable Debug and Increase Verbosity
 
 [Let's explore ways to debug :nerd_face:](https://docs.ansible.com/ansible/latest/modules/debug_module.htm)
@@ -484,7 +490,7 @@ ansible-playbook site.yml --tags=web
 ```bash
 ANSIBLE_DEBUG=true ANSIBLE_VERBOSITY=1 ansible-playbook site.yml --tags=web
 # or
-ANSIBLE_DEBUG=true -vvvv ansible-playbook ansible-playbook site.yml --tags=web
+ANSIBLE_DEBUG=true ansible-playbook site.yml --tags=web  -v
 ```
 
 The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
