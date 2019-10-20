@@ -158,12 +158,6 @@ and paste the following. Careful with the spaces - YAML is fussy!
       shell: free -m && df -h
 ```
 
-Success!!
-
-You should see something similar:
-![Result](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/final/images/Screenshot%202019-10-20%20at%2018.49.34.png)
-
-
 ### Tip!
 
 What if we don't have access to the documentation in the web? Ansible ships with the `ansible-doc` tool. We can access the documentation from the command line.
@@ -177,6 +171,11 @@ ansible-doc apt
 ```bash
 ansible-playbook -i playbook/inventory update.yml
 ```
+
+Success!!
+
+You should see something similar:
+![Result](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/final/images/Screenshot%202019-10-20%20at%2018.49.34.png)
 
 ## Step 7. Build a LAMP stack and deploy Wordpress
 
