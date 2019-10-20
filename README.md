@@ -101,10 +101,9 @@ What we did just now was to run ansible `ad-hoc commands` on our remote host. [L
 
 ## Step 4. Ansible Hostfile and configuration file
 
-Let's create a directory where we will organize all our files for the playbook. Then run the `inventory_and_config.sh` file to create the inventory of hosts and Ansible configuration file.
+Let's  create the inventory of hosts and Ansible configuration file. Run:
 
 ```bash
-mkdir playbook
 ./inventory_and_config.sh $REMOTE_HOST
 ```
 
@@ -148,6 +147,7 @@ ansible-playbook  -i ./playbook/inventory update.yml
 
 ## Step 7. Build a LAMP stack and deploy Wordpress
 
+The directory where all our playbook files will live, has already been created for you. It is called `playbook'.
 We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook:
 
 ```YAML
