@@ -13,11 +13,11 @@ if [ -z "$PASSWORD" ]
 fi
 
 inventory_content="[lamp]\nlampstack    ansible_host=${REMOTE_HOST}  ansible_become_pass=${PASSWORD}"
-ansible_cfg_content="[defaults]\ninventory = inventory\nansible_python_interpreter=/usr/local/bin/python3"
+ansible_cfg_content="[defaults]\nansible_python_interpreter=/usr/local/bin/python3"
 
 
-echo -e  $inventory_content | tee ready_playbook/inventory playbook/inventory 1>/dev/null
-echo -e  $ansible_cfg_content | tee ansible.cfg ready_playbook/ansible.cfg playbook/ansible.cfg 1>/dev/null
+echo -e  $inventory_content | tee playbook/inventory 1>/dev/null
+echo -e  $ansible_cfg_content | tee ansible.cfg playbook/ansible.cfg 1>/dev/null
 
-echo "Creating inventory and ansible.cfg......"
-echo "Done"
+echo "Creating inventory of hosts and ansible.cfg......"
+echo "Done!"

@@ -6,5 +6,3 @@ secret
 snippets.txt
 *.retry
 *.pem
-*atom*
-bad_*
