@@ -169,13 +169,16 @@ ansible-doc apt
 ## Step 6. Run the playbook
 
 ```bash
-ansible-playbook  -i playbook/inventory update.yml
+ansible-playbook -i playbook/inventory update.yml
 ```
 
 ## Step 7. Build a LAMP stack and deploy Wordpress
 
-The directory where all our playbook files will live, has already been created for you. It is called `playbook'.
-We will look at how to write a LAMP stack playbook using the features offered by Ansible. Here is the high-level hierarchy structure of the playbook:
+We will look at how to write a LAMP stack playbook using the features offered by Ansible.
+
+The directory, where all our playbook files will live, has already been created for you. Unsurprisingly it is called `playbook'. But you can call it according to what its purpose is. It will become a good mnemonic for you.
+
+Here is the high-level hierarchy structure of the playbook:
 
 ```YAML
 - name: LAMP stack setup and Wordpress installation on Ubuntu 18.04
