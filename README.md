@@ -125,7 +125,7 @@ less /etc/ansible/hosts
 and  now 
 
 ```bash
-less /etc/ansible/hosts
+less /etc/ansible/ansible.cfg 
 ```
 
 ## Step 5. Write a simple playbook
