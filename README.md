@@ -287,7 +287,8 @@ and paste there the following:
     name: apache2
     daemon_reload: yes
 ```
-### What is  [Idempotence](https://en.wikipedia.org/wiki/Idempotence)? :nerd_face:
+
+##### What is  [Idempotence](https://en.wikipedia.org/wiki/Idempotence)? :nerd_face:
 
 #### 7.1.3 Templating
 
@@ -305,7 +306,6 @@ mkdir -p webserver/templates/ && vi webserver/templates/web.port.j2
 Paste
 
 ```XML
-
 # If you just change the port or add more ports here, you will likely also
 # have to change the VirtualHost statement in
 # /etc/apache2/sites-enabled/000-default.conf
@@ -326,13 +326,14 @@ Listen 8080
 Then
 
 ```bash
+# ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
+
 vi webserver/templates/web.conf.j2
 ```
 
 Paste:
 
 ```XML
-
 <VirtualHost *:8080>
     ServerAdmin {{server_admin_email}}
     DocumentRoot {{server_document_root}}
@@ -341,11 +342,14 @@ Paste:
 </VirtualHost>
 ```
 
-Where do we put all these variables? [Let's explore defining variables :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#defining-variables-in-included-files-and-roles)
+Our template is using variables that will be replaced with their values, at the time we run the playbook, and then sent off to the remote server.
+Where is a good place to define variables? [Let's explore defining variables :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#defining-variables-in-included-files-and-roles)
 
-These variables belong to the Webservers role. They have their place in a designed for the purpose location `webserver/vars/main.yml`:
+These variables belong to the `webserver` role. Their place is in a designed for the purpose location `webserver/vars/main.yml`:
 
 ```bash
+# ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
+
 mkdir -p webserver/vars && vi webserver/vars/main.yml
 ```
 
