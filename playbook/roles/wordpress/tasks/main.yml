@@ -4,18 +4,15 @@
     state: present
     force_apt_get: yes
   
-
 - name: Configure WordPress to use MySQL and PHP
   template:
     src: wp.conf.j2
     dest: /etc/wordpress/config-localhost.php
   
-
 - name: Configure the WordPress database
   template:
     src: create_wp_db.j2
     dest: wordpress.sql
-  
 
 - name: Create WP database
   shell: cat wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf
