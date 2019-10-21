@@ -5,7 +5,7 @@
 You will need:
 
 1. The information-slip you picked up at reception.
-2. Chrome (preferably, but Firefox can also do).
+2. The Google Chrome browser (preferably, but Firefox can also do).
 
 ------
 
@@ -27,19 +27,19 @@ representing the Ansible `control node` and `remote host`, respectively.
 
 ### Let's start
 
-1. Open up the <http://control_panda.ldn.devopsplayground.com/wetty/> (use the `animal name` on your info-slip)
+1. Open up the <http://control_panda.ldn.devopsplayground.com/wetty/> (use the `animal name` on your info-slip).
 
 2. You will be prompted for a login password. Use the one on your information-slip.
 
 3. Type some shell commands to get familiar with the web terminal.
    From now on we will be working from the browsers only.
 
-4. As a convenience let's set some ENVIRONMENT variables that we will use later. Again you will find the necessary details on your information-slip.
+4. Without changing machine, (you are in your `control_panda`), set some ENVIRONMENT variables that you will use later. Again, the necessary details are on your information-slip.
 
 ```bash
 export REMOTE_HOST=remote_host_ip       # type the IP address of your "remote_animal" machine.
                                         # e.g. export REMOTE_HOST=52.214.226.94
-export PASSWORD=remote_host_password    # e.g. export PASSWORD=London
+export PASSWORD=remote_host_password    # e.g. export PASSWORD=mys3kr3t
 ```
 
 -----
@@ -50,16 +50,15 @@ Check whether Ansible is installed by running:
 
 ```bash
 ansible --version  
-ansible 2.8.5       # you should see something like this
+ansible 2.8.5       # If Ansible is installed you will see something like this
 ...
 ```
 
 If not, run these commands:
 
 ```bash
-sudo apt update     # [sudo] password for playground:   (type in your password)
+sudo apt update     #  (respond with your password at the `[sudo] password for playground:` prompt)
 sudo apt install ansible
-sudo apt install ansible-lint
 ```
 
 and again
