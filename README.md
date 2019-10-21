@@ -50,7 +50,7 @@ Check whether Ansible is installed by running:
 
 ```bash
 ansible --version  
-ansible 2.8.5       # If Ansible is installed you will see something like this
+ansible 2.8.6       # If Ansible is installed you will see something like this
 ...
 ```
 
@@ -58,6 +58,8 @@ If not, run these commands:
 
 ```bash
 sudo apt update     #  (respond with your password at the `[sudo] password for playground:` prompt)
+sudo apt install software-properties-common
+sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible
 ```
 
@@ -426,6 +428,11 @@ ansible-playbook site.yml
 ### 8.2 Linting
 
 We can use the linter that comes with Ansible to catch bugs and stylistic errors. Especially helpful for those that start with Ansible but handy for experts as well.
+Let's pull the linter down now:
+
+```bash
+sudo apt install ansible-lint
+```
 
 Run
 
