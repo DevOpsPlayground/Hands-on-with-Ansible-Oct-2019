@@ -81,10 +81,12 @@ cd Hands-on-with-Ansible-Oct-2019
 ```
 
 You should see output something like the following:
+
 ![Output1](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-21%20at%2023.57.21.png)
 
 
 Answer yes to this question, then the proces should continue something like the following:
+
 ![Outout2](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2000.01.24.png)
 
 ## Step 3. Let's check out the connectivity with the host
