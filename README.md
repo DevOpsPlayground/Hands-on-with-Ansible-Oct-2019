@@ -71,7 +71,7 @@ ansible --version
 
 That's it!
 
-## Step 2. Configuring SSH Access to the remote host
+## Step 2. Configuring passwordless SSH Access to the remote hos
 
 Run the following command from your `control_panda`.
 
