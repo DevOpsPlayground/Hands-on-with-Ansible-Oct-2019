@@ -58,10 +58,8 @@ If not, run these commands:
 
 ```bash
 sudo apt update     # [sudo] password for playground:   (type in your password)
-sudo apt install python3-pip
-pip3 --version
-sudo pip3 install ansible
-sudo apt install ansible-lint && sudo pip3 install ansible-lint
+sudo apt install ansible
+sudo apt install ansible-lint
 ```
 
 and again
