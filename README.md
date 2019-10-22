@@ -16,18 +16,18 @@ In Ansible terminology, these are referred to as a *control node* and *remote ho
 We have set up a `control node` and one `remote host` for each one of you to use.
 
 You may have noticed from your information-slip that you have been assigned two animal names. These animals have been used to ensure everyone has unique host names.
-So, for example, imagine Bob has a `panda` and a `tiger` :smiley: . We have set up machines control_panda and remote_tiger for Bob to practice Ansible commands with.
+So, for example, imagine Bob has a `panda` and a `tiger` :smiley: . We have set up machines `control_panda` and `remote_tiger` for Bob to practice Ansible commands with.
 
 Further these machines can be accessed via a command line in the browser (a web terminal called WeTTy), under the following links:
 
-- <http://control_panda.ldn.devopsplayground.com/wetty/>
-- <http://remote_tiger.ldn.devopsplayground.com/wetty/>
+- `http://control_xxxxx.ldn.devopsplayground.com/wetty/`
+- `http://remote_xxxxx.ldn.devopsplayground.com/wetty/`
 
 representing the Ansible `control node` and `remote host`, respectively.
 
 ### Let's start
 
-1. Open up the <http://control_panda.ldn.devopsplayground.com/wetty/> (use the `animal name` on your info-slip).
+1. Open up the `http://control_xxxxx.ldn.devopsplayground.com/wetty/` (replace the `xxxxx` with the `animal name` on your info-slip).
 
 2. You will be prompted for a login password. Use the one on your information-slip.
 
@@ -560,8 +560,9 @@ output
 and then run again the failed task
 
 ```bash
-# in the debugger console type `redo`
+# in the debugger console type `update_task` and on the next line `redo`
 
+[lampstack] TASK: webserver : install apache2 server (debug)> update_task
 [lampstack] TASK: webserver : install apache2 server (debug)> redo
 ```
 
