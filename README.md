@@ -526,7 +526,7 @@ Now run your playbook in the following mode:
 ansible-playbook site.yml --tags=web
 ```
 
-#### Hint! We placed `tags` on roles, but we can be more granular and tag any task in the playbook. Only if you have time, modify a task file to bear a tag with your name. Then rerun the playbook with your tag to see only that task being played.
+#### Hint! We placed `tags` on roles, but we can be more granular and tag any task in the playbook. If you have time, modify a task file to bear a tag with your name. Then rerun the playbook with your tag to see only that task being played.
 
 ### 8.5 Enable Debug and Increase Verbosity
 
@@ -547,7 +547,7 @@ Change the name of the package as shown:
 #### Run the debugger
 
 ```bash
-ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web
+ANSIBLE_STRATEGY=debug ansible-playbook site.yml --tags=web
 ```
 
 This setting will trigger the debugger at any failed or unreachable task, unless specifically disabled.
@@ -559,9 +559,10 @@ You will see:
 ![Debug message](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2015.55.20.png)
 
 ```bash
-# in the debugger console type `p task.args`
+# in [lampstack] TASK: webserver : install apache2 server (debug)>
+# type: 
 
-[lampstack] TASK: webserver : install apache2 server (debug)> p task.args
+p task.args
 ```
 
 you will see the following:
@@ -571,10 +572,10 @@ you will see the following:
 Let's fix the error on the fly:
 
 ```bash
-# in the debugger console type `task.args['name'] = 'apache2'`
+# in [lampstack] TASK: webserver : install apache2 server (debug)>
+# type:
 
-
-[lampstack] TASK: webserver : install apache2 server (debug)> task.args['name'] = 'apache2'
+ task.args['name'] = 'apache2'
 ```
 
 output
@@ -583,10 +584,10 @@ output
 and then run again the failed task
 
 ```bash
-# in the debugger console type `update_task` and on the next line `redo`
+# in [lampstack] TASK: webserver : install apache2 server (debug)>
+# type:
 
-[lampstack] TASK: webserver : install apache2 server (debug)> update_task
-[lampstack] TASK: webserver : install apache2 server (debug)> redo
+redo
 ```
 
 ![Redo](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.43.08.png)
