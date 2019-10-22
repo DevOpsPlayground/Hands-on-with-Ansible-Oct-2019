@@ -534,7 +534,7 @@ You will see:
 
 you will see the following:
 
-![output]()
+![output](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.41.13.png)
 
 Let's fix the error:
 
