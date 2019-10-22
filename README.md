@@ -594,7 +594,7 @@ redo
 
 #### Success!
 
-### Don't forget to fix the error in the file as well, once you are happy with your solution.
+### Don't forget to fix the error in the file, once you are happy with your solution.
 
 #### Bonus
 
