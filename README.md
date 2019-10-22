@@ -521,6 +521,16 @@ Change the name of the package as shown:
 
 ![Wrong package](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2015.34.10.png)
 
+
+Run the playbook as usual:
+
+```bash
+ansible-playbook site.yml --tags=web
+```
+
+You will see the following error:
+
+![Error](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2015.51.52.png)
 #### Run the debugger
 
 ```bash
