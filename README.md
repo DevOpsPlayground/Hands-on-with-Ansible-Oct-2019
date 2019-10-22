@@ -509,11 +509,32 @@ ansible-playbook site.yml --tags=web
 
 [Let's explore ways to debug :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html)
 
+#### Break the playbook
+
+```bash
+```
+
+#### Run the debugger
+
 ```bash
 ANSIBLE_DEBUG=true ansible-playbook site.yml --tags=web  -v
 # or
 ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web  -v
 ```
+
+p task.args
+you will see the following:
+
+![output]()
+
+Let's fix the error:
+
+```bash
+task.args['name'] = 'apache2'
+``` 
+
+output
+![Output]()
 
 This setting will trigger the debugger at any failed or unreachable task, unless specifically disabled.
 
