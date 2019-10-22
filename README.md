@@ -522,7 +522,16 @@ ANSIBLE_DEBUG=true ansible-playbook site.yml --tags=web  -v
 ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web  -v
 ```
 
-p task.args
+You will see:
+
+![Debug message](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.40.40.png)
+
+```bash
+# in the debugger console
+
+[lampstack] TASK: webserver : install apache2 server (debug)> p task.args
+```
+
 you will see the following:
 
 ![output]()
