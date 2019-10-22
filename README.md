@@ -301,7 +301,7 @@ Ok, let's create the handlers now.
 In `webserver/handlers/` create `main.yaml`
 
 ```bash
-# ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
+# in ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
 
 mkdir -p webserver/handlers && vi webserver/handlers/main.yaml
 ```
@@ -336,7 +336,7 @@ We need to configure our Apache server. For this purpose we will use the `templa
 Ansible templates leverage the powerful and widely adopted Jinja2 templating language. Let's go ahead and create two templates in this location -> `webserver/templates`.
 
 ```bash
-# ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
+# in ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
 
 mkdir -p webserver/templates/ && vi webserver/templates/web.port.j2
 ```
@@ -364,7 +364,7 @@ Listen 8080
 Then
 
 ```bash
-# ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
+# in ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
 
 vi webserver/templates/web.conf.j2
 ```
@@ -386,7 +386,7 @@ Where is a good place to define variables? [Let's explore defining variables :pa
 These variables belong to the `webserver` role. Their place is in a designed for the purpose location `webserver/vars/main.yml`:
 
 ```bash
-# ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
+# in ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
 
 mkdir -p webserver/vars && vi webserver/vars/main.yml
 ```
@@ -436,7 +436,7 @@ echo remote_username: "playground" > group_vars/lamp.yml
 
 #### You may want to check last time the  [playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook#hierarchy-structure-of-playbook)
 
-And now run the playbook!
+### And now run the playbook!
 
 ```bash
 ansible-playbook -i inventory site.yml
