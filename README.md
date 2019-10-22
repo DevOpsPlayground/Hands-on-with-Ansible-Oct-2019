@@ -454,10 +454,10 @@ And watch the linter complain!
 
 ### 8.3 Dry-run
 
-When ansible-playbook is executed with --check it will not make any changes on remote systems. Instead it will report what changes it would have made rather than making them.
+When ansible-playbook is executed with --check it will not make any changes on remote systems. Instead it will try to predict what changes it would make. This works great with `--diff` when you make small changes to files or templates.
 
 ```bash
-ansible-playbook site.yml --check
+ansible-playbook site.yml --check --diff
 ```
 
 ### 8.4 Tags
@@ -507,8 +507,9 @@ ANSIBLE_DEBUG=true ansible-playbook site.yml --tags=web  -v
 ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web  -v
 ```
 
-This setting will trigger the debugger at any failed or unreachable task, unless specifically disabled. 
-The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvv`.
+This setting will trigger the debugger at any failed or unreachable task, unless specifically disabled.
+
+The `-v` gives us a more detailed output for connection debugging. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvv`.
 
 ## 9. Notes
 
