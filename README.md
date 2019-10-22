@@ -419,7 +419,8 @@ ansible-playbook -i inventory site.yml
 
 Success! :+1: :+1: :+1:
 
-#### Go to http://remote-tiger.ldn.devopsplayground.com/apache/wordpress
+#### Go to `http://remote_xxxxx.ldn.devopsplayground.com/apache/wordpress` 
+(replace the `xxxxx` with the `animal name` on your info-slip)
 
 You should see:
 
