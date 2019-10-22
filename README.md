@@ -521,17 +521,6 @@ Change the name of the package as shown:
 
 ![Wrong package](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2015.34.10.png)
 
-
-Run the playbook as usual:
-
-```bash
-ansible-playbook site.yml --tags=web
-```
-
-You will see the following error:
-
-![Error](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2015.51.52.png)
-
 #### Run the debugger
 
 ```bash
@@ -544,7 +533,7 @@ The `-v` gives us a more detailed output for connection debugging. Ansible is ri
 
 You will see:
 
-![Debug message](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.40.40.png)
+![Debug message](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2015.55.20.png)
 
 ```bash
 # in the debugger console
