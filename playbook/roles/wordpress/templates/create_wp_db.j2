@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS wordpress;
+CREATE DATABASE IF NOT EXISTS {{wp_database}};
 GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.*
 TO wordpress@localhost
-IDENTIFIED BY '{{new_user_password}}';
+IDENTIFIED BY '{{wp_database_password}}';
 FLUSH PRIVILEGES;
