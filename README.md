@@ -524,7 +524,7 @@ Change the name of the package as shown:
 #### Run the debugger
 
 ```bash
-ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web  -v
+ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web
 ```
 
 This setting will trigger the debugger at any failed or unreachable task, unless specifically disabled.
@@ -568,6 +568,14 @@ and then run again the failed task
 ![Redo](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.43.08.png)
 
 #### Success!
+
+#### Bonus
+
+The `-v` gives us a more detailed output for connection debugging. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvv`.
+
+```bash
+ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web -v
+```
 
 ## 9. Notes
 
