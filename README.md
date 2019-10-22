@@ -178,7 +178,6 @@ Explore the output in the command line :nerd_face:
 It starts like this:
 ![ansible-doc apt output](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2012.36.18.png)
 
-
 ## Step 6. Run the playbook
 
 ```bash
@@ -215,7 +214,7 @@ Here is the high-level hierarchy structure of the playbook:
 Before we start, take a look at the directory structure of a fully fledged playbook. Click here:
 [Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook). This is what we are aiming for ;-)
 
-To save time, I have already created some roles for you. Go back to the Web Terminal of your `control node` and take a look at the `playbook/` directory. Get familiar with the contents. Anything missing?
+To save time, I have already created some roles for you. Go back to the Web Terminal of your `control node` and take a look at the `playbook/` directory. Get familiar with the contents. Anything missing in `playbook/roles` :nerd_face:?
 
 ### Step 7.1 The Webserver Role
 
@@ -226,7 +225,7 @@ We will now write a Role to install and configure the Apache2 server.
 First thing first - we'll install Apache2. Create the folder structure for the tasks:
 
 ```bash
-cd playbook/roles
+cd playbook/roles     # if you haven't already :-)
 mkdir -p webserver/tasks && vi webserver/tasks/main.yml
 ```
 
@@ -381,7 +380,9 @@ server_document_root: /var/www/html
 Do you remember the YAML that was showing high-level structure of a playbook? Let's create it.
 
 ```bash
-cd .. && vi site.yml    # We are now back in playbook/
+cd .. && vi site.yml
+
+# We are now back in playbook/
 ```
 
 Paste:
@@ -403,6 +404,8 @@ Paste:
 Let' set our remote user globally:
 
 ```bash
+# in ~/Hands-on-with-Ansible-Oct-2019/playbook
+
 echo remote_username: "playground" > group_vars/lamp.yml
 ```
 
