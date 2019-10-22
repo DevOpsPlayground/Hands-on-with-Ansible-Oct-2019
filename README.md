@@ -84,7 +84,6 @@ You should see output something like the following:
 
 ![Output1](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-21%20at%2023.57.21.png)
 
-
 Answer yes to this question, then the proces should continue something like the following:
 
 ![Outout2](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2000.01.24.png)
@@ -118,7 +117,7 @@ Let's  create the inventory of hosts and Ansible configuration file at the root 
 Let's take a look what those two files look like for us:
 
 ```bash
-less playbook/inventory
+cat playbook/inventory
 # you should see something like:
 [lamp]
 lampstack ansible_host=52.214.226.94 ansible_become_pass=my_pass
@@ -173,6 +172,12 @@ What if we don't have access to the documentation in the web? Ansible ships with
 ```bash
 ansible-doc apt
 ```
+
+Explore the output in the command line :nerd_face:
+
+It starts like this:
+![ansible-doc apt output](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2012.36.18.png)
+
 
 ## Step 6. Run the playbook
 
