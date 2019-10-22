@@ -3,6 +3,7 @@
 ## Our task: Create a real-world LAMP stack for development and deploy Wordpress app using Ansible
 
 ## Summary:
+[Let's](#lets-start "Goto Let's start")
 
 [1. Install Ansible](#step-1-install-ansible "Goto Step 1. Install Ansible")
 
