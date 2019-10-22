@@ -1,9 +1,3 @@
 wp_database: wordpress
 wp_database_username: wordpress
 wp_database_password: s^p3rs3kr3t
-
-wp_site_name: Playground
-wp_site_title: About Ansible 
-
-wp_admin_username: Panda
-wp_admin_password: S0meP@nd@
