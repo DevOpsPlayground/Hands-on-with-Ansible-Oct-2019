@@ -601,7 +601,7 @@ redo
 The `-v` gives us a more detailed output for connection debugging. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvv`.
 
 ```bash
-ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web -v
+ANSIBLE_STRATEGY=debug ansible-playbook site.yml --tags=web -v
 ```
 
 ## 9. Notes
