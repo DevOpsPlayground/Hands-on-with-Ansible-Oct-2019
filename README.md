@@ -31,8 +31,7 @@ You will need:
 1. The information-slip you picked up at reception.
 2. The Google Chrome browser (preferably, but Firefox can also do).
 
-
-------
+-----
 
 ### Ansible control node and remote hosts
 
@@ -571,7 +570,7 @@ you will see the following:
 
 ![output](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2016.07.10.png)
 
-Let's fix the error:
+Let's fix the error on the fly:
 
 ```bash
 # in the debugger console type `task.args['name'] = 'apache2'`
@@ -595,6 +594,8 @@ and then run again the failed task
 ![Redo](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.43.08.png)
 
 #### Success!
+
+### Don't forget to fix the error in the file as well, once you are happy with your solution.
 
 #### Bonus
 
