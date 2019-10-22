@@ -208,7 +208,7 @@ It starts like this:
 ansible-playbook -i playbook/inventory update.yml
 ```
 
-### Success!!
+### Success! :+1: :+1: :+1:
 
 You should see something similar:
 ![Result](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-20%20at%2018.49.34.png)
@@ -592,7 +592,7 @@ redo
 
 ![Redo](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.43.08.png)
 
-#### Success!
+#### Success! :+1: :+1: :+1:
 
 ### Don't forget to fix the error in the file, once you are happy with your solution.
 
