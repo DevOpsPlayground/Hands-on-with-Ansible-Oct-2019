@@ -2,10 +2,27 @@
 
 ## Our task: Create a real-world LAMP stack for development and deploy Wordpress app using Ansible
 
+## Summary:
+[Step 1. Install Ansible](#step-1-install-ansible "Goto Step 1. Install Ansible")
+
+[Step 2. Configuring passwordless SSH Access to the remote host](#heading-1 "Goto Step 2. Configuring passwordless SSH Access to the remote host")
+
+[Step 3. Let's check out the connectivity with the host](#step-3-lets-check-out-the-connectivity-with-the-host "Goto Step 3. Let's check out the connectivity with the host")
+
+[Step 4. Ansible Hostfile and configuration file](#step-4-ansible-hostfile-and-configuration-file "Goto Step 4. Ansible Hostfile and configuration file")
+
+[heading-1](#heading-1 "Goto heading-1")
+[heading-1](#heading-1 "Goto heading-1")
+[heading-1](#heading-1 "Goto heading-1")
+[heading-1](#heading-1 "Goto heading-1")
+[heading-1](#heading-1 "Goto heading-1")
+[heading-1](#heading-1 "Goto heading-1")
+
 You will need:
 
 1. The information-slip you picked up at reception.
 2. The Google Chrome browser (preferably, but Firefox can also do).
+
 
 ------
 
@@ -71,7 +88,7 @@ ansible --version
 
 That's it!
 
-## Step 2. Configuring passwordless SSH Access to the remote hos
+## Step 2. Configuring passwordless SSH Access to the remote host
 
 Run the following command from your `control_panda`.
 
