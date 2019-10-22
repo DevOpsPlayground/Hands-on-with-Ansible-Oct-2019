@@ -526,9 +526,7 @@ Now run your playbook in the following mode:
 ansible-playbook site.yml --tags=web
 ```
 
-#### Hint! We placed `tags` on roles, but we can be more granular and tag any task in the playbook. 
-
-:nerd_face: Only if you have time, modify a task file to bear a tag with your name. Then rerun the playbook with your tag to see only that task being played.
+#### Hint! We placed `tags` on roles, but we can be more granular and tag any task in the playbook. Only if you have time, modify a task file to bear a tag with your name. Then rerun the playbook with your tag to see only that task being played.
 
 ### 8.5 Enable Debug and Increase Verbosity
 
