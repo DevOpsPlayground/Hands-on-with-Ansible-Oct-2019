@@ -536,7 +536,7 @@ You will see:
 ![Debug message](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2015.55.20.png)
 
 ```bash
-# in the debugger console
+# in the debugger console type `p task.args`
 
 [lampstack] TASK: webserver : install apache2 server (debug)> p task.args
 ```
@@ -548,6 +548,9 @@ you will see the following:
 Let's fix the error:
 
 ```bash
+# in the debugger console type `task.args['name'] = 'apache2'`
+
+
 [lampstack] TASK: webserver : install apache2 server (debug)> task.args['name'] = 'apache2'
 ```
 
@@ -557,6 +560,8 @@ output
 and then run again the failed task
 
 ```bash
+# in the debugger console type `redo`
+
 [lampstack] TASK: webserver : install apache2 server (debug)> redo
 ```
 
