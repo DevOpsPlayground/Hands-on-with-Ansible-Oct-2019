@@ -530,10 +530,18 @@ you will see the following:
 Let's fix the error:
 
 ```bash
-task.args['name'] = 'apache2'
+[lampstack] TASK: webserver : install apache2 server (debug)> task.args['name'] = 'apache2'
 ``` 
 
 output
+![Output]()
+
+and then run again the failed task
+
+```bash
+[lampstack] TASK: webserver : install apache2 server (debug)> redo
+```
+
 ![Output]()
 
 This setting will trigger the debugger at any failed or unreachable task, unless specifically disabled.
