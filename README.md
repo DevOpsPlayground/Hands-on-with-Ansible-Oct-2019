@@ -261,10 +261,11 @@ The following code will tell our Ansible to install Apache2 and configure it. It
 Let's discuss what this task file is doing.
 Hint: Use the `ansible-doc` command to help you. Example: `ansible-doc systemd`.
 
-Did you spot the `notify` parameter at the end of the file? [Let's explore handlers :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
+Did you spot the `notify` parameter at the end of the file? What you see listed under this parameter is called a `handler`. [Let's explore handlers :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
 
-In Ansible we call this a `handler` a very cool feature that will trigger the process (start apache2) only if anything changes after the playbook has run. Time and resources saving!  
-Ok, let's create the handler now.
+Something interesting is going on here. The `handlers` are just another set of tasks, for example, `start apache2`, that will trigger a process only if they get `notified`. They get `notified` only if anything changes after the playbook has run. Another interesting fact is that, regardless of how many tasks throughout the playbook `notify` that particular `handler`, the process of restarting apache2 will be triggered only once. Time and resources saving!    
+
+Ok, let's create the handlers now.
 
 #### 7.1.2 Handling apache2 start
 
