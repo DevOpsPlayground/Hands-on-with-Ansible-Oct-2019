@@ -128,7 +128,7 @@ ansible all -i "$REMOTE_HOST," -m ping
 ansible all -i "$REMOTE_HOST," -m shell -a 'free -m && df -h'
 ```
 
-What we did just now was to run ansible `ad-hoc commands` on our remote host. [Let's explore ad-hoc commands :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html)
+What we did just now was to run ansible `ad-hoc commands` on our remote host. [Let's explore ad-hoc commands :panda_face:](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html)
 
 ## Step 4. Ansible Hostfile and configuration file
 
@@ -147,7 +147,7 @@ cat playbook/inventory
 lampstack ansible_host=52.214.226.94 ansible_become_pass=my_pass
 ```
 
-Ansible has a `default inventory` and a `default configuration file`. Let's explore them as examples :nerd_face:
+Ansible has a `default inventory` and a `default configuration file`. Let's explore them as examples :panda_face:
 
 ```bash
 less /etc/ansible/hosts
@@ -197,7 +197,7 @@ What if we don't have access to the documentation in the web? Ansible ships with
 ansible-doc apt
 ```
 
-Explore the output in the command line :nerd_face:
+Explore the output in the command line :panda_face:
 
 It starts like this:
 ![ansible-doc apt output](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2012.36.18.png)
@@ -238,7 +238,7 @@ Here is the high-level hierarchy structure of the playbook:
 Before we start, take a look at the directory structure of a fully fledged playbook. Click here:
 [Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook). This is what we are aiming for ;-)
 
-To save time, I have already created some roles for you. Go back to the Web Terminal of your `control node` and take a look at the `playbook/` directory. Get familiar with the contents. Anything missing in `playbook/roles` :nerd_face:?
+To save time, I have already created some roles for you. Go back to the Web Terminal of your `control node` and take a look at the `playbook/` directory. Get familiar with the contents. Anything missing in `playbook/roles` :panda_face:?
 
 ### Step 7.1 The Webserver Role
 
@@ -289,7 +289,7 @@ The following code will tell our Ansible to install Apache2 and configure it. It
 Let's discuss what this task file is doing.
 Hint: Use the `ansible-doc` command to help you. Example: `ansible-doc systemd`.
 
-Did you spot the `notify` parameter at the end of the file? What you see listed as a parameter of the notify is the name of a `handler`. [Let's explore handlers :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
+Did you spot the `notify` parameter at the end of the file? What you see listed as a parameter of the notify is the name of a `handler`. [Let's explore handlers :panda_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
 
 Something interesting is going on here. The `handlers` are just another set of tasks, for example, `start apache2`, that will trigger a process only if they get `notified`. They get `notified` only if anything changes after the playbook has run. Another interesting fact is that, regardless of how many tasks throughout the playbook `notify` that particular `handler`, the process of restarting apache2 will be triggered only once. Time and resources saving!
 
@@ -325,12 +325,12 @@ and paste there the following:
     daemon_reload: yes
 ```
 
-##### What is  [Idempotence](https://en.wikipedia.org/wiki/Idempotence)? :nerd_face:
+##### What is  [Idempotence](https://en.wikipedia.org/wiki/Idempotence)? :panda_face:
 
 #### 7.1.3 Templating
 
 We need to configure our Apache server. For this purpose we will use the `template` module.
-[Let's explore templates :nerd_face:](https://docs.ansible.com/ansible/2.5/modules/template_module.html#template-templates-a-file-out-to-a-remote-server)
+[Let's explore templates :panda_face:](https://docs.ansible.com/ansible/2.5/modules/template_module.html#template-templates-a-file-out-to-a-remote-server)
 
 Ansible templates leverage the powerful and widely adopted Jinja2 templating language. Let's go ahead and create two templates in this location -> `webserver/templates`.
 
@@ -380,7 +380,7 @@ Paste:
 ```
 
 Our template is using variables that will be replaced with their values, at the time we run the playbook, and then sent off to the remote server.
-Where is a good place to define variables? [Let's explore defining variables :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#defining-variables-in-included-files-and-roles)
+Where is a good place to define variables? [Let's explore defining variables :panda_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#defining-variables-in-included-files-and-roles)
 
 These variables belong to the `webserver` role. Their place is in a designed for the purpose location `webserver/vars/main.yml`:
 
@@ -495,7 +495,7 @@ ansible-playbook site.yml --check --diff
 
 ### 8.4 Tags
 
-Playbooks can easily become large and can run for long time. We don't want to watch them rerun in their entirety every time we make a change to a task. How can we save time and run only what we are interested in? [Let's explore tags :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html)
+Playbooks can easily become large and can run for long time. We don't want to watch them rerun in their entirety every time we make a change to a task. How can we save time and run only what we are interested in? [Let's explore tags :panda_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html)
 
 ```bash
 vi site.yml
@@ -530,7 +530,7 @@ ansible-playbook site.yml --tags=web
 
 ### 8.5 Enable Debug and Increase Verbosity
 
-[Let's explore ways to debug :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html)
+[Let's explore ways to debug :panda_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html)
 
 #### Break the playbook
 
