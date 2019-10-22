@@ -124,7 +124,7 @@ less playbook/inventory
 lampstack ansible_host=52.214.226.94 ansible_become_pass=my_pass
 ```
 
-Ansible has a `defaul inventory` and a `default configuration file`. Let's exlore them as examples :nerd_face:
+Ansible has a `default inventory` and a `default configuration file`. Let's explore them as examples :nerd_face:
 
 ```bash
 less /etc/ansible/hosts
@@ -138,7 +138,7 @@ less /etc/ansible/ansible.cfg
 
 ## Step 5. Write a simple playbook
 
-We will put together a simple playbook to update our remote host, and check its memory and disk space. We did did using ad-hoc commands but this time we will transform them into a playbook file. We can now store this in version control, we can let other systems to check it out and run it as many times as we want.
+We will put together a simple playbook to update our remote host, and check its memory and disk space. The first time around we did this using ad-hoc commands but this time we will transform them into a playbook file. We can now store this in version control, we can let other systems check it out and run it as many times as we want.
 Create a file `update.yml`
 
 ```bash
@@ -210,7 +210,7 @@ Here is the high-level hierarchy structure of the playbook:
 Before we start, take a look at the directory structure of a fully fledged playbook. Click here:
 [Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook). This is what we are aiming for ;-)
 
-To save time, I have alredy created some roles for you. Go back to the Web Terminal of your `control node` and take a look at the `playbook/` directory. Get familiar with the contents. Anything missing?
+To save time, I have already created some roles for you. Go back to the Web Terminal of your `control node` and take a look at the `playbook/` directory. Get familiar with the contents. Anything missing?
 
 ### Step 7.1 The Webserver Role
 
@@ -506,7 +506,7 @@ ANSIBLE_DEBUG=true ANSIBLE_VERBOSITY=1 ansible-playbook site.yml --tags=web
 ANSIBLE_DEBUG=true ansible-playbook site.yml --tags=web  -v
 ```
 
-The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvvv`.
+The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvv`.
 
 ## 9. Notes
 
