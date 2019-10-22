@@ -522,6 +522,10 @@ ANSIBLE_DEBUG=true ansible-playbook site.yml --tags=web  -v
 ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web  -v
 ```
 
+This setting will trigger the debugger at any failed or unreachable task, unless specifically disabled.
+
+The `-v` gives us a more detailed output for connection debugging. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvv`.
+
 You will see:
 
 ![Debug message](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.40.40.png)
@@ -540,10 +544,10 @@ Let's fix the error:
 
 ```bash
 [lampstack] TASK: webserver : install apache2 server (debug)> task.args['name'] = 'apache2'
-``` 
+```
 
 output
-![Output]()
+![Output](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.41.58.png)
 
 and then run again the failed task
 
@@ -551,11 +555,9 @@ and then run again the failed task
 [lampstack] TASK: webserver : install apache2 server (debug)> redo
 ```
 
-![Output]()
+![Redo](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.43.08.png)
 
-This setting will trigger the debugger at any failed or unreachable task, unless specifically disabled.
-
-The `-v` gives us a more detailed output for connection debugging. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvv`.
+#### Success!
 
 ## 9. Notes
 
