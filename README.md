@@ -531,11 +531,10 @@ ansible-playbook site.yml --tags=web
 You will see the following error:
 
 ![Error](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2015.51.52.png)
+
 #### Run the debugger
 
 ```bash
-ANSIBLE_DEBUG=true ansible-playbook site.yml --tags=web  -v
-# or
 ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web  -v
 ```
 
