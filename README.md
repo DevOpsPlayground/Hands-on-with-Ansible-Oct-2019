@@ -512,7 +512,14 @@ ansible-playbook site.yml --tags=web
 #### Break the playbook
 
 ```bash
+# in ~/Hands-on-with-Ansible-Oct-2019/playbook
+
+vi roles/webserver/tasks/main.yml
 ```
+
+Change the name of the package as shown:
+
+![Wrong package](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2015.29.40.png)
 
 #### Run the debugger
 
@@ -538,7 +545,7 @@ You will see:
 
 you will see the following:
 
-![output](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.41.13.png)
+![output](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-22%20at%2013.41.35.png)
 
 Let's fix the error:
 
