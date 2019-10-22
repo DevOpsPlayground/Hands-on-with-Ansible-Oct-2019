@@ -261,9 +261,9 @@ The following code will tell our Ansible to install Apache2 and configure it. It
 Let's discuss what this task file is doing.
 Hint: Use the `ansible-doc` command to help you. Example: `ansible-doc systemd`.
 
-Did you spot the `notify` parameter at the end of the file? What you see listed under this parameter is called a `handler`. [Let's explore handlers :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
+Did you spot the `notify` parameter at the end of the file? What you see listed as a parameter of the notify is the name of a `handler`. [Let's explore handlers :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#handlers-running-operations-on-change)
 
-Something interesting is going on here. The `handlers` are just another set of tasks, for example, `start apache2`, that will trigger a process only if they get `notified`. They get `notified` only if anything changes after the playbook has run. Another interesting fact is that, regardless of how many tasks throughout the playbook `notify` that particular `handler`, the process of restarting apache2 will be triggered only once. Time and resources saving!    
+Something interesting is going on here. The `handlers` are just another set of tasks, for example, `start apache2`, that will trigger a process only if they get `notified`. They get `notified` only if anything changes after the playbook has run. Another interesting fact is that, regardless of how many tasks throughout the playbook `notify` that particular `handler`, the process of restarting apache2 will be triggered only once. Time and resources saving!
 
 Ok, let's create the handlers now.
 
@@ -499,14 +499,15 @@ ansible-playbook site.yml --tags=web
 
 ### 8.5 Enable Debug and Increase Verbosity
 
-[Let's explore ways to debug :nerd_face:](https://docs.ansible.com/ansible/latest/modules/debug_module.htm)
+[Let's explore ways to debug :nerd_face:](https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html)
 
 ```bash
-ANSIBLE_DEBUG=true ANSIBLE_VERBOSITY=1 ansible-playbook site.yml --tags=web
-# or
 ANSIBLE_DEBUG=true ansible-playbook site.yml --tags=web  -v
+# or
+ANSIBLE_ENABLE_TASK_DEBUGGER=True ansible-playbook site.yml --tags=web  -v
 ```
 
+This setting will trigger the debugger at any failed or unreachable task, unless specifically disabled. 
 The `-v` gives us a more detailed output from Ansible, once the playbook is run. Ansible is rich with feedback data. Try running the same command but with `-vv` or even `-vvv`.
 
 ## 9. Notes
