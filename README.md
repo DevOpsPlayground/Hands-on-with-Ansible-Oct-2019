@@ -3,6 +3,7 @@
 ## Our task: Create a real-world LAMP stack for development and deploy Wordpress app using Ansible
 
 ## Summary:
+
 [Let's](#lets-start "Goto Let's start")
 
 [1. Install Ansible](#step-1-install-ansible "Goto Step 1. Install Ansible")
@@ -45,14 +46,14 @@ So, for example, imagine Bob has a `panda` and a `tiger` :smiley: . We have set 
 
 Further these machines can be accessed via a command line in the browser (a web terminal called WeTTy), under the following links:
 
-- `http://control_xxxxx.ldn.devopsplayground.com/wetty/`
-- `http://remote_xxxxx.ldn.devopsplayground.com/wetty/`
+- `http://control_xxx.ldn.devopsplayground.com/wetty/`
+- `http://remote_xxx.ldn.devopsplayground.com/wetty/`
 
 representing the Ansible `control node` and `remote host`, respectively.
 
 ### Let's start
 
-1. Open up the `http://control_xxxxx.ldn.devopsplayground.com/wetty/` (replace the `xxxxx` with the `animal name` on your info-slip).
+1. Open up the `http://control_xxx.ldn.devopsplayground.com/wetty/` (replace the `xxx` with the `animal name` on your info-slip).
 
 2. You will be prompted for a login password. Use the one on your information-slip.
 
@@ -444,8 +445,8 @@ ansible-playbook -i inventory site.yml
 
 Success! :+1: :+1: :+1:
 
-#### Go to `http://remote_xxxxx.ldn.devopsplayground.com/apache/wordpress` 
-(replace the `xxxxx` with the `animal name` on your info-slip)
+#### Go to `http://remote_xxx.ldn.devopsplayground.com/apache/wordpress` 
+(replace the `xxx` with the `animal name` on your info-slip)
 
 You should see:
 
