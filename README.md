@@ -188,7 +188,7 @@ ansible-playbook -i playbook/inventory update.yml
 ### Success!!
 
 You should see something similar:
-![Result](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/final/images/Screenshot%202019-10-20%20at%2018.49.34.png)
+![Result](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/images/Screenshot%202019-10-20%20at%2018.49.34.png)
 
 ## Step 7. Build a LAMP stack and deploy Wordpress
 
@@ -518,7 +518,7 @@ The `-v` gives us a more detailed output for connection debugging. Ansible is ri
 
 ## 9. Notes
 
-If you want to create the LAMP stack playbook from scratch, [here](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/final/step_by_step/LAMP_stack_step_by_step.md#ansible-hands-on).
+If you want to create the LAMP stack playbook from scratch, [here](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/step_by_step/LAMP_stack_step_by_step.md#ansible-hands-on).
 
 ## 10. References
 
