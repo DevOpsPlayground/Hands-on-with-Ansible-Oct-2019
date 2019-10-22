@@ -3,7 +3,17 @@
 ## Our task: Create a real-world LAMP stack for development and deploy Wordpress app using Ansible
 
 ## Summary:
-### [Install Ansible](#step-1-install-ansible "Goto Step 1. Install Ansible") || [SSH Access to the remote host](#step-2-configuring-passwordless-ssh-access-to-the-remote-host "Goto Step 2. Configuring passwordless SSH Access to the remote host") ||[Connectivity with the host](#step-3-lets-check-out-the-connectivity-with-the-host "Goto Step 3. Let's check out the connectivity with the host") || [Ansible hostfile and configuration file](#step-4-ansible-hostfile-and-configuration-file "Goto Step 4. Ansible Hostfile and configuration file") || [Simple playbook](#step-5-write-a-simple-playbook "Goto Step 5. Write a simple playbook") || [Run the playbook](#step-6-run-the-playbook "Goto Step 6. Run the playbook") || [Build a LAMP stack and deploy Wordpress](#step-7-build-a-lamp-stack-and-deploy-wordpress "Goto Step 7. Build a LAMP stack and deploy Wordpress") || [Playbook basics](#8-playbook-basics "Goto 8. Playbook basics") || [Notes](#9-notes "Goto 9. Notes") || [References](#10-references "Goto 10. References")
+
+[Install Ansible](#step-1-install-ansible "Goto Step 1. Install Ansible")
+[SSH Access to the remote host](#step-2-configuring-passwordless-ssh-access-to-the-remote-host "Goto Step 2. Configuring passwordless SSH Access to the remote host")
+[Connectivity with the host](#step-3-lets-check-out-the-connectivity-with-the-host "Goto Step 3. Let's check out the connectivity with the host")
+[Ansible hostfile and configuration file](#step-4-ansible-hostfile-and-configuration-file "Goto Step 4. Ansible Hostfile and configuration file")
+[Simple playbook](#step-5-write-a-simple-playbook "Goto Step 5. Write a simple playbook")
+[Run the playbook](#step-6-run-the-playbook "Goto Step 6. Run the playbook")
+[Build a LAMP stack and deploy Wordpress](#step-7-build-a-lamp-stack-and-deploy-wordpress "Goto Step 7. Build a LAMP stack and deploy Wordpress")
+[Playbook basics](#8-playbook-basics "Goto 8. Playbook basics")
+[Notes](#9-notes "Goto 9. Notes")
+[References](#10-references "Goto 10. References")
 
 You will need:
 
