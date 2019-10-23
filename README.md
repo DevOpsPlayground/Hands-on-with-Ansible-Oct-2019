@@ -240,7 +240,7 @@ Here is the high-level hierarchy structure of the playbook:
 Before we start, take a look at the directory structure of a fully fledged playbook. Click here:
 [Playbook directory structure](https://github.com/DevOpsPlayground/Hands-on-with-Ansible-Oct-2019/blob/master/hierarchy_structure.md#hierarchy-structure-of-playbook). This is what we are aiming for ;-)
 
-To save time, I have already created some roles for you. Go back to the Web Terminal of your `control node` and take a look at the `playbook/` directory. Get familiar with the contents. Anything missing in `playbook/roles` :panda_face:?
+To save time, I have already created some roles for you. Go back to the Web Terminal of your `control node`.
 
 ### Step 7.1 The Webserver Role
 
