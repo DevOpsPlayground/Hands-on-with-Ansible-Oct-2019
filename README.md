@@ -562,7 +562,7 @@ You will see:
 
 ```bash
 # in [lampstack] TASK: webserver : install apache2 server (debug)>
-# type: 
+# type:
 
 p task.args
 ```
