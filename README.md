@@ -42,28 +42,28 @@ In Ansible terminology, these are referred to as a *control node* and *remote ho
 We have set up a `control node` and one `remote host` for each one of you to use.
 
 You may have noticed from your information-slip that you have been assigned two animal names. These animals have been used to ensure everyone has unique host names.
-So, for example, imagine Bob has a `panda` and a `tiger` :smiley: . We have set up machines `control_panda` and `remote_tiger` for Bob to practice Ansible commands with.
+So, for example, imagine Bob has a `panda` and a `tiger` :smiley: . We have set up machines `control-panda` and `remote-tiger` for Bob to practice Ansible commands with.
 
 Further these machines can be accessed via a command line in the browser (a web terminal called WeTTy), under the following links:
 
-- `http://control_xxx.ldn.devopsplayground.com/wetty/`
-- `http://remote_xxx.ldn.devopsplayground.com/wetty/`
+- `http://control-xxx.ldn.devopsplayground.com/wetty/`
+- `http://remote-xxx.ldn.devopsplayground.com/wetty/`
 
 representing the Ansible `control node` and `remote host`, respectively.
 
 ### Let's start
 
-1. Open up the `http://control_xxx.ldn.devopsplayground.com/wetty/` (replace the `xxx` with the `animal name` on your info-slip).
+1. Open up the `http://control-xxx.ldn.devopsplayground.com/wetty/` (replace the `xxx` with the `animal name` on your info-slip).
 
 2. You will be prompted for a login password. Use the one on your information-slip.
 
 3. Type some shell commands to get familiar with the web terminal.
    From now on we will be working from the browsers only.
 
-4. Without changing machine, (you are in your `control_panda`), set some ENVIRONMENT variables that you will use later. Again, the necessary details are on your information-slip.
+4. Without changing machine, (you are in your `control-panda`), set some ENVIRONMENT variables that you will use later. Again, the necessary details are on your information-slip.
 
 ```bash
-export REMOTE_HOST=remote_host_ip       # type the IP address of your "remote_animal" machine.
+export REMOTE_HOST=remote_host_ip       # type the IP address of your "remote-animal" machine.
                                         # e.g. export REMOTE_HOST=52.214.226.94
 export PASSWORD=remote_host_password    # e.g. export PASSWORD=mys3kr3t
 ```
@@ -99,7 +99,7 @@ That's it!
 
 ## Step 2. Configuring passwordless SSH Access to the remote host
 
-Run the following command from your `control_panda`.
+Run the following command from your `control-panda`.
 
 ```bash
 cd Hands-on-with-Ansible-Oct-2019
@@ -445,7 +445,7 @@ ansible-playbook -i inventory site.yml
 
 Success! :+1: :+1: :+1:
 
-#### Go to `http://remote_xxx.ldn.devopsplayground.com/apache/wordpress` 
+#### Go to `http://remote-xxx.ldn.devopsplayground.com/apache/wordpress` 
 (replace the `xxx` with the `animal name` on your info-slip)
 
 You should see:
