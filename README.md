@@ -60,12 +60,31 @@ representing the Ansible `control node` and `remote host`, respectively.
 3. Type some shell commands to get familiar with the web terminal.
    From now on we will be working from the browsers only.
 
-4. Without changing machine, (you are in your `control_panda`), set some ENVIRONMENT variables that you will use later. Again, the necessary details are on your information-slip.
+4. Without changing machine, (you are in your `control_panda`), set up some ENVIRONMENT variables that you will use later. Again, the necessary details are on your information-slip.
+
+We'll append two useful env vars to your .profile, as follows
 
 ```bash
-export REMOTE_HOST=remote_host_ip       # type the IP address of your "remote_animal" machine.
-                                        # e.g. export REMOTE_HOST=52.214.226.94
-export PASSWORD=remote_host_password    # e.g. export PASSWORD=mys3kr3t
+cat << EOF >> ~/.profile
+export REMOTE_HOST=remote_host_ip
+export PASSWORD=remote_host_password
+EOF
+```
+
+but substituting the IP address of your "remote_animal" machine, e.g.
+
+```bash
+cat << EOF >> ~/.profile
+export REMOTE_HOST=52.51.15.91
+export PASSWORD=mySecret
+EOF
+```
+
+After this change log out `exit` and log back in and verify that your session has the env vars:
+
+```bash
+echo $REMOTE_HOST, $PASSWORD
+52.51.15.91, Ansible     # You will see something like this
 ```
 
 -----
