@@ -80,6 +80,8 @@ export REMOTE_HOST=52.51.15.91
 export PASSWORD=mySecret
 cd ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
 EOF
+
+# then 
 source ~/.profile
 ```
 
