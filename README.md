@@ -68,6 +68,7 @@ We'll append two useful env vars to your .profile, as follows
 cat << EOF >> ~/.profile
 export REMOTE_HOST=remote_host_ip
 export PASSWORD=remote_host_password
+cd ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
 EOF
 ```
 
