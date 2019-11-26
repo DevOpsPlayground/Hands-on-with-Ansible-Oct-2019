@@ -77,6 +77,7 @@ but substituting the IP address of your "remote_animal" machine, e.g.
 cat << EOF >> ~/.profile
 export REMOTE_HOST=52.51.15.91
 export PASSWORD=mySecret
+cd ~/Hands-on-with-Ansible-Oct-2019/playbook/roles
 EOF
 source ~/.profile
 ```
@@ -123,7 +124,7 @@ That's it!
 Run the following command from your `control-panda`.
 
 ```bash
-cd Hands-on-with-Ansible-Oct-2019
+cd ~/Hands-on-with-Ansible-Oct-2019
 ./setup.sh $REMOTE_HOST
 ```
 
