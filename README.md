@@ -78,6 +78,7 @@ cat << EOF >> ~/.profile
 export REMOTE_HOST=52.51.15.91
 export PASSWORD=mySecret
 EOF
+source ~/.profile
 ```
 
 After this change log out `exit` and log back in and verify that your session has the env vars:
